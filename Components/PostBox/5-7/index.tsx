@@ -5,43 +5,50 @@ import React, { useState, useEffect } from 'react'
 import styles from './index.module.css'
 
 const posts = [
-    {
-        id: 1,
+	{
+		id: 1,
 		title: 'Post 1',
 		description: 'Description of Post 1',
 		price: 10,
 		photo: '/123.jpg',
 	},
 	{
-        id: 2,
+		id: 2,
 		title: 'Post 2',
 		description: 'Description of Post 2',
 		price: 20,
 		photo: '/124.jpg',
 	},
 	{
-        id: 3,
+		id: 3,
 		title: 'Post 3',
 		description: 'Description of Post 3',
 		price: 30,
 		photo: '/127.jpg',
 	},
 	{
-        id: 6,
+		id: 6,
 		title: 'Post 1',
 		description: 'Description of Post 1',
 		price: 10,
 		photo: '/128.jpg',
 	},
 	{
-        id: 5,
+		id: 5,
 		title: 'Post 2',
 		description: 'Description of Post 2',
 		price: 20,
 		photo: '/124.jpg',
 	},
 	{
-        id: 4,
+		id: 4,
+		title: 'Post 3',
+		description: 'Description of Post 3',
+		price: 30,
+		photo: '/123.jpg',
+	},
+	{
+		id: 4,
 		title: 'Post 3',
 		description: 'Description of Post 3',
 		price: 30,
@@ -96,7 +103,7 @@ const PostBox = () => {
 								className={styles.basketButton}
 								onClick={() => incrementCount(post.id)}>
 								{selectedPostId === post.id ? (
-									<>
+									<> 
 										<button
 											className={styles.decrementButton}
 											onClick={() => decrementCount(post.id)}>

@@ -20,7 +20,7 @@ const Layout = ({ children }: any) => {
 				/>
 				<link
 					rel='icon'
-					href='/favicon.ico'
+					href='images/icon.png'
 				/>
 			</Head>
 			<div style={{ marginBottom: '7vh' }}>
