@@ -45,7 +45,7 @@
 	background: radial-gradient(#fefefb, #f8f8f6);
 	padding: 2vh;
 	border: ridge 1vh rgba(120, 241, 203, 0.7);
-	animation: postBox infinite 2s;
+	animation: postBox infinite 7s;
 	border-radius: 1vh 11vh;
 }
 
@@ -61,7 +61,7 @@
 	transition: transform 0.2s ease-in-out;
 	border: ridge #dfd688 1vh;
 	cursor: pointer;
-	animation: post infinite 2s;
+	animation: post infinite 4s;
 	box-shadow: 1px 1px 22px 7px #a2a261 inset, 1px 1px 11px 1px #fbfbf9;
 }
 

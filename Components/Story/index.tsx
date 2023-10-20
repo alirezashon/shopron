@@ -10,83 +10,83 @@ const StoryComponent = () => {
 	const stories = [
 		{
 			id: 1,
-			imageUrl: '/124.jpg',
-		},
-		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			src: '/images/feshki.webp'
 		},
 		{
 			id: 2,
-			imageUrl: '/127.jpg',
+			src: '/images/feshki.webp'
 		},
 		{
 			id: 3,
-			imageUrl: '/128.jpg',
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 4,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 5,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 2,
-			imageUrl: '/123.jpg',
+			id: 6,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 3,
-			imageUrl: '/123.jpg',
+			id: 7,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 8,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 9,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 2,
-			imageUrl: '/123.jpg',
+			id: 10,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 3,
-			imageUrl: '/123.jpg',
+			id: 11,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 12,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 13,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 2,
-			imageUrl: '/123.jpg',
+			id: 14,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 3,
-			imageUrl: '/123.jpg',
+			id: 15,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 16,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 1,
-			imageUrl: '/124.jpg',
+			id: 17,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 2,
-			imageUrl: '/123.jpg',
+			id: 18,
+			src: '/images/feshki.webp'
 		},
 		{
-			id: 3,
-			imageUrl: '/123.jpg',
+			id: 19,
+			src: '/images/feshki.webp'
+		},
+		{
+			id: 20,
+			src: '/images/feshki.webp'
 		},
 	]
 
@@ -125,7 +125,7 @@ const StoryComponent = () => {
 							<Image
 								width={99}
 								height={99}
-								src={story.imageUrl}
+								src={story.src}
 								alt={`Story ${index + 1}`}
 								className={Styles.storyBanner}
 							/>
@@ -146,7 +146,7 @@ const StoryComponent = () => {
 						width={2000}
 						height={1000}
 						layout='responsive'
-						src={stories[activeStoryIndex ?? 0].imageUrl}
+						src={stories[activeStoryIndex ?? 0].src}
 						alt={`Story ${activeStoryIndex ?? 0 + 1}`}
 						className={Styles.storyShowImage}
 					/>

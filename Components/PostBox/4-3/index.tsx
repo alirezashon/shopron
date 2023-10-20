@@ -2,66 +2,138 @@
 
 import Image from 'next/image'
 import styles from './index.module.css'
-const PostBox = () => {
-	const posts = [
+import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { useState, useEffect } from 'react'
+
+interface Post {
+	_id: string
+	title: string
+	description: string
+	price: number
+	src: string
+}
+
+const PostBox: React.FC = () => {
+	const posts: Post[] = [
 		{
-			_id: 6,
+			_id: '6',
 			title: 'Post 1',
 			description: 'Description of Post 1',
 			price: 10,
-			src: '/128.jpg',
+			src: '/images/ali.jpg',
 		},
 		{
-			_id: 5,
+			_id: '5',
 			title: 'Post 2',
 			description: 'Description of Post 2',
 			price: 20,
-			src: '/124.jpg',
+			src: '/images/ali.jpg',
 		},
 		{
-			_id: 4,
+			_id: '4',
 			title: 'Post 3',
 			description: 'Description of Post 3',
 			price: 30,
-			src: '/123.jpg',
+			src: '/images/ali.jpg',
 		},
 		{
-			_id: 4,
-			title: 'Post 3',
-			description: 'Description of Post 3',
-			price: 30,
-			src: '/123.jpg',
+			_id: '3',
+			title: 'Post 4',
+			description: 'Description of Post 4',
+			price: 40,
+			src: '/images/ali.jpg',
 		},
 	]
+
+	const [postStates, setPostStates] = useState(
+		posts.map((post) => ({
+			_id: post._id,
+			isAddToBasket: false,
+		}))
+	)
+
+	const [basket, setBasket] = useState<{ products: Post[]; price: number }>({
+		products: [],
+		price: 0,
+	})
+
+	const handleAddToBasket = (_id: string) => {
+		setPostStates((prevStates) =>
+			prevStates.map((postState) =>
+				postState._id === _id
+					? { ...postState, isAddToBasket: true }
+					: postState
+			)
+		)
+
+		const selectedPost = posts.find((post) => post._id === _id)
+
+		if (selectedPost) {
+			const updatedBasket = {
+				products: [...basket.products, selectedPost],
+				price: basket.price + selectedPost.price,
+			}
+
+			setBasket(updatedBasket)
+
+			localStorage.setItem('Basket', JSON.stringify(updatedBasket))
+		}
+	}
+
+	useEffect(() => {
+		const storedBasket = localStorage.getItem('Basket')
+
+		if (storedBasket) {
+			try {
+				const parsedBasket = JSON.parse(storedBasket)
+				setBasket(parsedBasket)
+			} catch (error) {
+				console.error('Error parsing JSON from local storage:', error)
+			}
+		}
+	}, [])
+
 	return (
-		<>
-			<div className={styles.postsBox}>
-				<div className={styles.innerPostsBox}>
-					{posts.map((obj) => (
-						<div
-							className={styles.postBox}
-							key={obj._id}>
-							<div className={styles.innerPostBox}>
-								<h6>{obj.title}</h6>
-								<Image
-									src={obj.src}
-									alt={obj.description}
-									width={200}
-                                    height={200}
-                                    className={styles.image}
-								/>
+		<div className={styles.postsBox}>
+			<div className={styles.innerPostsBox}>
+				{posts.map((obj, index) => (
+					<div
+						className={styles.postBox}
+						key={obj._id}>
+						<div className={styles.innerPostBox}>
+							<h6 className={styles.title}>{obj.title}</h6>
+							<Image
+								src={obj.src}
+								alt={obj.description}
+								width={200}
+								height={200}
+								className={styles.image}
+							/>
+							{postStates[index].isAddToBasket ? (
+								<div className={styles.s}></div>
+							) : (
 								<div className={styles.priceBasketBox}>
-                                    <div className={styles.innerPriceBasketBox}>
-                                        <p>{obj.price}</p>
-                                        <div>+</div>
-                                    </div>
+									<div className={styles.innerPriceBasketBox}>
+										<div className={styles.priceBasket}>
+											<div
+												className={styles.icon}
+												onClick={() => handleAddToBasket(obj._id)}>
+												<AiOutlineShoppingCart
+													size={'3vh'}
+													color={'rgb(255,255,255)'}
+												/>
+											</div>
+											<p className={styles.price}>{obj.price}</p>
+										</div>
+									</div>
 								</div>
-							</div>
+							)}
 						</div>
-					))}
-				</div>
+					</div>
+				))}
 			</div>
-		</>
+		</div>
 	)
 }
+
 export default PostBox

@@ -14,7 +14,19 @@ export default function Home() {
 			<Layout>
 				<Story />
 				<PostBox />
-				<PostBox_Three_Four_Section/>
+				<PostBox_Three_Four_Section />
+				<Story />
+				<PostBox />
+				<PostBox_Three_Four_Section />
+				<Story />
+				<PostBox />
+				<PostBox_Three_Four_Section />
+				<Story />
+				<PostBox />
+				<PostBox_Three_Four_Section />
+				<Story />
+				<PostBox />
+				<PostBox_Three_Four_Section />
 			</Layout>
 		</>
 	)

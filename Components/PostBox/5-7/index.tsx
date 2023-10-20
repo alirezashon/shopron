@@ -10,49 +10,49 @@ const posts = [
 		title: 'Post 1',
 		description: 'Description of Post 1',
 		price: 10,
-		photo: '/123.jpg',
+		src: '/images/alireza.jpg',
 	},
 	{
 		id: 2,
 		title: 'Post 2',
 		description: 'Description of Post 2',
 		price: 20,
-		photo: '/124.jpg',
+		src: '/images/alireza.jpg',
 	},
 	{
 		id: 3,
 		title: 'Post 3',
 		description: 'Description of Post 3',
 		price: 30,
-		photo: '/127.jpg',
+		src: '/images/alireza.jpg',
 	},
 	{
 		id: 6,
 		title: 'Post 1',
 		description: 'Description of Post 1',
 		price: 10,
-		photo: '/128.jpg',
+		src: '/images/alireza.jpg',
 	},
 	{
 		id: 5,
 		title: 'Post 2',
 		description: 'Description of Post 2',
 		price: 20,
-		photo: '/124.jpg',
+		src: '/images/alireza.jpg',
 	},
 	{
-		id: 4,
+		id: 7,
 		title: 'Post 3',
 		description: 'Description of Post 3',
 		price: 30,
-		photo: '/123.jpg',
+		src: '/images/alireza.jpg',
 	},
 	{
-		id: 4,
+		id: 9,
 		title: 'Post 3',
 		description: 'Description of Post 3',
 		price: 30,
-		photo: '/123.jpg',
+		src: '/images/alireza.jpg',
 	},
 ]
 interface Post {
@@ -90,7 +90,7 @@ const PostBox = () => {
 					className={styles.card}>
 					<Image
 						className={styles.photo}
-						src={post.photo}
+						src={post.src}
 						alt={post.title}
 						width={180}
 						height={222}
