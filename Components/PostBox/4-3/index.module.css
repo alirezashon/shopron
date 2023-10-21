@@ -134,3 +134,80 @@
 .icon:hover {
 	animation: iconHover;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styling for the container */
+.addPriceBasketBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #ff7f00, #f94e03);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Styling for the price element */
+.addProductBasketPrice {
+  font-size: 24px;
+  color: #fff;
+}
+
+/* Styling for the quantity adjustment section */
+.addProductBasketicon {
+  display: flex;
+  align-items: center;
+}
+
+.addProductBasketicon button {
+  background: #ff7f00;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.addProductBasketicon button:hover {
+  background: #f94e03;
+  transform: scale(1.1);
+}
+
+/* Styling for the count element and cart icon */
+.addProductBasketicon span {
+  font-size: 24px;
+  color: #fff;
+  margin: 0 10px;
+}
+
+.addProductBasketicon .AiOutlineShoppingCart {
+  font-size: 36px;
+  color: #fff;
+}
+
+/* Animation for the initial display */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
