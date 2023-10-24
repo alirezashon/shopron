@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
 
 const MONGODB_URI = "mongodb://localhost:27017/Asset"
-console.log(MONGODB_URI)
 //@ts-ignore
 let cached = global.mongoose
 
