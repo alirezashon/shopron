@@ -40,7 +40,7 @@ const Basket = () => {
         <div className={styles.basketBase}>
 					<div className={styles.basketHeader}>
 						سبد خرید
-						{/* <Product /> */}
+						<Product />
 					</div>
 				</div>
         </div>

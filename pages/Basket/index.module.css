@@ -15,6 +15,7 @@
 	text-align: center;
 	padding: 1vh;
 	border-radius: 115vh;
+	cursor: pointer;
 }
 .basketDrawer {
 	animation: basketOpen 1s;
@@ -27,7 +28,7 @@
 .basketBase {
 	animation: basketOpen 1s;
 	width: 40vw;
-	height: 100vh;
+	height: inherit;
 	background-color: rgba(255, 255, 255, 0.99);
 	border: double 0.5vh rgba(5, 108, 218, 0.9);
 	border-left: none;
