@@ -106,11 +106,11 @@ const CloudyPost = () => {
 				.line()
 				.x((d) => d.x)
 				.y((d) => d.y)
-				.curve(d3.curveCardinal) // Use curveCatmullRom for a smoother connection
+				.curve(d3.curveStepBefore) // Use curveCatmullRom for a smoother connection
 
 		svg
 			.append('path')
-			.datum(yekta)
+			.datum(data)
 			.attr('d', curveGenerator())
 			.attr('fill', 'url(#imagePattern)') // Apply the image pattern fill
 			.attr('stroke', 'lightblue')
@@ -125,8 +125,10 @@ const CloudyPost = () => {
 			.attr('height', height)
 			.append('image')
 			.attr('xlink:href', '/images/ali.jpg') // Replace with your image URL
-			.attr('width', width)
-			.attr('height', height)
+			.attr('width', '100%')
+			.attr('height', '50%')
+		      .attr('preserveAspectRatio', 'xMidYMid meet'); // Maintain aspect ratio
+
 	}, [])
 
 	return (
