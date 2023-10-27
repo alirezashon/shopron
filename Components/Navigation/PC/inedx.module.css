@@ -4,7 +4,7 @@
 .menuItem {
 	color: #fffffd;
 	font-size: 1.4rem;
-	position: relative;
+	position: absolute;
 	text-shadow: 1px 1px 4px #050502;
 }
 

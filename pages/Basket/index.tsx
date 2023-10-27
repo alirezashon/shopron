@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import styles from './index.module.css'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { GiCrossMark } from 'react-icons/gi'
 import Product from './Products'
 const Basket = () => {
 	const [isDragging, setIsDragging] = useState<boolean>(false)
@@ -35,15 +36,20 @@ const Basket = () => {
 	return (
 		<>
 			{isBasketOpen ? (
-
-        <div className={styles.basketDrawer} onMouseDown={()=>setIsDragging(true)}>
-        <div className={styles.basketBase}>
-					<div className={styles.basketHeader}>
-						سبد خرید
+				<div
+					className={styles.basketDrawer}
+					onMouseDown={() => setIsDragging(true)}>
+					<div className={styles.basketBase}>
+						<div className={styles.basketHeader}>
+							<GiCrossMark
+								className={styles.cross}
+								size={'4vh'}
+								onClick={() => setIsBasketOpen(false)}
+							/>
+						</div>
 						<Product />
 					</div>
 				</div>
-        </div>
 			) : (
 				<div>
 					<AiOutlineShoppingCart
