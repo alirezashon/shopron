@@ -63,7 +63,10 @@
 		rgba(110, 181, 214, 0.4)
 	);
 }
-.cross:hover{
+.cross {
+	transition: transform 0.7s;
+}
+.cross:hover {
 	cursor: grabbing;
 	color: rgba(252, 107, 3, 0.9);
 	transform: rotate(90deg);
