@@ -1,0 +1,54 @@
+@keyframes eyelid {
+	100%{width: 0;height: 0;}
+}
+.AkbaraforBase {
+  width: 50vw;
+  height: 100vh;
+  background: radial-gradient(rgba(22, 22, 22, 0.4), rgba(23, 23, 23, 0.7));
+}
+.AkbaraforEyes {
+  width: 50vw;
+  height: 77vh;
+  background: repeating-linear-gradient(
+    190deg,
+    rgba(55, 218, 250, 0.7),
+    rgba(0, 51, 77, 0.4),
+    rgba(0, 55, 99, 0.9)
+  );
+  position: absolute;
+  /* margin: 0vh 40vw; */
+  border-radius: 100vh 1vh;
+  padding-top: 23vh;
+  display: flex;
+  justify-content: center;
+}
+.AkbaraforinerEyes {
+  /* animation: eyelid 2s infinite; */
+	width: 44%;
+  height: 23%;
+  background: repeating-linear-gradient(
+    190deg,
+    rgba(55, 28, 250, 0.7),
+    rgba(220, 51, 77, 0.4),
+    rgba(10, 155, 99, 0.9)
+  );
+  position: absolute;
+
+  border-radius: 100vh 1vh;
+  padding-top: 23vh;
+  display: flex;
+  justify-content: center;
+}
+.Akbaramali {
+  animation: eyelid 2s infinite;
+	margin-top: -4vh;
+  width: 20%;
+  height: 40%;
+  border-radius: 100%;
+  background: repeating-linear-gradient(
+    190deg,
+    rgba(223, 220, 248, 0.7),
+    rgba(12, 252, 236, 0.4),
+    rgba(8, 225, 142, 0.9)
+  );
+}
