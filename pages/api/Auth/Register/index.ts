@@ -34,21 +34,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				webAgent,
 			}
 			const registerScheme = {
-                email: email || '',
-                phone: phone,
-                password: '',
-                information,
+				email: email || '',
+				phone: phone,
+				password: '',
+				information,
 				time,
 				ip: IP,
 				mac: MAC,
 				webAgent,
 				keyV: '',
 			}
-			//CRUD Client
+			//Register
 			if (authType === 'C%L&i&E^n$T#R&E^g@i&s%T$e#R') {
 				const userPhone = await Client.findOne({ phone })
 				const userEmail = await Client.findOne({ phone })
-				if (userPhone.length > 0 || userEmail.length > 0 ) {
+				if (userPhone.length > 0 || userEmail.length > 0) {
 					logSchema.status = 'failed'
 					const failedSignIn = new Log(logSchema)
 					await failedSignIn.save()
@@ -69,13 +69,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					successSignIn.save()
 					res.status(200).json({ message: 'new client add success' })
 				}
-			} else if (authType === '%&ClienT_UpdatE&%') {
-				const client = await Client.findOne({ email })
-				if (client) {
+				//Forgot Password
+			} else if (authType === 'C%L&i&E^n$T#F&O^Rg@tP&As%V$O#R%D#') {
+				const userPhone = await Client.findOne({ phone })
+				const userEmail = await Client.findOne({ phone })
+				if (userEmail.length > 0) {
 					logSchema.status = 'success'
 					const updateClient = new Log(logSchema)
 					await updateClient.save()
 					await Client.updateOne({ email }, registerScheme)
+					console.log('Client user updated successfully')
+					console.table(logSchema)
+					res.status(200).json({ message: 'client user updated successfully' })
+				} else if (userPhone.length > 0) {
+					logSchema.status = 'success'
+					const updateClient = new Log(logSchema)
+					await updateClient.save()
+					await Client.updateOne({ phone }, registerScheme)
 					console.log('Client user updated successfully')
 					console.table(logSchema)
 					res.status(200).json({ message: 'client user updated successfully' })
@@ -86,24 +96,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					console.log('update have mistake , may user does not exist')
 					console.table(logSchema)
 					res.status(209).json({ message: 'update was unSuccess' })
-				}
-			} else if (authType === '%&ClienT_DeletE&%') {
-				const client = await Client.findOne({ email })
-				if (client) {
-					logSchema.status = 'success'
-					const deleteClient = new Log(logSchema)
-					await deleteClient.save()
-					await Client.deleteOne({ email })
-					console.log('Client user deleted successfully')
-					console.table(logSchema)
-					res.status(200).json({ message: 'Client user deleted successfully' })
-				} else {
-					logSchema.status = 'failed'
-					const failedUpdateClient = new Log(logSchema)
-					failedUpdateClient.save()
-					console.log('delete have mistake , may user does not exist')
-					console.table(logSchema)
-					res.status(209).json({ message: 'delete was unSuccess' })
 				}
 			} else {
 				res.status(407).json({
