@@ -1,0 +1,136 @@
+@keyframes buttonBox {
+	30% {
+		border-radius: 44vh 22vh;
+		border: ridge 0.3vh rgba(11, 22, 55, 0.4);
+		box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
+			1px 1px 7px 1px #cdd6a9 inset;
+	}
+	50% {
+		border-radius: 12vh 55vh;
+		border: dotted 0.5vh rgba(254, 167, 4, 07);
+		box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
+			1px 1px 7px 1px #a0d8eb inset;
+	}
+	60% {
+		border-radius: 33vh 33vh;
+		border: ridge 0.7vh rgba(11, 22, 55, 0.4);
+		box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
+			1px 1px 7px 1px #f8eea0 inset;
+	}
+	90% {
+		border-radius: 55vh 44vh;
+		border: ridge 0.9vh rgba(253, 207, 1, 0.4);
+		box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
+			1px 1px 7px 1px #90dffa inset;
+	}
+}
+.formBox {
+	width: 40vw;
+	height: 67vh;
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(0, 55, 66, 0.7),
+		rgba(0, 51, 77, 0.4),
+		rgba(0, 55, 99, 0.9)
+	);
+	margin-left: 30vw;
+	margin-top: 15vh;
+	border-radius: 100vh 1vh;
+	padding-top: 3vh;
+}
+.formShadow {
+	position: absolute;
+	width: 40vw;
+	height: 67vh;
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(242, 228, 77, 0.7),
+		rgba(0, 150, 177, 0.4),
+		rgba(22, 207, 220, 0.9)
+	);
+	border-radius: 1vh 100vh;
+	border: ridge 1vh #02053e;
+	animation: buttonBox infinite 3s;
+}
+.formInnerBox {
+	padding-top: 3vh;
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(0, 45, 55, 0.7),
+		rgba(0, 41, 66, 0.4),
+		rgba(0, 45, 88, 0.9)
+	);
+	width: 36vw;
+	height: 55vh;
+	margin-left: 2vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	animation: buttonBox infinite 3s;
+}
+.formRow {
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(242, 228, 77, 0.7),
+		rgba(0, 150, 177, 0.4),
+		rgba(22, 207, 220, 0.9)
+	);
+	width: 22vw;
+	height: 7vh;
+	margin-top: 4vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	animation: buttonBox infinite 4s;
+}
+.formRow input {
+	animation: buttonBox infinite 13s;
+	width: 70%;
+    font-size: 1vw;
+}
+.formRow label {
+	margin-left: 1vh;
+    font-size: 1vw;
+}
+
+.buttonBox {
+	background: radial-gradient(
+		rgba(11, 22, 44, 0.4),
+		rgba(22, 33, 55, 0.5),
+		rgba(33, 44, 66, 0.6),
+		rgba(44, 55, 77, 0.7)
+	);
+	height: 7vh;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-radius: 55vh 12vh;
+	border: ridge 1vh rgba(11, 22, 55, 0.4);
+	box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
+		1px 1px 7px 4px #08b8f3 inset;
+	animation: buttonBox infinite 13s;
+}
+.buttonBox button {
+	font-size: 1vw;
+	width: 7vw;
+	height: 5vh;
+	animation: buttonBox infinite 2s;
+	cursor: pointer;
+}
+.buttonBox button:hover {
+	color: #02053e;
+	animation: buttonBox infinite 0.2s reverse;
+	transform: scale(1.2);
+	background-color: #7d5af8;
+}
+.submit{
+	border-radius: 4vh 2vh;
+	background-color: rgba(29, 209, 228, 0.9);
+	border: dotted 0.3vh #0817f3;
+}
+.cancel {
+	border-radius: 2vh 4vh;
+	background-color: rgba(243, 121, 8, 0.9);
+	border: dotted 0.3vh #e8d20f;
+}

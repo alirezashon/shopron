@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "address": "^2.0.1",
     "d3": "^7.8.5",
     "mongoose": "^7.6.3",
     "next": "13.5.5",
