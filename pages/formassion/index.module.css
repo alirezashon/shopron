@@ -1,10 +1,21 @@
 @keyframes eyelid {
-	100%{width: 0;height: 0;}
+  100% {
+    width: 0;
+    height: 0;
+  }
 }
 .AkbaraforBase {
   width: 50vw;
-  height: 100vh;
-  background: radial-gradient(rgba(22, 22, 22, 0.4), rgba(23, 23, 23, 0.7));
+  height: 97vh;
+  background: radial-gradient(rgba(23, 203, 235, 0.844), rgba(12, 47, 40, 0.7));
+  border: double 0.7vh rgba(229, 242, 252, 0.9);
+  border-radius: 1vh;
+  padding: 1vh;
+  box-shadow: 1px 1px 1px 1px rgba(0, 55, 99, 0.9),
+    1px 1px 7px 2px rgba(0, 39, 81, 0.9) inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .AkbaraforEyes {
   width: 50vw;
@@ -24,7 +35,7 @@
 }
 .AkbaraforinerEyes {
   /* animation: eyelid 2s infinite; */
-	width: 44%;
+  width: 44%;
   height: 23%;
   background: repeating-linear-gradient(
     190deg,
@@ -41,7 +52,7 @@
 }
 .Akbaramali {
   animation: eyelid 2s infinite;
-	margin-top: -4vh;
+  margin-top: -4vh;
   width: 20%;
   height: 40%;
   border-radius: 100%;
@@ -51,4 +62,59 @@
     rgba(12, 252, 236, 0.4),
     rgba(8, 225, 142, 0.9)
   );
+}
+
+/* form styles */
+.Akbaraformassion {
+  background: radial-gradient(
+    rgba(33, 140, 150, 0.8),
+    rgba(222, 175, 99, 0.8),
+    rgba(66, 197, 244, 0.9)
+  );
+  height: 90%;
+  width: 90%;
+  padding: 1%;
+  border: double 1vh rgba(216, 235, 255, 0.9);
+  border-radius: 1vh 22vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22vh, 1fr));
+}
+.header {
+  background: radial-gradient(rgba(111, 222, 222, 0.9), rgba(2, 26, 137, 0.8));
+  width: fit-content;
+  padding: 1vh;
+  border: dashed 0.3vh rgba(111, 222, 222, 0.9);
+  border-radius: 1vh;
+  box-shadow: 1px 1px 4px 1px rgba(12, 252, 236, 0.4) inset,
+    1px 1px 2px 1px rgba(0, 39, 81, 0.9);
+}
+
+
+
+ 
+
+ 
+.formRow {
+  display: flex;
+  
+}
+
+.label {
+  flex: 1;
+  text-align: right;
+}
+
+
+
+/* Media query for larger screens */
+@media (min-width: 1200px) {
+  .Akbaraformassion {
+    grid-template-columns: repeat(3, 1fr); /* Three columns for large screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .Akbaraformassion {
+    grid-template-columns: 1fr 1fr; /* Two columns for medium screens */
+  }
 }
