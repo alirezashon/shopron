@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const MONGODB_URI = "mongodb://localhost:27017/Asset"
+const MONGODB_URI = "mongodb://localhost:27017/Shopron"
 //@ts-ignore
 let cached = global.mongoose
 

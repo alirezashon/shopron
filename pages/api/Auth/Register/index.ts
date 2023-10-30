@@ -22,6 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		await db.connect()
 		if (req.method === 'POST') {
 			const { email, phone, password, information, authType } = req.body
+			console.log(req.body)
 			const webAgent = req.headers['user-agent']
 			const logSchema = {
 				user: phone || email,
@@ -47,8 +48,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			//Register
 			if (authType === 'C%L&i&E^n$T#R&E^g@i&s%T$e#R') {
 				const userPhone = await Client.findOne({ phone })
-				const userEmail = await Client.findOne({ phone })
-				if (userPhone.length > 0 || userEmail.length > 0) {
+				const userEmail = await Client.findOne({ email })
+				if (userPhone?.length > 0 || userEmail?.length > 0) {
 					logSchema.status = 'failed'
 					const failedSignIn = new Log(logSchema)
 					await failedSignIn.save()

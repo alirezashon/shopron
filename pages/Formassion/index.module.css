@@ -1,0 +1,163 @@
+/** @format */
+
+@keyframes eyelid {
+	100% {
+		width: 0;
+		height: 0;
+	}
+}
+@keyframes Akbaraformalo {
+    0%{transform: rotate(360deg);}
+}
+.AkbaraforBase {
+	width: 50vw;
+	height: 97vh;
+	background: radial-gradient(rgba(23, 203, 235, 0.844), rgba(12, 47, 40, 0.7));
+	border: double 0.7vh rgba(229, 242, 252, 0.9);
+	border-radius: 1vh;
+	padding: 1vh;
+	box-shadow: 1px 1px 1px 1px rgba(0, 55, 99, 0.9),
+		1px 1px 7px 2px rgba(0, 39, 81, 0.9) inset;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.AkbaraforEyes {
+	width: 50vw;
+	height: 77vh;
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(55, 218, 250, 0.7),
+		rgba(0, 51, 77, 0.4),
+		rgba(0, 55, 99, 0.9)
+	);
+	position: absolute;
+	/* margin: 0vh 40vw; */
+	border-radius: 100vh 1vh;
+	padding-top: 23vh;
+	display: flex;
+	justify-content: center;
+}
+
+.AkbaraforinerEyes {
+	/* animation: eyelid 2s infinite; */
+	width: 44%;
+	height: 23%;
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(55, 28, 250, 0.7),
+		rgba(220, 51, 77, 0.4),
+		rgba(10, 155, 99, 0.9)
+	);
+	position: absolute;
+
+	border-radius: 100vh 1vh;
+	padding-top: 23vh;
+	display: flex;
+	justify-content: center;
+}
+
+.Akbaramali {
+	animation: eyelid 2s infinite;
+	margin-top: -4vh;
+	width: 20%;
+	height: 40%;
+	border-radius: 100%;
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(223, 220, 248, 0.7),
+		rgba(12, 252, 236, 0.4),
+		rgba(8, 225, 142, 0.9)
+	);
+}
+
+/* form styles */
+.Akbaraformalo {
+	width: 98%;
+	height: 98%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: linear-gradient(
+		44deg,
+		rgba(10, 147, 216, 0.894),
+         rgba(239, 177, 53, 0.976),
+		rgba(10, 216, 195, 0.8)
+	);
+    border: groove .9vh rgba(73, 252, 237, 0.9);
+    border-radius: 100% 0vh;
+}
+.Kalim {
+    z-index: -1;
+    position: absolute;
+    animation: Akbaraformalo 2s infinite;
+    width: 20vw;
+    height: 98vh;
+    background: linear-gradient(44deg,
+            rgba(10, 147, 216, 0.894),
+            rgba(239, 177, 53, 0.976),
+            rgba(10, 216, 195, 0.8));
+    border: groove .9vh rgba(73, 252, 237, 0.9);
+    border-radius: 0% 100vh;
+}
+.Akbaraformassion {
+	background: radial-gradient(
+		rgba(33, 140, 150, 0.8),
+		rgba(222, 175, 99, 0.8),
+		rgba(66, 197, 244, 0.9)
+	);
+	height: 90%;
+	width: 94%;
+	padding: 1%;
+	border: double 1vh rgba(216, 235, 255, 0.9);
+	border-radius: 1vh 22vh;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(44vh, 1fr));
+}
+
+.header {
+	background: radial-gradient(rgba(111, 222, 222, 0.9), rgba(2, 26, 137, 0.8));
+	width: fit-content;
+	padding: 1vh;
+	border: dashed 0.3vh rgba(111, 222, 222, 0.9);
+	border-radius: 1vh;
+	box-shadow: 1px 1px 4px 1px rgba(12, 252, 236, 0.4) inset,
+		1px 1px 2px 1px rgba(0, 39, 81, 0.9);
+}
+
+.formRow {
+	font-size: 2vh;
+	background: linear-gradient(
+		55deg,
+		rgba(105, 217, 221, 0.9),
+		rgba(212, 231, 71, 0.937),
+		rgba(34, 198, 187, 1)
+	);
+	height: 7vh;
+	border: ridge 0.4vh rgba(14, 194, 59, 0.9);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border-radius: 1vh;
+	width: 75%;
+}
+.formRow input {
+    direction:rtl;
+	width: 60%;
+	border: double 0.7vh rgba(36, 125, 127, 0.7);
+	border-radius: 1vh;
+}
+.formRow input:focus {
+	border-radius: 4vh;
+	padding: 0.4vh 1vh;
+}
+.formRow input[type=number]{
+   
+}
+
+@media (max-width: 768px) {
+	.AkbaraforBase {
+		width: 100%;
+	}
+}
