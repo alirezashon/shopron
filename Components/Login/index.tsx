@@ -1,29 +1,54 @@
+/** @format */
 
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer, Zoom } from 'react-toastify'
 import { useState } from 'react'
 import styles from './index.module.css'
 
-const ActionUser = () => {
-	const [user, setUser] = useState<string>('')
-	const [password, setPassword] = useState<string>('')
+interface LoginProps {
+	setToken: (token: boolean) => void
+}
+/////////////////////////Kharabe//////////////////////
+const Login: React.FC<LoginProps> = ({ setToken }) => {
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 	const [formShow, setFormShow] = useState<boolean>(true)
-	const handleSubmit = async () => {
-		const response = await fetch('/api/', {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ user, password }),
-		})
-		const result = await response.json()
-		response.status === 200
-			? toast.success(result.message)
-			: toast.warn(result.message)
+	const [isLoading, setIsLoading] = useState(false)
+	const handleSignIn = async (e: React.SyntheticEvent) => {
+		e.preventDefault()
+		setIsLoading(true)
+
+		console.log('Email: ', email)
+		try {
+			// Send a request to your API to authenticate the user
+			const response = await fetch('/api/Auth/Login', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					userPass: email + '&' + password,
+					authType: '&^Admin%LOgIn^&',
+				}),
+			})
+			const data = await response.json()
+			if (data.success === true && response.status === 200) {
+				localStorage.setItem('user', JSON.stringify(email))
+				sessionStorage.setItem('token', JSON.stringify(data.token))
+				setToken(true)
+				toast.success(data.message)
+			} else {
+				toast.error(data.message)
+				setIsLoading(false)
+			}
+		} catch (error) {
+			console.log(error)
+			toast.error('failed call login api' + error)
+		}
 	}
 	return (
 		<>
-			{user}
-			{password}
+			 
 			<ToastContainer
 				position={'top-right'}
 				newestOnTop
@@ -41,8 +66,8 @@ const ActionUser = () => {
 							<div className={styles.formRow}>
 								<label>Email : </label>
 								<input
-									value={user}
-									onChange={(e) => setUser(e.target.value)}
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
 								/>
 							</div>
 							<div className={styles.formRow}>
@@ -73,4 +98,4 @@ const ActionUser = () => {
 		</>
 	)
 }
-export default ActionUser
+export default Login
