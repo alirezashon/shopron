@@ -1,0 +1,31 @@
+/** @format */
+
+.container {
+	width: 98vw;
+	margin: 1vw;
+	padding: 1vh;
+	height: 60vh;
+	border: dashed .2vh rgba(99, 123, 223, 0.9);
+  }
+.innerBorder {
+	width: 97vw;
+	height: 60vh;
+	border: ridge .6vh rgba(99, 123, 223, 0.9);
+  	z-index: 1;
+}
+.carouselali{
+	position: relative;
+} 
+.image {
+	opacity: 0;
+}
+
+.image.active {
+	border: double rgba(223, 192, 99, 0.9) .7vh;
+	border-radius: 12.5vh 0vh 12.3vh 0vh;
+	width: 90vw;
+	height: 39vh;
+	opacity: 1;
+	z-index: 1;
+  	transition:all .5s ease-out;
+ }
