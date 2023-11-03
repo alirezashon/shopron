@@ -1,86 +1,139 @@
-/* Existing styles */
+/**
+ * Existing styles
+ *
+ * @format
+ */
+
+@keyframes container {
+	25% {
+		background-image: repeating-linear-gradient(
+			90deg,
+			#3c8d9a,
+			#3c689a 5vh,
+			#93c7d3 5vh,
+			#f7eeff 10vh
+		);
+	}
+	50% {
+		background-image: repeating-linear-gradient(
+			-40deg,
+			#3c8d9a,
+			#3c689a 5vh,
+			#93c7d3 5vh,
+			#f7eeff 10vh
+		);
+	}
+	75% {
+		background-image: repeating-linear-gradient(
+			90deg,
+			#3c8d9a,
+			#3c689a 5vh,
+			#93c7d3 5vh,
+			#f7eeff 10vh
+		);
+	}
+}
+@keyframes image {
+	0% {
+		width: 0;
+	}
+	50% {
+		width: 10%;
+		border: solid 10vh greenyellow;
+	}
+}
 
 .container {
+	animation: container infinite 7s;
 	width: 99vw;
 	height: 50vh;
 	margin: 1vh;
 	padding: 1vh;
-	background-image: repeating-linear-gradient(40deg,
-			#3c8d9a,
-			#3c689a 5vh,
-			#93c7d3 50px,
-			#f7eeff 100px);
+	background-image: repeating-linear-gradient(
+		40deg,
+		#3c8d9a,
+		#3c689a 5vh,
+		#93c7d3 5vh,
+		#f7eeff 10vh
+	);
 	border: ridge 0.5vh rgba(99, 123, 223, 0.9);
 	border-radius: 1vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: all 1s ease-in-out;
 }
 
 .carouselali {
-	background: linear-gradient(45deg,
-			rgba(230, 240, 36, 0.965),
-			rgb(0, 234, 255));
-	width: 96vw;
+	background: linear-gradient(
+		45deg,
+		rgba(249, 251, 212, 0.965),
+		rgba(0, 234, 255, 0.811),
+		rgba(226, 253, 255, 0.811)
+	);
+	width: 97vw;
 	height: 47vh;
 	border: ridge 0.6vh rgba(245, 119, 9, 0.9);
-	border-radius: 1vh 5vh;
+	border-radius: 1vh 3vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-}
-
-.imageContainer {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: nowrap;
-}
-
-.imageContainerItem {
-	display: flex;
-	flex-direction: column;
 	align-items: center;
-	/* Center image and circular indicator */
-}
-
-/* Add styles for active circular indicator */
-.circaliActive {
-	background-color: yellow;
 }
 
 .image {
-	width: 0;
-	height: 35vh;
-	opacity: 0;
-}
-
-.active {
+	animation: image 2s;
+	height: 44vh;
 	opacity: 1;
 	border: double rgba(223, 192, 99, 0.9) 0.7vh;
 	border-radius: 7vh 1vh;
 	transition: all 1s ease-in-out;
-	width: 93vw;
+	width: 95vw;
 }
-
+.directionsIcon{
+	background-color: #3c689a;
+color: red;}
 .circaliBox {
-	width: 96vw;
-	height: 3vw;
-	background-color: rgb(233, 169, 169);
+	width: fit-content;
+	padding: 0.1vh 1vh;
+	height: 2vw;
+	border-radius: 4vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: absolute;
+	background: radial-gradient(
+		rgba(0, 255, 174, 0.119),
+		rgba(244, 255, 254, 0.132)
+	);
+	border: .3vh dashed rgba(0, 1, 33, 0.367);
 }
 
 .circali {
 	border-radius: 100vh;
-	width: 3vw;
-	height: 3vw;
-	background-color: yellow;
+	width: 2vw;
+	margin: 0.1vh 1vh;
+	height: 2vw;
+	background-color: rgb(255, 221, 0);
 	border: double 0.4vh rgba(245, 119, 9, 0.9);
+}
+.circalActive {
+	background-color: rgba(0, 140, 255, 0.883);
+	border: dashed 0.4vh rgba(255, 244, 239, 0.811);
 }
 
 .toolBar {
-	width: 100%;
-	height: 10%;
-	background-color: red;
+	width: 99%;
+	height: 5%;
+	border-radius: 5vh;
+	background-color: rgba(0, 1, 25, 0.934);
+	border: dashed 0.3vh rgba(255, 255, 255, 0.811);
+	box-shadow: 1px 1px 11px 3px rgba(0, 1, 25, 0.934),
+		1px 1px 5px 1px rgba(0, 234, 255, 0.811) inset;
+}
+.contorali {
+	height: 100%;
+	border-radius: 4vh;
+	border: 0.4vh ridge rgb(52, 228, 255);
+	background: radial-gradient(rgb(255, 206, 206), rgb(71, 71, 255));
 }
