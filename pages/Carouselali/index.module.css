@@ -14,6 +14,7 @@
 			#f7eeff 10vh
 		);
 	}
+
 	50% {
 		background-image: repeating-linear-gradient(
 			-40deg,
@@ -23,6 +24,7 @@
 			#f7eeff 10vh
 		);
 	}
+
 	75% {
 		background-image: repeating-linear-gradient(
 			90deg,
@@ -33,16 +35,29 @@
 		);
 	}
 }
-@keyframes image {
+
+@keyframes carouselali {
 	0% {
 		width: 0;
 	}
+
 	50% {
-		width: 10%;
-		border: solid 10vh greenyellow;
+		width: 22%;
+		border: double rgb(255, 245, 47);
 	}
 }
 
+@keyframes imagelinor {
+	10% {
+		box-shadow: 1px 1px 7vh 1px rgba(255, 255, 252, 0.9);
+	}
+	40% {
+		box-shadow: 1px 1px 9vh 1px rgb(255, 213, 0);
+	}
+	90% {
+		box-shadow: 1px 1px 7vh 1px rgba(255, 254, 251, 0.9)
+	}
+}
 .container {
 	animation: container infinite 7s;
 	width: 99vw;
@@ -71,9 +86,10 @@
 		rgba(0, 234, 255, 0.811),
 		rgba(226, 253, 255, 0.811)
 	);
-	width: 97vw;
-	height: 47vh;
-	border: ridge 0.6vh rgba(245, 119, 9, 0.9);
+	animation: carouselali 2s;
+	width: 98%;
+	height: 97%;
+	border: ridge 0.6vh rgba(9, 135, 245, 0.9);
 	border-radius: 1vh 3vh;
 	display: flex;
 	flex-direction: column;
@@ -82,17 +98,21 @@
 }
 
 .image {
-	animation: image 2s;
-	height: 44vh;
+	animation: imagelinor infinite 7s;
+	height: 96%;
+	width: 98%;
 	opacity: 1;
-	border: double rgba(223, 192, 99, 0.9) 0.7vh;
+	border: double rgba(255, 126, 21, 0.9) 0.7vh;
+	box-shadow: 1px 1px 11vh 1px rgba(222, 192, 44, 0.9);
 	border-radius: 7vh 1vh;
 	transition: all 1s ease-in-out;
-	width: 95vw;
 }
-.directionsIcon{
+
+.directionsIcon {
 	background-color: #3c689a;
-color: red;}
+	color: red;
+}
+
 .circaliBox {
 	width: fit-content;
 	padding: 0.1vh 1vh;
@@ -106,7 +126,7 @@ color: red;}
 		rgba(0, 255, 174, 0.119),
 		rgba(244, 255, 254, 0.132)
 	);
-	border: .3vh dashed rgba(0, 1, 33, 0.367);
+	border: 0.3vh dashed rgba(0, 1, 33, 0.367);
 }
 
 .circali {
@@ -117,23 +137,31 @@ color: red;}
 	background-color: rgb(255, 221, 0);
 	border: double 0.4vh rgba(245, 119, 9, 0.9);
 }
+
 .circalActive {
 	background-color: rgba(0, 140, 255, 0.883);
 	border: dashed 0.4vh rgba(255, 244, 239, 0.811);
 }
 
-.toolBar {
+.containerali {
 	width: 99%;
-	height: 5%;
+	height: 4%;
 	border-radius: 5vh;
 	background-color: rgba(0, 1, 25, 0.934);
-	border: dashed 0.3vh rgba(255, 255, 255, 0.811);
-	box-shadow: 1px 1px 11px 3px rgba(0, 1, 25, 0.934),
+	box-shadow: 1px 1px 9px 3px rgba(0, 1, 25, 0.934),
 		1px 1px 5px 1px rgba(0, 234, 255, 0.811) inset;
 }
+
 .contorali {
 	height: 100%;
 	border-radius: 4vh;
 	border: 0.4vh ridge rgb(52, 228, 255);
 	background: radial-gradient(rgb(255, 206, 206), rgb(71, 71, 255));
+	cursor: pointer;
+}
+
+@media (max-width: 675px) {
+	.container {
+		height: 30vh;
+	}
 }

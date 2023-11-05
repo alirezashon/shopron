@@ -1,6 +1,6 @@
 /** @format */
 
-import { useEffect, useState } from 'react'
+import { EventHandler, MouseEvent, useEffect, useRef, useState } from 'react'
 import styles from './index.module.css'
 import Image from 'next/image'
 import { GrFormNextLink, GrFormPreviousLink } from 'react-icons/gr'
@@ -9,7 +9,9 @@ interface ImageStructure {
 }
 
 const Carouselali = () => {
+	const contoralif = useRef()
 	const [currentIndex, setCurrentIndex] = useState<number>(0)
+	const [contoraliX, setContoraliX] = useState<number>()
 	const [images, setImages] = useState<ImageStructure[]>([
 		{ src: '/images/Gerdachala.webp' },
 		{ src: '/images/jaraghalesquer.jpg' },
@@ -61,8 +63,30 @@ const Carouselali = () => {
 		setCurrentIndex(currentIndex === 0 ? images.length - 1 : currentIndex - 1)
 	}
 
+	const containeralick = (e: MouseEvent) => {
+		const containerali = e.currentTarget as HTMLElement
+		const containeralWidth = containerali.getBoundingClientRect().width
+		const containeraliStart = containerali.getBoundingClientRect().left
+		const contoralWidth = containeralWidth / images.length
+		const changeIndexTo = (e.clientX - containeraliStart) / contoralWidth
+		setCurrentIndex(Math.floor(changeIndexTo))
+	}
+ 
+
 	return (
 		<>
+			<h1>{contoraliX}</h1>
+			<GrFormPreviousLink
+				className={styles.directionsIcon}
+				size={'7vh'}
+				onClick={previousImage}
+				color={'green'}
+			/>
+			<GrFormNextLink
+				className={styles.directionsIcon}
+				size={'7vh'}
+				onClick={nextImage}
+			/>
 			<div className={styles.container}>
 				<div className={styles.carouselali}>
 					<Image
@@ -78,12 +102,15 @@ const Carouselali = () => {
 								className={`${styles.circali} ${
 									index === currentIndex ? styles.circalActive : ''
 								}`}
+								onClick={() => setCurrentIndex(index)}
 								key={index}></span>
 						))}
 					</div>
-					<div className={styles.toolBar}>
+					<div
+						className={styles.containerali}
+						onClick={(e) => containeralick(e)}>
 						<div
-							className={styles.contorali}
+  							className={styles.contorali}
 							style={{
 								width: `${100 / images.length}% `,
 								marginLeft: `${(100 / images.length) * currentIndex}% `,
@@ -91,8 +118,6 @@ const Carouselali = () => {
 					</div>
 				</div>
 			</div>
-			<GrFormPreviousLink className={styles.directionsIcon} size={'7vh'} onClick={previousImage} color={'green'}/>
-			<GrFormNextLink className={styles.directionsIcon} size={'7vh'} onClick={nextImage}/>
 		</>
 	)
 }
