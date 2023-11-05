@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			} else if (authType === '&U*P^d%A&T^e%O#Y@') {
 				const post = await Data.findOne({ title: data.title })
 				if (post) {
-					await Data.updateOne({ title: data.title }, { data })
+					await Data.updateOne({ title: data.title },  data.newData )
                     console.log(`Updated Successfully by Admin ${user}`)
                     console.table(data)
                     res.status(200).json({ success: true })
