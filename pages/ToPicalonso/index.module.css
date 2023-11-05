@@ -1,0 +1,49 @@
+.container {
+  width: 100vw;
+  height: auto;
+  background: radial-gradient(rgb(241, 228, 168), rgb(210, 245, 183), rgb(196, 255, 255));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.topicalonsoCase {
+  width: 98%;
+  height: 30vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1vh;
+}
+.topicalonsoCase:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+.topicalonsocial {
+  width: 72%;
+  height: 98%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topicalonsocial:nth-child(odd) {
+  background: radial-gradient(gold, white, yellow);
+  border: double 0.7vh yellowgreen;
+}
+.topicalonsocial:nth-child(even) {
+  background: radial-gradient(gold, white, yellow);
+  border: double 0.7vh palevioletred;
+}
+.alonsocial {
+  width: 96%;
+  height: 98%;
+  border: double 0.7vh greenyellow;
+  position: relative;
+}
+.alonsocial:nth-child(odd) {
+}
+.alonsocial:nth-child(even) {
+}
+.topicontext {
+}
+.topicode {
+}
