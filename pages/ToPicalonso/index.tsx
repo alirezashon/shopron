@@ -17,7 +17,11 @@ const ToPicalonso = () => {
   const data = [
     {
       title: "Topicalonso",
+<<<<<<< HEAD
       src: "/images/Akbar.jpg&/images/ali.jpg",
+=======
+      src: "/images/akbari.jpg&/images/ali.jpg",
+>>>>>>> 8b312ff6ec8c819009eb847112fd83e8e1b8b0a5
       price: 77,
       category: "(T*O^p$i#C%a^l*o@N*S(O)",
       description: [
@@ -33,7 +37,11 @@ const ToPicalonso = () => {
     },
 	{
 		title: "Topicalonso",
+<<<<<<< HEAD
 		src: "/images/Akbar.jpg&/images/ali.jpg",
+=======
+		src: "/images/akbari.jpg&/images/ali.jpg",
+>>>>>>> 8b312ff6ec8c819009eb847112fd83e8e1b8b0a5
 		price: 77,
 		category: "(T*O^p$i#C%a^l*o@N*S(O)",
 		description: [
@@ -93,4 +101,8 @@ const ToPicalonso = () => {
     </>
   )
 }
+<<<<<<< HEAD
 export default ToPicalonso
+=======
+export default ToPicalonso
+>>>>>>> 8b312ff6ec8c819009eb847112fd83e8e1b8b0a5
