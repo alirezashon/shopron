@@ -1,12 +1,10 @@
-/** @format */
-
 import db from '../../../../../utils'
 import Data from '../../../../../models/Data'
 import { NextApiRequest, NextApiResponse } from 'next'
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		if (req.method === 'POST') {
-			const { authType, data, user } = req.body
+			const  { authType, data, user } = req.body
 			await db.connect()
 			console.log(
 				`new request for recived to post Management with below data from Admin${user}`

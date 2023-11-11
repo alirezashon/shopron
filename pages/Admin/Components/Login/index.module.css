@@ -5,21 +5,18 @@
 		box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
 			1px 1px 7px 1px #cdd6a9 inset;
 	}
-
 	50% {
 		border-radius: 12vh 55vh;
 		border: dotted 0.5vh rgba(254, 167, 4, 07);
 		box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
 			1px 1px 7px 1px #a0d8eb inset;
 	}
-
 	60% {
 		border-radius: 33vh 33vh;
 		border: ridge 0.7vh rgba(11, 22, 55, 0.4);
 		box-shadow: 1px 1px 7px 1px rgba(16, 219, 234, 0.5),
 			1px 1px 7px 1px #f8eea0 inset;
 	}
-
 	90% {
 		border-radius: 55vh 44vh;
 		border: ridge 0.9vh rgba(253, 207, 1, 0.4);
@@ -27,55 +24,54 @@
 			1px 1px 7px 1px #90dffa inset;
 	}
 }
-
-.animate {
-	animation: borderanimate 2s infinite;
-}
-
-.container {
+.animate { animation:  borderanimate 2s infinite;}
+.container{
 	text-wrap: nowrap;
-	width: 100vw;
+ 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: radial-gradient(rgb(255, 235, 163), rgb(249, 239, 56), rgb(145, 112, 4));
+	background: radial-gradient(rgb(255, 235, 163),rgb(249, 239, 56),rgb(145, 112, 4));
 }
-
 .formBox {
 	width: 40%;
 	height: 67%;
-	background: repeating-linear-gradient(190deg,
-			rgba(0, 55, 66, 0.7),
-			rgba(0, 51, 77, 0.4),
-			rgba(0, 55, 99, 0.9));
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(0, 55, 66, 0.7),
+		rgba(0, 51, 77, 0.4),
+		rgba(0, 55, 99, 0.9)
+	);
 	border-radius: 100vh 1vh;
 	padding-top: 3vh;
 }
-
 .formShadow {
 	position: absolute;
 	width: 40%;
 	height: 67%;
-	background: repeating-linear-gradient(190deg,
-			rgba(242, 228, 77, 0.7),
-			rgba(0, 150, 177, 0.4),
-			rgba(22, 207, 220, 0.9));
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(242, 228, 77, 0.7),
+		rgba(0, 150, 177, 0.4),
+		rgba(22, 207, 220, 0.9)
+	);
 	border-radius: 1vh 100vh;
 	border: ridge 1vh #065a5a;
 	animation: borderanimate infinite 7s;
 	flex-direction: column;
 	display: flex;
-	align-items: center;
-	justify-content: space-around;
+			align-items: center;
+			justify-content: space-around;
 }
-
 .formInnerBox {
 	padding-top: 3vh;
-	background: repeating-linear-gradient(190deg,
-			rgba(0, 45, 55, 0.7),
-			rgba(0, 41, 66, 0.4),
-			rgba(0, 45, 88, 0.9));
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(0, 45, 55, 0.7),
+		rgba(0, 41, 66, 0.4),
+		rgba(0, 45, 88, 0.9)
+	);
 	width: 96%;
 	height: 77%;
 	margin-left: 2vw;
@@ -85,23 +81,23 @@
 	align-items: center;
 	animation: borderanimate infinite 7s;
 }
-
-.logo {
+.logo{
 	position: absolute;
-	width: 27%;
+ 	width: 27%;
 	height: 27%;
-	top: 37%;
+	top:  37%;
 	left: 37%;
 	/* margin:	10% 7%; */
 	border-radius: 7vw;
 	border: .5vh rgb(255, 200, 0) dashed;
 }
-
 .formRow {
-	background: repeating-linear-gradient(190deg,
-			rgba(242, 228, 77, 0.7),
-			rgba(0, 150, 177, 0.4),
-			rgba(22, 207, 220, 0.9));
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(242, 228, 77, 0.7),
+		rgba(0, 150, 177, 0.4),
+		rgba(22, 207, 220, 0.9)
+	);
 	width: 100%;
 	height: 22%;
 	margin-top: 4vh;
@@ -111,31 +107,31 @@
 	justify-content: space-around;
 	animation: borderanimate infinite 4s;
 }
-
 .formRow input {
 	animation: borderanimate infinite 13s;
 	width: 100%;
 	height: 44%;
-	font-size: 1vw;
+    font-size: 1vw;
 	margin-left: 1vh;
 	border: ridge 1vh rgb(23, 255, 243);
 	border-radius: 1vh;
 }
-
 .formRow label {
 	margin-left: 1vh;
-	font-size: 2vh;
+    font-size: 2vh;
 	padding: 1vh;
 	border-radius: 4vh;
 	border: dotted .2vh rgb(1, 46, 68);
-	background: radial-gradient(rgb(0, 255, 238), rgb(14, 163, 193))
+	background:radial-gradient(rgb(0, 255, 238),rgb(14, 163, 193))
 }
 
-.buttonBox {
-	background: radial-gradient(rgba(11, 22, 44, 0.4),
-			rgba(22, 33, 55, 0.5),
-			rgba(33, 44, 66, 0.6),
-			rgba(44, 55, 77, 0.7));
+.buttonBox{
+	background: radial-gradient(
+		rgba(11, 22, 44, 0.4),
+		rgba(22, 33, 55, 0.5),
+		rgba(33, 44, 66, 0.6),
+		rgba(44, 55, 77, 0.7)
+	);
 	width: 77%;
 	height: 7vh;
 	display: flex;
@@ -147,44 +143,32 @@
 		1px 1px 7px 4px #08b8f3 inset;
 	animation: borderanimate infinite 13s;
 }
-
 .buttonBox button {
 	font-size: 2vh;
 	padding: .7vh 1vh;
 	animation: borderanimate infinite 2s;
 	cursor: pointer;
 }
-
 .buttonBox button:hover {
 	color: #02053e;
 	animation: borderanimate infinite 0.2s reverse;
 	transform: scale(1.2);
 	background-color: #7d5af8;
 }
-
-.submit {
+.submit{
 	border-radius: 4vh 2vh;
 	background-color: rgba(29, 209, 228, 0.9);
 	border: dotted 0.3vh #0817f3;
 }
-
 .cancel {
 	border-radius: 2vh 4vh;
 	background-color: rgba(243, 121, 8, 0.9);
 	border: dotted 0.3vh #e8d20f;
 }
 
-@media(max-width : 600px) {
-	.formBox {
-		width: 80%;
-	}
-
-	.formShadow {
-		width: 80%;
-	}
-
-	.formRow {
-		width: 60%;
-	}
-
+@media(max-width : 600px){
+	.formBox{width: 80%;   }
+	.formShadow{ width: 80%;}
+	.formRow{width: 60%;}
+ 
 }

@@ -3,37 +3,55 @@
 import { useEffect } from 'react'
 
 const test = () => {
-	const data = {
-		title: 'aswq',
-		src: '/images/alirez.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-		newData: {
-			title: 'sdfa',
-			src: '/imagesasaw/ali.jpg',
-			price: 727,
-			category: 'P&Odfb5r$I%T#E^M$',
-			description:
-				'this post just created for happy freedome to al.akbarporJojegan',
+	const data = [
+		{
+			title: 'Post 1',
+			src: '/images/ali.jpg',
+			price: 10,
+			category: 'GolOghlan',
+			description: 'Description of Post 1',
 		},
-	}
-	useEffect(() => {
-		;(async () => {
+		{
+			title: 'Post 2',
+			src: '/images/ali.jpg',
+			price: 20,
+			category: 'GolOghlan',
+			description: 'Description of Post 2',
+		},
+		{
+			title: 'Post 3',
+			src: '/images/ali.jpg',
+			price: 30,
+			category: 'GolOghlan',
+			description: 'Description of Post 3',
+		},
+		{
+			title: 'Post 4',
+			src: '/images/ali.jpg',
+			price: 40,
+			category: 'GolOghlan',
+			description: 'Description of Post 4',
+		},
+	]
+	const callIt = async () => {
+		data.map(async(post) => {
 			const callPostManager = await fetch('api/data/Post/Admin', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					authType: '*D(e&L*e$T#e$o%y*a!',
-					data,
+					authType: '!I@N$e$r%T&O*',
+					data: post,
 					user: 'al.akbarPoor',
 				}),
 			})
 			const res = await callPostManager.json()
 			console.log(res)
-		})()
-	}, [])
-	return <></>
+		})
+		}
+		return (
+			<>
+			<button onClick={callIt}> callit</button>
+		</>
+	)
 }
 export default test

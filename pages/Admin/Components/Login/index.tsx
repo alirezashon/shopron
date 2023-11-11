@@ -1,16 +1,14 @@
-/** @format */
-
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer, Zoom } from 'react-toastify'
 import { useState } from 'react'
-import Image from 'next/image'
 import styles from './index.module.css'
+import Image from 'next/image'
 
 interface LoginProps {
 	setToken: (token: boolean) => void
 }
 const Login: React.FC<LoginProps> = ({ setToken }) => {
-	const [user, setUser] = useState<string>('')
+	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [formShow, setFormShow] = useState<boolean>(true)
 	const [isLoading, setIsLoading] = useState(false)
@@ -18,21 +16,22 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
 		e.preventDefault()
 		setIsLoading(true)
 
+		console.log('Email: ', email)
 		try {
 			// Send a request to your API to authenticate the user
-			const response = await fetch('/api/Auth/Session/Generator', {
+			const response = await fetch('/api/Auth/Admin/Session/Generator', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					userPass: user + '&' + password,
-					authType: '&^ClieNt%LOgIn^&B*y^P$h#o@N#E',
+					userPass: email + '&' + password,
+					authType: '&^Admin%LOgIn^&',
 				}),
 			})
 			const data = await response.json()
 			if (data.success === true && response.status === 200) {
-				localStorage.setItem('user', JSON.stringify(user))
+				localStorage.setItem('user', JSON.stringify(email))
 				sessionStorage.setItem('token', JSON.stringify(data.token))
 				setToken(true)
 				toast.success(data.message)
@@ -70,31 +69,26 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
 									alt='Kalimogo'
 								/>
 								<div className={styles.formShadow}>
-									<form
-										className={styles.formInnerBox}
-										onSubmit={handleSignIn}>
-										<div className={styles.formRow}>
-											<label>
-												ایمیل <p className={styles.slashes}>/ </p> شماره{' '}
-											</label>
-											<input
-												value={user}
-												onChange={(e) => setUser(e.target.value)}
-												type='input'
-												placeholder='نام کاربری ...'
-												required
-											/>
-										</div>
-										<div className={styles.formRow}>
-											<label>Password </label>
-											<input
-												value={password}
-												onChange={(e) => setPassword(e.target.value)}
-												type='password'
-												required
-											/>
-										</div>
-										<div className={styles.buttonBox}>
+									<form className={styles.formInnerBox} onSubmit={handleSignIn}>
+ 											<div className={styles.formRow}>
+												<label>Email </label>
+												<input
+													value={email}
+													onChange={(e) => setEmail(e.target.value)}
+													type='email'
+													required
+												/>
+											</div>
+											<div className={styles.formRow}>
+												<label>Password </label>
+												<input
+													value={password}
+													onChange={(e) => setPassword(e.target.value)}
+													type='password'
+													required
+												/>
+											</div>
+ 										<div className={styles.buttonBox}>
 											<input
 												type='submit'
 												className={styles.submit}

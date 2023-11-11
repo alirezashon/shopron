@@ -37,8 +37,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				webAgent,
 			}
 			if (authType === '&^ClieNt%LOgIn^&B*y^P$h#o@N#E') {
-				const clientPhone = await Client.findOne({ phone: userPass.split('&')[0] })
- 				if (clientPhone.length > 0 ) {
+				const clientPhone = parseInt(userPass.split('&')[0])
+					? await Client.findOne({
+							phone: parseInt(userPass.split('&')[0]),
+					  })
+					: await Client.findOne({
+							email: userPass.split('&')[0],
+					  })
+
+				if (clientPhone) {
 					const decryptedCorrectPassword = decryptText(
 						clientPhone.password,
 						clientPhone.keyV.split('&')[0],
@@ -47,7 +54,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					if (userPass.split('&')[1] === decryptedCorrectPassword) {
 						const { secretKey, iv } = generateKeyAndIV()
 						const generateSession = encryptText(
-							clientPhone.keyV.split('&')[1] + '%' + clientPhone.keyV.split('&')[0],
+							clientPhone.keyV.split('&')[1] +
+								'%' +
+								clientPhone.keyV.split('&')[0],
 							secretKey,
 							iv
 						)

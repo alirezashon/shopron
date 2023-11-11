@@ -1,0 +1,71 @@
+/** @format */
+
+@keyframes clientListBackground {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.clientListBackground {
+    animation: clientListBackground 2s;
+    height: 78vh;
+    background: linear-gradient(to top, #cff673 22%, transparent 111%);
+    padding: 1vh 0vh;
+    border: ridge 1.4vh #7de308;
+    box-shadow: 1px 1px 7px 2px #bace01 inset, 1px 1px 5px 1px #b9c301;
+}
+
+.header {
+    background: linear-gradient(to right, #b3e706 22%, transparent 111%);
+    border: double 0.7vh #f7f6f7;
+    text-align: center;
+    box-shadow: 1px 1px 7px 2px #b7ce24, 1px 1px 4px 4px #95b504 inset;
+    padding: 1vh;
+    margin: 2vh 1vh;
+    border-radius: 2vh;
+    color: #003727;
+}
+
+.header:hover {
+    background-color: #b8e669;
+    cursor: pointer;
+    border: dashed 0.3vh #293802;
+    color: #fbfaf7;
+    text-decoration: wavy;
+}
+
+.clientBoxScroller {
+    border-top-left-radius: 2vh;
+    border: 0.7vh ridge #aced13;
+    background: linear-gradient(to right, #daf67d 22%, transparent 111%);
+    height: 66vh;
+    border-bottom-left-radius: 7vh;
+    overflow-y: scroll;
+}
+
+.clientsBox {
+    border-radius: 2vh;
+    border-bottom-left-radius: 7vh;
+    background: linear-gradient(to bottom, #58751d 11%, transparent 111%);
+}
+
+.client {
+    padding: 3vh;
+    margin: 1vh 0vh;
+    background-color: #e5fbf6;
+    border: solid 0.4vh #cdf502;
+    box-shadow: 1px 1px 7px 2px #def609e9 inset, 0px 0px 5px 2px #cce08f;
+    color: #293802;
+    border-radius: 1vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.client:hover {
+    background-color: #e1ff00;
+    cursor: pointer;
+}

@@ -1,0 +1,125 @@
+/** @format */
+
+@keyframes treeSelector {
+	0% {
+		background: radial-gradient(
+			rgba(8, 131, 119, 0.924),
+			rgba(103, 202, 221, 0.919) 30%,
+			rgba(1, 128, 105, 0.93) 70%
+		);
+	}
+	20% {
+		background: radial-gradient(
+			rgba(8, 131, 119, 0.924),
+			rgba(103, 202, 221, 0.919) 40%,
+			rgba(1, 128, 105, 0.93) 80%
+		);
+	}
+	40% {
+		background: radial-gradient(
+			rgba(8, 131, 119, 0.924),
+			rgba(103, 202, 221, 0.919) 50%,
+			rgba(1, 128, 105, 0.93) 90%
+		);
+	}
+	60% {
+		background: radial-gradient(
+			rgba(8, 131, 119, 0.924),
+			rgba(103, 202, 221, 0.919) 40%,
+			rgba(1, 128, 105, 0.93) 80%
+		);
+	}
+	80% {
+		background: radial-gradient(
+			rgba(8, 131, 119, 0.924),
+			rgba(103, 202, 221, 0.919) 30%,
+			rgba(1, 128, 105, 0.93) 70%
+		);
+	}
+}
+.container {
+	background: radial-gradient(
+		rgba(8, 131, 119, 0.924),
+		rgba(103, 202, 221, 0.919) 20%,
+		rgba(1, 128, 105, 0.93) 60%
+	);
+	border: ridge 4px #499b01;
+	animation: treeSelector infinite 7s ;
+	
+	transition: all 2s ease;
+	 
+}
+ 
+.paginationContainer{
+	display: flex;
+	justify-content: center;
+}
+.pagination {
+ 	border: double 7px #038dcd;
+	width: fit-content;
+	padding: 1.5vh 7vh;
+	background-color: #ffffff;
+	border-radius: 1.2vh;
+	box-shadow: 1px 1px 4px 1px #39a3cd inset;
+	display: flex;
+	justify-content: space-between;
+	width: 80%;
+}
+
+.pagination:hover { 
+	border: dotted 7px #03abcd;
+	cursor: no-drop;
+}
+.pagesContainer{
+	background:radial-gradient(rgba(81, 203, 234, 0.6),rgba(34, 120, 126, 0.9));
+	border-radius: 1vh;
+	width: 77%;
+	text-wrap: nowrap;
+	overflow-x: auto;
+	display: flex;
+	justify-content: center;
+	padding: 1vh;
+}
+.button {
+	width: 9%;
+	font-size: 1vw;
+	padding: 1vh;
+	background-color: #019b98;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px #5fc4cf;
+	transition: all 0.3s ease;
+}
+
+.button:hover {
+	background-color: #03cdc6;
+	cursor: pointer;
+}
+
+.button:active {
+	background-color: #aaf2ff;
+	box-shadow: none;
+}
+
+.input {
+	background-color: #fff;
+	color: #666;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	margin-right: 10px;
+	box-shadow: 2px 2px 5px #77a7b8;
+	transition: all 0.3s ease;
+}
+
+.input:hover {
+	background-color: #03c3cd;
+	color: #fff;
+	cursor: pointer;
+}
+
+.input:active {
+	background-color: #aadeff;
+	box-shadow: none;
+}
