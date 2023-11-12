@@ -4,11 +4,12 @@ import db from '../../../../../utils'
 export default async (req: NextApiRequest, res: NextApiResponse) => {
         try {
         if (req.method === 'POST') {
-            const { products, category, authType } = req.body
+            const {  category, authType } = req.body
             if (authType === 'G&E!T*P^R$O#D$U^C@T*S') {
                 await db.connect()
                 if (category === '@L$L%O%F#D%M^') {
-                    const products = await Data.findOne({})
+                    const products = await Data.find({})
+                    console.table(products)
                     res.status(200).json({success:true,products})
                 } else {
                     const products = await Data.find({ category })

@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "Components/Story/index.tsx", "Components/Templates/ImageS/index.jsx", "pages/ToPicalonso/index.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "Components/Story/index.tsx", "Components/Templates/ImageS/index.jsx", "pages/ToPicalonso/index.tsx", "pages/test.jsx"],
   "exclude": ["node_modules"]
 }
