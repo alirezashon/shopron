@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import styles from './index.module.css'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { MdAddCircle } from 'react-icons/md'
+import { FaMinus } from 'react-icons/fa'
 import { Add, Remove } from '@/Components/Basket/Actions'
 import { parse } from 'path'
 
@@ -22,13 +24,59 @@ interface BasketStore {
 	quantity: number
 }
 
-
-
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+// 	console.log('context')
+// 	const res = await fetch('/api/data/Post/Client', {
+// 		method: 'POST',
+// 		headers: { 'Content-Type': 'application/json' },
+// 		body: JSON.stringify({
+// 			category: '@L$L%O%F#D%M^',
+// 			authType: 'G&E!T*P^R$O#D$U^C@T*S',
+// 		}),
+// 	})
+// 	const callPosts = await res.json()
+// 	const posts = callPosts.products
+// 	console.log(posts)
+// 	return { props: { posts } }
+// }
 /***                 Main Component                     ***/
 
-const PostBox = ({
-	posts,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+// const PostBox = ({
+// 	posts,
+// }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const posts = [
+	{
+		_id: '44ads',
+		title: 'EBiramoza',
+		src: '/images/alireza.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+	{
+		_id: '7sdfgt',
+		title: 'EBiramoza',
+		src: '/images/alireza.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+	{
+		_id: '44adsgalobdibordada',
+		title: 'EBiramoza',
+		src: '/images/alireza.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+]
+const PostBox = () => {
 	const [postStates, setPostStates] = useState<Post[]>(
 		posts?.filter((post: Post) => ({
 			post,
@@ -37,27 +85,46 @@ const PostBox = ({
 		})) || []
 	)
 	const [basketStore, setBasketStore] = useState<BasketStore[]>([])
-
+	const [isAddToBasket, setIsAddToBasket] = useState<boolean>(true)
 	useEffect(() => {
-		const basketPost: string[] = JSON.parse(
-			localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
-		)
-		const basketSide: BasketStore[] = []
-		if (basketPost.length > 0) {
-			basketPost.forEach((post) => {
-				const [id, quantityStr] = post.split('*2%2&7(7)5%5!1@2')
-				const quantity = parseInt(quantityStr)
-				basketSide.push({ id, quantity })
-			})
+		const basketCheck = () => {
+			const basketPost: string[] = JSON.parse(
+				localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
+			)
+			const basketSide: BasketStore[] = []
+
+			if (basketPost.length > 0) {
+				basketPost.forEach((post) => {
+					const [id, quantityStr] = post.split('*2%2&7(7)5%5!1@2')
+					const quantity = parseInt(quantityStr)
+					basketSide.push({ id, quantity })
+				})
+			}
+
+			if (basketSide.length > 0) {
+				setBasketStore(basketSide)
+				// setPostStates((prevPostStates) => {
+				// 	const basketOut = prevPostStates.filter(
+				// 		(post) => !basketSide.some((basket) => basket.id === post._id)
+				// 	)
+				// 	return basketOut
+				// })
+				const updatedPostStates = postStates.filter(
+					(post) => !basketSide.some((basket) => basket.id === post._id)
+					)
+					
+					setPostStates(updatedPostStates)
+ 				
+			}
 		}
-		setBasketStore(basketSide)
-		basketSide.length > 0 && setBasketStore(basketSide)
-	}, [setBasketStore])
+
+		basketCheck()
+	}, [setBasketStore,setPostStates])
 
 	return (
 		<div className={styles.postsBox}>
-			<div className={styles.innerPostsBox}>
-				{posts.map((obj: Post, index: number) => (
+ 			<div className={styles.innerPostsBox}>
+				{postStates.map((obj: Post, index: number) => (
 					<div
 						className={styles.postBox}
 						key={obj._id}>
@@ -66,40 +133,48 @@ const PostBox = ({
 							<Image
 								src={obj.src}
 								alt={obj.description}
-								width={200}
-								height={200}
+								width={2222}
+								height={1111}
 								className={styles.image}
 							/>
-							{/* {postStates[index].isAddToBasket ? ( */}
-							<div className={styles.priceBasketBox}>
-								<div className={styles.innerPriceBasketBox}>
-									<div className={styles.priceBasket}>
-										<p className={styles.productBasketPrice}>{obj.price}</p>
-										<div className={styles.productBasketicon}>
-											<button onClick={() => Remove(obj._id)}>-</button>
-											<span>{postStates[index].quantity}</span>
-											<button onClick={() => Add(obj._id)}>+</button>
+							{isAddToBasket ? (
+								<div className={styles.productDetails}>
+									<div className={styles.details}>
+										<div className={styles.priceBox}>
+											<p>{obj.price}</p>
 										</div>
-									</div>
-								</div>
-							</div>
-							) : (
-							<div className={styles.priceBasketBox}>
-								<div className={styles.innerPriceBasketBox}>
-									<div className={styles.priceBasket}>
-										<div
-											className={styles.icon}
-											onClick={() => Add(obj._id)}>
-											<AiOutlineShoppingCart
+										<div className={styles.controlBox}>
+											<MdAddCircle
+												className={styles.inceriment}
 												size={'3vh'}
-												color={'rgb(255,255,255)'}
+												onClick={() => Add(obj._id)}
+											/>
+											<p className={styles.quantity}>{obj.quantity}</p>
+											<FaMinus
+												className={styles.deceriment}
+												size={'3vh'}
+												onClick={() => Remove(obj._id)}
 											/>
 										</div>
-										<p className={styles.price}>{obj.price}</p>
 									</div>
 								</div>
-							</div>
-							{/* )} */}
+							) : (
+								<div className={styles.priceBasketBox}>
+									<div className={styles.innerPriceBasketBox}>
+										<div className={styles.priceBasket}>
+											<div
+												className={styles.icon}
+												onClick={() => Add(obj._id)}>
+												<AiOutlineShoppingCart
+													size={'3vh'}
+													color={'rgb(255,255,255)'}
+												/>
+											</div>
+											<p className={styles.price}>{obj.price}</p>
+										</div>
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				))}
@@ -109,238 +184,3 @@ const PostBox = ({
 }
 
 export default PostBox
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	console.log('context')
-	const res = await fetch('/api/data/Post/Client', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			category: '@L$L%O%F#D%M^',
-			authType: 'G&E!T*P^R$O#D$U^C@T*S',
-		}),
-	})
-	const callPosts = await res.json()
-	const posts = callPosts.products
-	console.log(posts)
-	return { props: { posts } }
-}
-// import Image from 'next/image'
-// import styles from './index.module.css'
-// import { AiOutlineShoppingCart } from 'react-icons/ai'
-// import { useState, useEffect } from 'react'
-
-// interface Post {
-// 	_id: string
-// 	title: string
-// 	description: string
-// 	price: number
-// 	src: string
-// }
-
-// const PostBox: React.FC = () => {
-// 	const posts: Post[] = [
-// 		{
-// 			_id: '6',
-// 			title: 'Post 1',
-// 			description: 'Description of Post 1',
-// 			price: 10,
-// 			src: '/images/ali.jpg',
-// 		},
-// 		{
-// 			_id: '5',
-// 			title: 'Post 2',
-// 			description: 'Description of Post 2',
-// 			price: 20,
-// 			src: '/images/ali.jpg',
-// 		},
-// 		{
-// 			_id: '4',
-// 			title: 'Post 3',
-// 			description: 'Description of Post 3',
-// 			price: 30,
-// 			src: '/images/ali.jpg',
-// 		},
-// 		{
-// 			_id: '3',
-// 			title: 'Post 4',
-// 			description: 'Description of Post 4',
-// 			price: 40,
-// 			src: '/images/ali.jpg',
-// 		},
-// 	]
-
-// 	const [postStates, setPostStates] = useState(
-// 		posts.map((post) => ({
-// 			_id: post._id,
-// 			isAddToBasket: false,
-// 			quantity: 0,
-// 		}))
-// 	)
-
-// 	const [basket, setBasket] = useState<{ products: Post[]; price: number }>({
-// 		products: [],
-// 		price: 0,
-// 	})
-
-// 	const handleAddToBasket = (_id: string) => {
-// 		setPostStates((prevStates) =>
-// 			prevStates.map((postState) =>
-// 				postState._id === _id
-// 					? {
-// 							...postState,
-// 							isAddToBasket: true,
-// 							quantity: postState.quantity + 1,
-// 					  }
-// 					: postState
-// 			)
-// 		)
-
-// 		const selectedPost = posts.find((post) => post._id === _id)
-
-// 		if (selectedPost) {
-// 			const updatedBasket = {
-// 				products: [...basket.products, selectedPost],
-// 				price: basket.price + selectedPost.price,
-// 			}
-
-// 			setBasket(updatedBasket)
-
-// 			localStorage.setItem('Basket', JSON.stringify(updatedBasket))
-// 		}
-// 	}
-
-// 	const handleIncrement = (_id: string) => {
-// 		setPostStates((prevStates) =>
-// 			prevStates.map((postState) =>
-// 				postState._id === _id
-// 					? { ...postState, quantity: postState.quantity + 1 }
-// 					: postState
-// 			)
-// 		)
-
-// 		const selectedPost = posts.find((post) => post._id === _id)
-
-// 		if (selectedPost) {
-// 			const updatedBasket = {
-// 				products: [...basket.products, selectedPost],
-// 				price: basket.price + selectedPost.price,
-// 			}
-
-// 			setBasket(updatedBasket)
-
-// 			localStorage.setItem('Basket', JSON.stringify(updatedBasket))
-// 		}
-// 	}
-
-// 	const handleDecrement = (_id: string) => {
-// 		setPostStates((prevStates) =>
-// 			prevStates.map((postState) =>
-// 				postState._id === _id && postState.quantity > 0
-// 					? { ...postState, quantity: postState.quantity - 1 }
-// 					: postState
-// 			)
-// 		)
-
-// 		const selectedPost = posts.find((post) => post._id === _id)
-
-// 		if (selectedPost) {
-// 			const updatedBasket = {
-// 				products: [...basket.products],
-// 				price: basket.price - selectedPost.price,
-// 			}
-
-// 			setBasket(updatedBasket)
-
-// 			localStorage.setItem('Basket', JSON.stringify(updatedBasket))
-// 		}
-// 	}
-
-// 	useEffect(() => {
-// 		const storedBasket = localStorage.getItem('Basket')
-
-// 		if (storedBasket) {
-// 			try {
-// 				const parsedBasket = JSON.parse(storedBasket)
-// 				setBasket(parsedBasket)
-
-// 				const updatedPostStates = postStates.map((postState) => {
-// 					const foundProduct = parsedBasket.products.find(
-// 						(product: any) => product._id === postState._id
-// 					)
-// 					if (foundProduct) {
-// 						return {
-// 							...postState,
-// 							isAddToBasket: true,
-// 							quantity: foundProduct.quantity || 0,
-// 						}
-// 					}
-// 					return postState
-// 				})
-
-// 				setPostStates(updatedPostStates)
-// 			} catch (error) {
-// 				console.error('Error parsing JSON from local storage:', error)
-// 			}
-// 		}
-// 	}, [])
-
-// 	return (
-// 		<div className={styles.postsBox}>
-// 			<div className={styles.innerPostsBox}>
-// 				{posts.map((obj, index) => (
-// 					<div
-// 						className={styles.postBox}
-// 						key={obj._id}>
-// 						<div className={styles.innerPostBox}>
-// 							<h6 className={styles.title}>{obj.title}</h6>
-// 							<Image
-// 								src={obj.src}
-// 								alt={obj.description}
-// 								width={200}
-// 								height={200}
-// 								className={styles.image}
-// 							/>
-// 							{postStates[index].isAddToBasket ? (
-// 								<div className={styles.priceBasketBox}>
-// 									<div className={styles.innerPriceBasketBox}>
-// 										<div className={styles.priceBasket}>
-// 											<p className={styles.productBasketPrice}>{obj.price}</p>
-// 											<div className={styles.productBasketicon}>
-// 												<button onClick={() => handleDecrement(obj._id)}>
-// 													-
-// 												</button>
-// 												<span>{postStates[index].quantity}</span>
-// 												<button onClick={() => handleIncrement(obj._id)}>
-// 													+
-// 												</button>
-// 											</div>
-// 										</div>
-// 									</div>
-// 								</div>
-// 							) : (
-// 								<div className={styles.priceBasketBox}>
-// 									<div className={styles.innerPriceBasketBox}>
-// 										<div className={styles.priceBasket}>
-// 											<div
-// 												className={styles.icon}
-// 												onClick={() => handleAddToBasket(obj._id)}>
-// 												<AiOutlineShoppingCart
-// 													size={'3vh'}
-// 													color={'rgb(255,255,255)'}
-// 												/>
-// 											</div>
-// 											<p className={styles.price}>{obj.price}</p>
-// 										</div>
-// 									</div>
-// 								</div>
-// 							)}
-// 						</div>
-// 					</div>
-// 				))}
-// 			</div>
-// 		</div>
-// 	)
-// }
-
-// export default PostBox

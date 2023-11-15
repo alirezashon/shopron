@@ -4,7 +4,7 @@
 	src: url('../public/font/Tanha.ttf');
 }
 * {
-	transition: all 1s ease-in-out;
+	transition: all .7s ;
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
@@ -32,8 +32,8 @@ a {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: #0a0142;
-	border: solid 1px #ece364;
+	background: #97def6;
+	border: double .7vh #012e1e;
 	box-shadow: 0px 0px 1px 1px #a2e2ff inset, 1px 1px 11px 1px #fbfbf9;
 	border-radius: 4px;
 }

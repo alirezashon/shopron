@@ -117,3 +117,8 @@
 .deceriment:hover, .inceriment:hover{
 	transform: rotate(139deg);
 }
+
+@media(max-width:777px){
+	.postsContainer{height: 24vh;}
+	
+}

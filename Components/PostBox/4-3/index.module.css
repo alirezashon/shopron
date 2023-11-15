@@ -28,52 +28,55 @@
 	}
 }
 .postsBox {
-	width: 97%;
+	width: 99vw;
 	animation: postBox infinite 11s;
 	margin: 1vh;
 	padding: 1vh;
-	border: ridge 0.4vh rgba(112, 12, 212, 0.8);
+	border: ridge 0.4vh rgba(12, 212, 182, 0.8);
 	background: repeating-radial-gradient(
 		rgba(231, 246, 231, 0.9),
 		rgb(247, 248, 248)
 	);
-	box-shadow: 1px 1px 7px 2px rgba(86, 188, 231, 0.8),
-		1px 1px 22px 2px rgba(37, 60, 97, 0.8) inset;
+	box-shadow: 1px 1px 7px 2px rgba(240, 250, 255, 0.8),
+	1px 1px 4px 2px rgba(235, 243, 255, 0.8) inset;
 }
 .innerPostsBox {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(39vh, 1fr));
+	gap: 1rem;
 	animation: postBox infinite 11s;
-	border: groove 0.4vh rgba(182, 161, 4, 0.7);
+	border: groove 0.4vh rgba(4, 182, 126, 0.7);
 	background: radial-gradient(
 		rgba(173, 242, 242, 0.77),
-		rgba(128, 252, 252, 0.77),
+		rgba(72, 228, 228, 0.77),
 		rgba(82, 156, 156, 0.77),
 		rgba(243, 252, 252, 0.77)
 	);
 	padding: 1vh;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 .postBox {
+ 	background:linear-gradient(4deg, rgb(108, 107, 100),rgb(166, 205, 255),rgb(28, 138, 140));
 	cursor: pointer;
 	padding: 1vh;
 	border: double 0.4vh rgba(234, 229, 240, 0.8);
 	border-radius: 0.4vh;
-	box-shadow: 1px 1px 4px 1px rgba(1, 114, 236, 0.8),
-		1px 1px 4px 2px rgba(206, 166, 245, 0.7) inset;
-}
+	box-shadow: 1px 1px 14px 2px rgba(241, 248, 255, 0.8),
+		1px 1px 4px 2px rgba(241, 228, 255, 0.7) inset;
+ }
 .innerPostBox {
 	padding: 1vh;
-	border: ridge 0.2vh rgba(15, 0, 30, 0.8);
+	border: double 0.2vh rgba(113, 157, 245, 0.8);
 	background: radial-gradient(rgba(213, 218, 218, 0.62), rgb(178, 212, 246));
 	box-shadow: 1px 1px 4px 1px rgba(193, 236, 1, 0.8),
 		1px 1px 4px 2px rgba(206, 166, 245, 0.7) inset;
 }
 .title {
-	background: radial-gradient(rgba(1, 38, 38, 0.62), rgba(1, 2, 3, 1));
+	background: radial-gradient(rgba(14, 106, 106, 0.62), rgb(0, 35, 35));
 	color: aliceblue;
 	text-align: center;
 	padding: 1vh;
-	border: dotted 0.2vh rgb(178, 212, 246);
+	border: double 0.6vh rgb(178, 212, 246);
+	border-radius: 1vh;
 }
 .title:hover {
 	transform: scale(1.05);
@@ -83,9 +86,9 @@
 	height: 40vh;
 	padding: 0.2vh;
 	border-radius: 0.7vh;
-	border: ridge 0.4vh rgba(13, 8, 155, 0.8);
+	border: dashed 0.4vh rgba(8, 133, 155, 0.8);
 	box-shadow: 1px 1px 4px 1px rgba(37, 163, 216, 0.8),
-		1px 1px 7px 11px rgba(252, 176, 1, 0.651) inset;
+		1px 1px 7px 11px rgba(166, 214, 250, 0.651) inset;
 }
 .image:hover {
 	transform: scale(1.05);
@@ -135,79 +138,103 @@
 	animation: iconHover;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* Styling for the container */
 .addPriceBasketBox {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border-radius: 10px;
-  background: linear-gradient(to bottom, #ff7f00, #f94e03);
-  animation: fadeIn 0.5s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	border-radius: 10px;
+	background: linear-gradient(to bottom, #ff7f00, #f94e03);
+	animation: fadeIn 0.5s ease-in-out;
+}
+.productDetails {
+	width: 100%;
+	border: double rgba(44, 66, 99, 0.9) 0.4vh;
+	box-shadow: 1px 1px 4px 1px rgba(28, 94, 122, 0.9),
+		1px 1px 1px 1px rgba(11, 97, 227, 0.9) inset;
+	border-radius: 1vh;
+	padding: 1vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+ .details {
+ 	display: flex;
+ 	flex-direction: column;
+ 	width: 90%;
+ 	height: 50%;
+ 	align-items: center;
+ 	border-radius: 13vh;
+ }
+
+.priceBox {
+	background: linear-gradient(44deg, rgb(21, 83, 124), rgb(0, 33, 47));
+	color: #ffebd7;
+	border: 0.5vh double rgb(250, 254, 255);
+	border-radius: 2vh;
+	margin-bottom: -.1vh;
+	text-align: center;
+	 width: 90%;
 }
 
-/* Styling for the price element */
-.addProductBasketPrice {
-  font-size: 24px;
-  color: #fff;
+.controlBox {
+	border: double 0.5vh rgba(12, 66, 103, 0.6);
+	background: radial-gradient(rgb(164, 236, 220), rgb(121, 211, 202));
+	border-radius: 4vh;
+	width: 111%;
+	height: 5vh;
+	display: flex;
+	justify-content: space-between;
 }
 
-/* Styling for the quantity adjustment section */
-.addProductBasketicon {
-  display: flex;
-  align-items: center;
+.quantity {
+	width: 100%;
+	text-align: center;
+	border-radius: 4vh;
+	color: rgba(255, 255, 255, 1);
+	background: linear-gradient(90deg, rgb(188, 244, 248), rgb(20, 135, 250), rgb(188, 244, 248));
 }
 
-.addProductBasketicon button {
-  background: #ff7f00;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 20px;
-  cursor: pointer;
-  margin: 0 10px;
-  transition: background 0.3s, transform 0.3s;
+.inceriment,
+.deceriment {
+	border-radius: 2vh;
+	width: 20%;
+	display: block;
+	text-align: center;
+	height: 100%;
+	color: rgb(255, 255, 255);
 }
 
-.addProductBasketicon button:hover {
-  background: #f94e03;
-  transform: scale(1.1);
+.inceriment {
+	background: linear-gradient(44deg, rgb(10, 44, 78), rgb(12, 81, 88));
+	transition: transform .5s;
 }
 
-/* Styling for the count element and cart icon */
-.addProductBasketicon span {
-  font-size: 24px;
-  color: #fff;
-  margin: 0 10px;
+.deceriment {
+	background: linear-gradient(44deg, rgb(252, 85, 34), rgb(222, 145, 77));
+	transition: transform .7s;
 }
 
-.addProductBasketicon .AiOutlineShoppingCart {
-  font-size: 36px;
-  color: #fff;
+.deceriment:hover,
+.inceriment:hover {
+	transform: rotate(139deg);
 }
 
+@media(max-width:777px) {
+	.postsContainer {
+		height: 24vh;
+	}
+
+}
 /* Animation for the initial display */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

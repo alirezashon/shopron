@@ -1,12 +1,13 @@
-	
+/** @format */
+
 import React, { useEffect, useState } from 'react'
 import Login from '../Components/Login'
 import Handler from '../Handler'
 import Image from 'next/image'
 
 const RootPage = () => {
-	const [token, setToken] = useState<boolean>(false)
-	const [loading, setLoading] = useState<boolean>(true)
+	const [token, setToken] = useState<boolean>(true)
+	const [loading, setLoading] = useState<boolean>(false)
 
 	const validator = async (token: string) => {
 		try {
@@ -20,11 +21,7 @@ const RootPage = () => {
 					token: token,
 				}),
 			})
-
-			const data = await response.json()
-			console.log(data)
-			console.log(response.status)
-
+			await response.json()
 			if (response.status === 200) {
 				setToken(true)
 				setLoading(false)

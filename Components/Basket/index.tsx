@@ -39,7 +39,6 @@ const Basket = () => {
 				<div
 					className={styles.basketDrawer}
 					onMouseDown={() => setIsDragging(true)}>
-					<div className={styles.basketBase}>
 						<div className={styles.basketHeader}>
 							<p>total price</p>
 							<GiCrossMark
@@ -48,6 +47,7 @@ const Basket = () => {
 								onClick={() => setIsBasketOpen(false)}
 							/>
 						</div>
+					<div className={styles.basketBase}>
 						<Product />
 					</div>
 				</div>

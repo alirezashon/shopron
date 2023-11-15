@@ -12,11 +12,12 @@
 	overflow-x: scroll;
 	width: 98%;
 	margin: 1%;
-	border: #bcb134 1px solid;
-	box-shadow: 1px 1px 7px 2px #919104, 1px 1px 22px 31px #dddd8b inset;
+	background-color: #ffffff;
+	border: #34bc9a 1px solid;
+	box-shadow: 1px 1px 7px 1px #e0f5ff, 1px 1px 22px 3vh #8bb8dd inset;
 	position: relative;
 	display: flex;
-	border: solid 1px #f7f469;
+	border: solid 1px #69f7ca;
 }
 
 .story {
