@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import styles from './index.module.css'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { Add, Remove } from '@/Components/Basket/Actions'
+import { parse } from 'path'
 
 interface Post {
 	_id: string
@@ -12,156 +14,50 @@ interface Post {
 	src: string
 	price: number
 	category: string
-	quantity:number
+	quantity: number
 	description: string
 }
-interface Posts {
-	posts: Post[]
+interface BasketStore {
+	id: string
+	quantity: number
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	console.log(context)
-	const res = await fetch('/api/data/Post/Client', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			category: '@L$L%O%F#D%M^',
-			authType: 'G&E!T*P^R$O#D$U^C@T*S',
-		}),
-	})
-  const callPosts = await res.json();
-  const posts = callPosts.products;
-  console.log(posts);
-  return { props: { posts } };
-}
 
 
 /***                 Main Component                     ***/
-
-
 
 const PostBox = ({
 	posts,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	const [postStates, setPostStates] = useState<Post[]>(
-		posts?.map((post: Post) => ({
-			_id: post._id,
+		posts?.filter((post: Post) => ({
+			post,
 			isAddToBasket: false,
 			quantity: 0,
 		})) || []
 	)
-
-	const [basket, setBasket] = useState<{ products: Post[]; count: number }>({
-		products: [],
-		count: 0,
-	})
-
-	const handleAddToBasket = (_id: string) => {
-		setPostStates((prevStates) =>
-			prevStates.map((postState) =>
-				postState._id === _id
-					? {
-							...postState,
-							isAddToBasket: true,
-							quantity: postState.quantity + 1,
-					  }
-					: postState
-			)
-		)
-
-		const selectedPost = posts.find((post:Post) => post._id === _id)
-
-		if (selectedPost) {
-			const updatedBasket = {
-				products: [...basket.products, selectedPost],
-				price: basket.price + selectedPost.price,
-			}
-
-			setBasket(updatedBasket)
-
-			localStorage.setItem('Basket', JSON.stringify(updatedBasket))
-		}
-	}
-
-	const handleIncrement = (_id: string) => {
-		setPostStates((prevStates) =>
-			prevStates.map((postState) =>
-				postState._id === _id
-					? { ...postState, quantity: postState.quantity + 1 }
-					: postState
-			)
-		)
-
-		const selectedPost = posts.find((post:Post) => post._id === _id)
-
-		if (selectedPost) {
-			const updatedBasket = {
-				products: [...basket.products, selectedPost],
-				price: basket.price + selectedPost.price,
-			}
-
-			setBasket(updatedBasket)
-
-			localStorage.setItem('Basket', JSON.stringify(updatedBasket))
-		}
-	}
-
-	const handleDecrement = (_id: string) => {
-		setPostStates((prevStates) =>
-			prevStates.map((postState) =>
-				postState._id === _id && postState.quantity > 0
-					? { ...postState, quantity: postState.quantity - 1 }
-					: postState
-			)
-		)
-
-		const selectedPost = posts.find((post:Post) => post._id === _id)
-
-		if (selectedPost) {
-			const updatedBasket = {
-				products: [...basket.products],
-				price: basket.price - selectedPost.price,
-			}
-
-			setBasket(updatedBasket)
-
-			localStorage.setItem('Basket', JSON.stringify(updatedBasket))
-		}
-	}
+	const [basketStore, setBasketStore] = useState<BasketStore[]>([])
 
 	useEffect(() => {
-		const storedBasket = localStorage.getItem('Basket')
-
-		if (storedBasket) {
-			try {
-				const parsedBasket = JSON.parse(storedBasket)
-				setBasket(parsedBasket)
-
-				const updatedPostStates = postStates.map((postState) => {
-					const foundProduct = parsedBasket.products.find(
-						(product: Post) => product._id === postState._id
-					)
-					if (foundProduct) {
-						return {
-							...postState,
-							isAddToBasket: true,
-							quantity: foundProduct.quantity || 0,
-						}
-					}
-					return postState
-				})
-
-				setPostStates(updatedPostStates)
-			} catch (error) {
-				console.error('Error parsing JSON from local storage:', error)
-			}
+		const basketPost: string[] = JSON.parse(
+			localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
+		)
+		const basketSide: BasketStore[] = []
+		if (basketPost.length > 0) {
+			basketPost.forEach((post) => {
+				const [id, quantityStr] = post.split('*2%2&7(7)5%5!1@2')
+				const quantity = parseInt(quantityStr)
+				basketSide.push({ id, quantity })
+			})
 		}
-	}, [postStates])
+		setBasketStore(basketSide)
+		basketSide.length > 0 && setBasketStore(basketSide)
+	}, [setBasketStore])
 
 	return (
 		<div className={styles.postsBox}>
 			<div className={styles.innerPostsBox}>
-				{posts.map((obj:Post, index:number) => (
+				{posts.map((obj: Post, index: number) => (
 					<div
 						className={styles.postBox}
 						key={obj._id}>
@@ -174,40 +70,36 @@ const PostBox = ({
 								height={200}
 								className={styles.image}
 							/>
-							{postStates[index].isAddToBasket ? (
-								<div className={styles.priceBasketBox}>
-									<div className={styles.innerPriceBasketBox}>
-										<div className={styles.priceBasket}>
-											<p className={styles.productBasketPrice}>{obj.price}</p>
-											<div className={styles.productBasketicon}>
-												<button onClick={() => handleDecrement(obj._id)}>
-													-
-												</button>
-												<span>{postStates[index].quantity}</span>
-												<button onClick={() => handleIncrement(obj._id)}>
-													+
-												</button>
-											</div>
+							{/* {postStates[index].isAddToBasket ? ( */}
+							<div className={styles.priceBasketBox}>
+								<div className={styles.innerPriceBasketBox}>
+									<div className={styles.priceBasket}>
+										<p className={styles.productBasketPrice}>{obj.price}</p>
+										<div className={styles.productBasketicon}>
+											<button onClick={() => Remove(obj._id)}>-</button>
+											<span>{postStates[index].quantity}</span>
+											<button onClick={() => Add(obj._id)}>+</button>
 										</div>
 									</div>
 								</div>
+							</div>
 							) : (
-								<div className={styles.priceBasketBox}>
-									<div className={styles.innerPriceBasketBox}>
-										<div className={styles.priceBasket}>
-											<div
-												className={styles.icon}
-												onClick={() => handleAddToBasket(obj._id)}>
-												<AiOutlineShoppingCart
-													size={'3vh'}
-													color={'rgb(255,255,255)'}
-												/>
-											</div>
-											<p className={styles.price}>{obj.price}</p>
+							<div className={styles.priceBasketBox}>
+								<div className={styles.innerPriceBasketBox}>
+									<div className={styles.priceBasket}>
+										<div
+											className={styles.icon}
+											onClick={() => Add(obj._id)}>
+											<AiOutlineShoppingCart
+												size={'3vh'}
+												color={'rgb(255,255,255)'}
+											/>
 										</div>
+										<p className={styles.price}>{obj.price}</p>
 									</div>
 								</div>
-							)}
+							</div>
+							{/* )} */}
 						</div>
 					</div>
 				))}
@@ -218,6 +110,21 @@ const PostBox = ({
 
 export default PostBox
 
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	console.log('context')
+	const res = await fetch('/api/data/Post/Client', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			category: '@L$L%O%F#D%M^',
+			authType: 'G&E!T*P^R$O#D$U^C@T*S',
+		}),
+	})
+	const callPosts = await res.json()
+	const posts = callPosts.products
+	console.log(posts)
+	return { props: { posts } }
+}
 // import Image from 'next/image'
 // import styles from './index.module.css'
 // import { AiOutlineShoppingCart } from 'react-icons/ai'

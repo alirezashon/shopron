@@ -113,9 +113,11 @@
 }
 
 .formRow input {
-	animation: borderanimate infinite 13s;
-	width: 100%;
-	height: 44%;
+	width: 70%;
+	padding: 1vh;
+	direction: rtl;
+ 	animation: borderanimate infinite 13s;
+ 	height: 67%;
 	font-size: 1vw;
 	margin-left: 1vh;
 	border: ridge 1vh rgb(23, 255, 243);
@@ -123,14 +125,20 @@
 }
 
 .formRow label {
-	margin-left: 1vh;
+	text-wrap: nowrap;
+ 	margin-left: 1vh;
 	font-size: 2vh;
 	padding: 1vh;
 	border-radius: 4vh;
 	border: dotted .2vh rgb(1, 46, 68);
 	background: radial-gradient(rgb(0, 255, 238), rgb(14, 163, 193))
 }
-
+.slash{
+	background: radial-gradient(rgb(255, 240, 154),rgb(225, 250, 255),rgb(198, 255, 198));
+	padding: .1vh 1vh;
+	border-radius: 77vh;
+	
+}
 .buttonBox {
 	background: radial-gradient(rgba(11, 22, 44, 0.4),
 			rgba(22, 33, 55, 0.5),
@@ -163,12 +171,14 @@
 }
 
 .submit {
+	width: 22%;
 	border-radius: 4vh 2vh;
 	background-color: rgba(29, 209, 228, 0.9);
-	border: dotted 0.3vh #0817f3;
-}
+	border: dashed 0.3vh #e3f7ff;
 
+}
 .cancel {
+	width: 22%;
 	border-radius: 2vh 4vh;
 	background-color: rgba(243, 121, 8, 0.9);
 	border: dotted 0.3vh #e8d20f;

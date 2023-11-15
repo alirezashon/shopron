@@ -4,7 +4,7 @@ import Layout from '../Layouts'
 import Story from '../Components/Story'
 import PostBox from '../Components/PostBox/5-7'
 import PostBox_Three_Four_Section from '../Components/PostBox/4-3'
-import Basket from '../pages/Basket'
+import Basket from '../Components/Basket'
 const inter = Inter({ subsets: ['latin'] })
 const Handler = () => {
     return(<>

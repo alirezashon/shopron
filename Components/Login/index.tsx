@@ -75,7 +75,7 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
 										onSubmit={handleSignIn}>
 										<div className={styles.formRow}>
 											<label>
-												ایمیل <p className={styles.slashes}>/ </p> شماره{' '}
+												ایمیل <span className={styles.slash}>/ </span> شماره
 											</label>
 											<input
 												value={user}
@@ -86,25 +86,27 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
 											/>
 										</div>
 										<div className={styles.formRow}>
-											<label>Password </label>
+											<label>رمز عبور </label>
 											<input
 												value={password}
 												onChange={(e) => setPassword(e.target.value)}
 												type='password'
+												placeholder='رمز عبور ...'
 												required
 											/>
 										</div>
 										<div className={styles.buttonBox}>
 											<input
 												type='submit'
+												value={'ورود'}
 												className={styles.submit}
 											/>
-											<button
+											<input
+												type='button'
 												className={styles.cancel}
-												onClick={() => setFormShow(false)}>
-												cancel
-											</button>
-										</div>
+												onClick={() => setFormShow(false)}
+											value={'خروج'}/> 
+ 										</div>
 									</form>
 								</div>
 							</>
