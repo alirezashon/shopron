@@ -18,6 +18,7 @@ interface Post {
 	category: string
 	quantity: number
 	description: string
+	inBasket?: number
 }
 interface BasketStore {
 	id: string
@@ -84,46 +85,51 @@ const PostBox = () => {
 			quantity: 0,
 		})) || []
 	)
-	const [basketStore, setBasketStore] = useState<BasketStore[]>([])
-	const [isAddToBasket, setIsAddToBasket] = useState<boolean>(true)
+	const [basketStore, setBasketStore] = useState<string[]>([])
+
+	const updateBasketState = (posts: Post[], basketItems: BasketStore[]) => {
+		const updatedPosts = posts.map((post) => {
+			const matchingItem = basketItems.find((item) => item.id === post._id)
+
+			return {
+				...post,
+				inBasket: matchingItem ? matchingItem.quantity : 0,
+			}
+		})
+
+		setPostStates(updatedPosts)
+	}
+
+	const inceriment = (id: string) => {
+		Add(id)
+		setBasketStore((prev) => [...prev, id])
+	}
+
+	const deceroment = (id: string) => {
+		Remove(id)
+		setBasketStore((prev) => [...prev, id])
+	}
+
 	useEffect(() => {
-		const basketCheck = () => {
-			const basketPost: string[] = JSON.parse(
-				localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
-			)
-			const basketSide: BasketStore[] = []
+		const basketPost: string[] = JSON.parse(
+			localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
+		)
+		const basketSide: BasketStore[] = []
 
-			if (basketPost.length > 0) {
-				basketPost.forEach((post) => {
-					const [id, quantityStr] = post.split('*2%2&7(7)5%5!1@2')
-					const quantity = parseInt(quantityStr)
-					basketSide.push({ id, quantity })
-				})
-			}
-
-			if (basketSide.length > 0) {
-				setBasketStore(basketSide)
-				// setPostStates((prevPostStates) => {
-				// 	const basketOut = prevPostStates.filter(
-				// 		(post) => !basketSide.some((basket) => basket.id === post._id)
-				// 	)
-				// 	return basketOut
-				// })
-				const updatedPostStates = postStates.filter(
-					(post) => !basketSide.some((basket) => basket.id === post._id)
-					)
-					
-					setPostStates(updatedPostStates)
- 				
-			}
+		if (basketPost.length > 0) {
+			basketPost.forEach((post) => {
+				const [postId, quantityStr] = post.split('*2%2&7(7)5%5!1@2')
+				const quantity = parseInt(quantityStr)
+				basketSide.push({ id: postId, quantity })
+			})
 		}
 
-		basketCheck()
-	}, [setBasketStore,setPostStates])
-
+		updateBasketState(posts, basketSide)
+	}, [basketStore, posts])
+ 
 	return (
 		<div className={styles.postsBox}>
- 			<div className={styles.innerPostsBox}>
+			<div className={styles.innerPostsBox}>
 				{postStates.map((obj: Post, index: number) => (
 					<div
 						className={styles.postBox}
@@ -137,7 +143,7 @@ const PostBox = () => {
 								height={1111}
 								className={styles.image}
 							/>
-							{isAddToBasket ? (
+							{obj.inBasket && obj.inBasket > 0 ? (
 								<div className={styles.productDetails}>
 									<div className={styles.details}>
 										<div className={styles.priceBox}>
@@ -147,13 +153,13 @@ const PostBox = () => {
 											<MdAddCircle
 												className={styles.inceriment}
 												size={'3vh'}
-												onClick={() => Add(obj._id)}
+												onClick={() => inceriment(obj._id)}
 											/>
-											<p className={styles.quantity}>{obj.quantity}</p>
+											<p className={styles.quantity}>{obj.inBasket}</p>
 											<FaMinus
 												className={styles.deceriment}
 												size={'3vh'}
-												onClick={() => Remove(obj._id)}
+												onClick={() => deceroment(obj._id)}
 											/>
 										</div>
 									</div>
@@ -164,7 +170,7 @@ const PostBox = () => {
 										<div className={styles.priceBasket}>
 											<div
 												className={styles.icon}
-												onClick={() => Add(obj._id)}>
+												onClick={() => inceriment(obj._id)}>
 												<AiOutlineShoppingCart
 													size={'3vh'}
 													color={'rgb(255,255,255)'}
