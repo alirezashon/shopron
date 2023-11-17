@@ -9,23 +9,22 @@
 	}
 }
 .storyBox {
-	overflow-x: scroll;
-	width: 98%;
-	margin: 1%;
+	overflow-x: auto;
+	width: 100%;
+	margin: 1% 0;
 	background-color: #ffffff;
-	border: #34bc9a 1px solid;
-	box-shadow: 1px 1px 7px 1px #e0f5ff, 1px 1px 22px 3vh #8bb8dd inset;
+	border: #34bc9a 0.5vh dashed;
+	box-shadow: 1px 1px 7px 1px #e0f5ff, 1px 1px 11vh 1vh #8bddcd inset;
 	position: relative;
 	display: flex;
-	border: solid 1px #69f7ca;
 }
 
 .story {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 99px;
-	height: 99px;
+	width: 13vh;
+	height: 13vh;
 	border-radius: 50%;
 	margin: 10px;
 	cursor: pointer;
@@ -34,32 +33,80 @@
 	width: 97%;
 	height: 97%;
 	border-radius: 50%;
+	object-fit: cover;
 }
-
-.showStoryBox {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 999;
-	width: 60vh;
-	height: 60vh;
+.openStoryContainer {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: rgba(0, 4, 11, 0.7);
+	z-index: 2;
+	position: absolute;
+	top: 13vh;
+}
+.openStoryScrollable {
+	width: 100%;
+	height: 80%;
+	display: flex;
+	align-items: center;
+	overflow-x: auto;
+	background-color: rgba(0, 111, 121, 0.7);
+}
+.openStoryBox {
+	background: radial-gradient(
+		rgb(115, 233, 224),
+		rgb(158, 196, 222),
+		rgb(122, 195, 220)
+	);
+	margin: 0.1vh 2vh;
+	height: 80%;
 	cursor: pointer;
 	border-radius: 10px;
-	display: block;
-	justify-content: center;
-	align-items: center;
 	animation: fade-in 0.3s;
 }
-
-.storyShowImage {
-	width: 100%;
-	border-radius: 10px;
-	border: ridge 11px #eee57b;
-	box-shadow: 1px 1px 7px 1px #454133, 1px 1px 27px 11px #f8f7f5 inset;
+.openStory {
+	display: flex;
+	flex-direction: column;
+	width: 40vh;
+	background-color: yellow;
+	height: 50vh;
+	z-index: 2;
 }
-.closeBtn {
-	position: absolute;
-	background-color: #f8f7f5;
-	border-radius: 50%;
+
+.openStoryHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.3vh 0.5vh;
+}
+.openStoryHeader h6 {
+}
+.basketBall {
+	background: radial-gradient(
+		rgb(12, 176, 162),
+		rgb(29, 107, 159),
+		rgb(48, 140, 171)
+	);
+	border-radius: 13vh;
+	padding: 0.5vh;
+	border: 0.3vh dashed #ffffff;
+}
+.close {
+	background: radial-gradient(
+		rgb(241, 66, 17),
+		rgb(159, 83, 29),
+		rgb(171, 124, 48)
+	);
+	border-radius: 13vh;
+ 	border: 0.2vh dashed #ffffff;
+}
+.storyShowImage {
+	object-fit: cover;
+	height: 98%;
+	width: 98%;
+	border-radius: 10px;
+	border: double 1vh #eee57b;
+	box-shadow: 1px 1px 7px 1px #454133, 1px 1px 27px 11px #f8f7f5 inset;
 }

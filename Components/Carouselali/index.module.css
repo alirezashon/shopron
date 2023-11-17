@@ -157,15 +157,11 @@
 	border-radius: 4vh;
 	border: 0.4vh ridge rgb(52, 228, 255);
 	background: radial-gradient(rgb(255, 206, 206), rgb(71, 71, 255));
-<<<<<<< HEAD
-	cursor: pointer;
+ 	cursor: pointer;
 }
 
 @media (max-width: 675px) {
 	.container {
 		height: 30vh;
-	}
-=======
-    cursor: pointer;
->>>>>>> 9f24d8bca8173f28eea6619684ce5688845ce2f2
+	} 
 }

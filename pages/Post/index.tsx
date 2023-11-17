@@ -9,7 +9,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { MdAddCircle } from 'react-icons/md'
 import { FaMinus } from 'react-icons/fa'
 import { Add, Remove } from '@/Components/Basket/Actions'
-import styles from './index.module.css'
+import styles from '../../Components/PostBox/4-3/index.module.css'
 interface HomeProps {
 	posts: [
 		{
@@ -49,7 +49,7 @@ const index: NextPage<HomeProps> = ({ posts }) => {
 	const [basketStore, setBasketStore] = useState<string[]>([])
 
 	const updateBasketState = (posts: Post[], basketItems: BasketStore[]) => {
-		const updatedPosts = posts?.map((post) => {
+		const updatedPosts = posts.map((post) => {
 			const matchingItem = basketItems.find((item) => item.id === post._id)
 
 			return {
@@ -91,7 +91,7 @@ const index: NextPage<HomeProps> = ({ posts }) => {
 	return (
 		<div className={styles.postsBox}>
 			<div className={styles.innerPostsBox}>
-				{postStates?.map((obj: Post, index: number) => (
+				{postStates.map((obj: Post, index: number) => (
 					<div
 						className={styles.postBox}
 						key={obj._id}>
@@ -149,6 +149,28 @@ const index: NextPage<HomeProps> = ({ posts }) => {
 			</div>
 		</div>
 	)
+}
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+	// Replace this with your logic to fetch posts from an external API
+	const res = await fetch('http://localhost:3000/api/data/Post/Client', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			category: '@L$L%O%F#D%M^',
+			authType: 'G&E!T*P^R$O#D$U^C@T*S',
+		}),
+	})
+	const callPosts = await res.json()
+	const posts = callPosts.products
+	console.log('posts')
+	// const posts: HomeProps['posts'] = await response.json()
+
+	return {
+		props: {
+			posts,
+		},
+	}
 }
 
 export default index

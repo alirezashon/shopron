@@ -1,104 +1,134 @@
 /** @format */
-import { AiFillCloseCircle } from 'react-icons/ai'
+import { AiFillCloseCircle, AiOutlineShoppingCart } from 'react-icons/ai'
 import Image from 'next/image'
-import { useState } from 'react'
-import Styles from './index.module.css'
+import { useEffect, useState } from 'react'
+import {Add} from'../Basket/Actions'
+import styles from './index.module.css'
+interface Story {
+	_id: string
+	title: string
+	src: string
+	price: number
+	category: string
+	quantity: number
+	description: string
+	seen?: boolean
+}
+const data = [
+	{
+		_id: '44ads',
+		title: 'EBiramoza',
+		src: '/images/ali.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+	{
+		_id: '7sdfgt',
+		title: 'EBiramoza',
+		src: '/images/alireza.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+	{
+		_id: '44adsgalobdibordada',
+		title: 'EBiramoza',
+		src: '/images/Akbar.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+	{
+		_id: '44ads',
+		title: 'EBiramoza',
+		src: '/images/ali.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+	{
+		_id: '7sdfgt',
+		title: 'EBiramoza',
+		src: '/images/alireza.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+	{
+		_id: '44adsgalobdibordada',
+		title: 'EBiramoza',
+		src: '/images/Akbar.jpg',
+		price: 7777777,
+		category: 'P&O*S^T$I%T#E^M$',
+		quantity: 22,
+		description:
+			'this post just created for happy freedome to al.akbarporJojegan',
+	},
+]
 const StoryComponent = () => {
-	const [activeStoryIndex, setActiveStoryIndex] = useState<number>()
-	const [showStoryBox, setShowStoryBox] = useState(false)
-	const [storySeen, setStorySeen] = useState(false)
-	const stories = [
-		{
-			id: 1,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 2,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 3,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 4,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 5,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 6,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 7,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 8,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 9,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 10,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 11,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 12,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 13,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 14,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 15,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 16,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 17,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 18,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 19,
-			src: '/images/feshki.webp'
-		},
-		{
-			id: 20,
-			src: '/images/feshki.webp'
-		},
-	]
+	const [openStory, setOpenStory] = useState<string>()
+	const [showStoryBox, setShowStoryBox] = useState(true)
+	const [stories, setStories] = useState<Story[]>(
+		data?.filter((story: Story) => ({
+			story,
+			seen: false,
+		})) || []
+	)
 
-	const handleStoryClick = (index:number) => {
-		setActiveStoryIndex(index)
+	useEffect(() => {
+		const storyHistory: string[] = JSON.parse(
+			sessionStorage.getItem('^S&T#o@r%i($*i&N0') || '[]'
+		)
+		const setSeen: Story[] = []
+		stories.map((story) => {
+			const seen = storyHistory.find((item) => story._id === item)
+				? true
+				: false
+			setSeen.push({
+				...story,
+				seen,
+			})
+		}) || []
+		setStories(setSeen)
+	}, [])
+	const showStory = (_id: string) => {
+		const storyHistory: string[] = JSON.parse(
+			sessionStorage.getItem('^S&T#o@r%i($*i&N0') || '[]'
+		)
+		storyHistory.push(_id)
+		const unique = storyHistory.filter((post, index, self) => {
+			return self.indexOf(post) === index
+		})
+		sessionStorage.setItem('^S&T#o@r%i($*i&N0', JSON.stringify(unique))
+		const setSeen: Story[] = []
+		stories.map((story) => {
+			const seen = storyHistory.find((item) => story._id === item)
+				? true
+				: false
+			setSeen.push({
+				...story,
+				seen,
+			})
+		}) || []
+		setStories(setSeen)
+		setOpenStory(_id)
 		setShowStoryBox(true)
 
 		setTimeout(() => {
 			setShowStoryBox(false)
-			setStorySeen(true)
-			setActiveStoryIndex((prevIndex) => prevIndex && prevIndex + 1)
-		}, 7000)
+			setOpenStory((prevIndex) => prevIndex && prevIndex + 1)
+		}, 70000)
 	}
 	const closeStory = () => {
 		setShowStoryBox(false)
@@ -106,50 +136,65 @@ const StoryComponent = () => {
 
 	return (
 		<>
-			<div></div>
-			<div className={Styles.storyBox}>
+			<div className={styles.storyBox}>
 				{stories.map((story, index) => (
-					<div key={story.id}>
+					<div key={story._id}>
 						<div
-							className={Styles.story}
+							className={styles.story}
 							style={{
 								border: `2px solid ${
-									activeStoryIndex === index
+									openStory === story._id
 										? '#dfd688'
-										: storySeen
+										: story.seen
 										? 'silver'
 										: 'gold'
 								}`,
 							}}
-							onClick={() => handleStoryClick(index)}>
+							onClick={() => showStory(story._id)}>
 							<Image
-								width={99}
-								height={99}
+								width={1111}
+								height={1111}
 								src={story.src}
 								alt={`Story ${index + 1}`}
-								className={Styles.storyBanner}
+								className={styles.storyBanner}
 							/>
 						</div>
 					</div>
 				))}
 			</div>
 			{showStoryBox && (
-				<div className={Styles.showStoryBox}>
-					<span className={Styles.closeBtn}>
-						<AiFillCloseCircle
-							onClick={closeStory}
-							color={'gold'}
-							size={22}
-						/>
-					</span>
-					<Image
-						width={2000}
-						height={1000}
-						layout='responsive'
-						src={stories[activeStoryIndex ?? 0].src}
-						alt={`Story ${activeStoryIndex ?? 0 + 1}`}
-						className={Styles.storyShowImage}
-					/>
+				<div className={styles.openStoryContainer}>
+					<div className={styles.openStoryScrollable}>
+						{stories.map((story) => (
+							<div className={styles.openStoryBox}>
+								<div className={styles.openStoryHeader}>
+									<AiFillCloseCircle
+										className={styles.close}
+										onClick={closeStory}
+										color={'white'}
+										size={'5vh'}
+									/>
+									<h3 className={styles.title}>{story.title}</h3>
+									<AiOutlineShoppingCart
+										className={styles.basketBall}
+										color={'white'}
+										size={'5vh'}
+										onClick={() => Add(story._id)}
+									/>
+								</div>
+								<div className={styles.openStory}>
+									<Image
+										width={1111}
+										height={1111}
+										src={story.src}
+										alt={story.title || story.description}
+										className={styles.storyShowImage}
+									/>
+									<h6>{story.description}</h6>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			)}
 		</>

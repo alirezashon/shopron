@@ -38,7 +38,7 @@
 		rgb(247, 248, 248)
 	);
 	box-shadow: 1px 1px 7px 2px rgba(240, 250, 255, 0.8),
-	1px 1px 4px 2px rgba(235, 243, 255, 0.8) inset;
+		1px 1px 4px 2px rgba(235, 243, 255, 0.8) inset;
 }
 .innerPostsBox {
 	display: grid;
@@ -55,14 +55,19 @@
 	padding: 1vh;
 }
 .postBox {
- 	background:linear-gradient(4deg, rgb(108, 107, 100),rgb(166, 205, 255),rgb(28, 138, 140));
+	background: linear-gradient(
+		4deg,
+		rgb(108, 107, 100),
+		rgb(166, 205, 255),
+		rgb(28, 138, 140)
+	);
 	cursor: pointer;
 	padding: 1vh;
 	border: double 0.4vh rgba(234, 229, 240, 0.8);
 	border-radius: 0.4vh;
 	box-shadow: 1px 1px 14px 2px rgba(241, 248, 255, 0.8),
 		1px 1px 4px 2px rgba(241, 228, 255, 0.7) inset;
- }
+}
 .innerPostBox {
 	padding: 1vh;
 	border: double 0.2vh rgba(113, 157, 245, 0.8);
@@ -85,6 +90,7 @@
 	width: 100%;
 	height: 40vh;
 	padding: 0.2vh;
+	object-fit: cover;
 	border-radius: 0.7vh;
 	border: dashed 0.4vh rgba(8, 133, 155, 0.8);
 	box-shadow: 1px 1px 4px 1px rgba(37, 163, 216, 0.8),
@@ -159,23 +165,23 @@
 	flex-direction: column;
 	align-items: center;
 }
- .details {
- 	display: flex;
- 	flex-direction: column;
- 	width: 90%;
- 	height: 50%;
- 	align-items: center;
- 	border-radius: 13vh;
- }
+.details {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	height: 50%;
+	align-items: center;
+	border-radius: 13vh;
+}
 
 .priceBox {
 	background: linear-gradient(44deg, rgb(21, 83, 124), rgb(0, 33, 47));
 	color: #ffebd7;
 	border: 0.5vh double rgb(250, 254, 255);
 	border-radius: 2vh;
-	margin-bottom: -.1vh;
+	margin-bottom: -0.1vh;
 	text-align: center;
-	 width: 90%;
+	width: 90%;
 }
 
 .controlBox {
@@ -193,7 +199,12 @@
 	text-align: center;
 	border-radius: 4vh;
 	color: rgba(255, 255, 255, 1);
-	background: linear-gradient(90deg, rgb(188, 244, 248), rgb(20, 135, 250), rgb(188, 244, 248));
+	background: linear-gradient(
+		90deg,
+		rgb(188, 244, 248),
+		rgb(20, 135, 250),
+		rgb(188, 244, 248)
+	);
 }
 
 .inceriment,
@@ -208,12 +219,12 @@
 
 .inceriment {
 	background: linear-gradient(44deg, rgb(10, 44, 78), rgb(12, 81, 88));
-	transition: transform .5s;
+	transition: transform 0.5s;
 }
 
 .deceriment {
 	background: linear-gradient(44deg, rgb(252, 85, 34), rgb(222, 145, 77));
-	transition: transform .7s;
+	transition: transform 0.7s;
 }
 
 .deceriment:hover,
@@ -221,11 +232,10 @@
 	transform: rotate(139deg);
 }
 
-@media(max-width:777px) {
+@media (max-width: 777px) {
 	.postsContainer {
 		height: 24vh;
 	}
-
 }
 /* Animation for the initial display */
 @keyframes fadeIn {

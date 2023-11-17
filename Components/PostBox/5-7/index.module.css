@@ -2,19 +2,19 @@
 @keyframes postBox {
 	15% {
 		border: ridge 1vh rgba(0, 0, 0, 0.4);
-		border-radius: 2vh 8vh;
+		border-radius: 1vh 2vh;
 	}
 	35% {
 		border: ridge 1vh rgba(0, 0, 0, 0.5);
-		border-radius: 5vh 5vh;
+		border-radius: 2vh 1vh;
 	}
 	65% {
 		border: ridge 1vh rgba(0, 0, 0, 0.6);
-		border-radius: 8vh 2vh;
+		border-radius: 1vh 2vh;
 	}
 	95% {
 		border: ridge 1vh rgba(0, 0, 0, 0.7);
-		border-radius: 11vh 1vh;
+		border-radius: 2vh 1vh;
 	}
 }
 @keyframes post {
@@ -40,21 +40,23 @@
 }
 .container {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) ;
- 	gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1rem;
 	background: radial-gradient(#fefefb, #f8f8f6);
 	padding: 2vh;
 	border: ridge 1vh rgba(120, 241, 203, 0.7);
-	animation: postBox infinite 7s;
+	animation: postBox 7s;
 	border-radius: 1vh 11vh;
 }
 
 .card {
-  	height: 44vh;
-	background: repeating-linear-gradient(190deg,
-				rgba(214, 213, 199, 0.7),
-				rgba(175, 202, 206, 0.4),
-				rgba(145, 196, 200, 0.9));
+	height: 55vh;
+	background: repeating-linear-gradient(
+		190deg,
+		rgba(214, 213, 199, 0.7),
+		rgba(102, 184, 197, 0.4),
+		rgba(145, 196, 200, 0.9)
+	);
 	position: relative;
 	border-radius: 1vh;
 	overflow: hidden;
@@ -63,6 +65,9 @@
 	cursor: pointer;
 	animation: post infinite 4s;
 	box-shadow: 1px 1px 22px 7px #a2a261 inset, 1px 1px 11px 1px #fbfbf9;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 .card:hover {
@@ -72,12 +77,19 @@
 .photo {
 	border: double 1vh rgba(0, 0, 0, 0.2);
 	width: 100%;
-	height: 70%;
+	height: 60%;
 	object-fit: cover;
 }
 
 .content {
-	padding: 1rem;
+	display: flex;
+	background: linear-gradient(
+		44deg,
+		rgb(122, 214, 233),
+		rgb(57, 106, 125),
+		rgb(145, 145, 254)
+	);
+	border: double 0.7vh rgb(122, 214, 233);
 }
 
 .title {
@@ -107,6 +119,72 @@
 .message-box.hide {
 	transform: translateX(100%);
 }
+
+
+
+
+.productDetails {
+	width: 100%;
+	border: double rgba(44, 66, 99, 0.9) 0.4vh;
+	box-shadow: 1px 1px 4px 1px rgba(28, 94, 122, 0.9),
+		1px 1px 1px 1px rgba(11, 97, 227, 0.9) inset;
+	border-radius: 1vh;
+	padding: 1vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	height: 50%;
+	align-items: center;
+	border-radius: 13vh;
+}
+.priceBox {
+	background: linear-gradient(44deg, rgb(21, 83, 124), rgb(0, 33, 47));
+	color: #ffebd7;
+	border: 0.5vh double rgb(250, 254, 255);
+	border-radius: 2vh;
+	margin-bottom: -.1vh;
+	text-align: center;
+	width: 90%;
+}
+
+.controlBox {
+	border: double 0.5vh rgba(12, 66, 103, 0.6);
+	background: radial-gradient(rgb(164, 236, 220), rgb(121, 211, 202));
+	border-radius: 4vh;
+	width: 111%;
+	height: 5vh;
+	display: flex;
+	justify-content: space-between;
+}
+
+.quantity {
+	width: 100%;
+	text-align: center;
+	border-radius: 4vh;
+	color: rgba(255, 255, 255, 1);
+	background: linear-gradient(90deg, rgb(188, 244, 248), rgb(20, 135, 250), rgb(188, 244, 248));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .basketContainer {
 	position: relative;
