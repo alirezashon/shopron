@@ -23,9 +23,7 @@ const Layout = ({ children }: any) => {
 					href='images/icon.png'
 				/>
 			</Head>
-			<div style={{ marginBottom: '7vh' }}>
-				<Navigation />
-			</div>
+			<Navigation />
 			<main>{children}</main>
 		</>
 	)

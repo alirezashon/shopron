@@ -78,7 +78,7 @@ const data = [
 ]
 const StoryComponent = () => {
 	const [openStory, setOpenStory] = useState<string>()
-	const [showStoryBox, setShowStoryBox] = useState(true)
+	const [showStoryBox, setShowStoryBox] = useState(false)
 	const [stories, setStories] = useState<Story[]>(
 		data?.filter((story: Story) => ({
 			story,
@@ -164,7 +164,7 @@ const StoryComponent = () => {
 			</div>
 			{showStoryBox && (
 				<div className={styles.openStoryContainer}>
-					<div className={styles.openStoryScrollable}>
+					<div className={styles.openStoryInnerSide}>
 						{stories.map((story) => (
 							<div className={styles.openStoryBox}>
 								<div className={styles.openStoryHeader}>

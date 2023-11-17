@@ -46,15 +46,15 @@
 	position: absolute;
 	top: 13vh;
 }
-.openStoryScrollable {
-	width: 100%;
+.openStoryInnerSide {
+	overflow-x:auto;
 	height: 80%;
 	display: flex;
 	align-items: center;
-	overflow-x: auto;
-	background-color: rgba(0, 111, 121, 0.7);
+	background-color: rgba(0, 111, 121, 0.3);
 }
 .openStoryBox {
+	border: double .7vh rgba(25, 90, 255, 0.7);
 	background: radial-gradient(
 		rgb(115, 233, 224),
 		rgb(158, 196, 222),
@@ -81,8 +81,11 @@
 	align-items: center;
 	padding: 0.3vh 0.5vh;
 }
-.openStoryHeader h6 {
-}
+.openStory h6 {
+	background: linear-gradient(50deg, rgb(0, 255, 208),rgba(255, 225, 0, 0.488),rgb(208, 244, 208));
+	background-color: #34bc9a;
+	direction: rtl;
+ }
 .basketBall {
 	background: radial-gradient(
 		rgb(12, 176, 162),

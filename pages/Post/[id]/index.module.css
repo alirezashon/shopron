@@ -1,0 +1,267 @@
+/** @format */
+@keyframes postBox {
+    15% {
+        border-radius: 10vh 0vh 0vh 0vh;
+    }
+
+    35% {
+        border-radius: 0vh 10vh 0vh 0vh;
+    }
+
+    65% {
+        border-radius: 0vh 0vh 10vh 0vh;
+    }
+
+    95% {
+        border-radius: 0vh 0vh 0vh 10vh;
+    }
+}
+
+@keyframes iconHover {
+    15% {
+        transform: scale(1.02) rotate(20deg);
+    }
+
+    35% {
+        transform: scale(1.1) rotate(190deg);
+    }
+
+    65% {
+        transform: scale(1.1) rotate(190deg);
+    }
+
+    95% {
+        transform: scale(1.1) rotate(190deg);
+    }
+}
+
+.postsBox {
+    width: 99vw;
+    animation: postBox infinite 11s;
+    margin: 1vh;
+    padding: 1vh;
+    border: ridge 0.4vh rgba(12, 212, 182, 0.8);
+    background: repeating-radial-gradient(rgba(231, 246, 231, 0.9),
+            rgb(247, 248, 248));
+    box-shadow: 1px 1px 7px 2px rgba(240, 250, 255, 0.8),
+        1px 1px 4px 2px rgba(235, 243, 255, 0.8) inset;
+}
+
+.innerPostsBox {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(39vh, 1fr));
+    gap: 1rem;
+    animation: postBox infinite 11s;
+    border: groove 0.4vh rgba(4, 182, 126, 0.7);
+    background: radial-gradient(rgba(173, 242, 242, 0.77),
+            rgba(72, 228, 228, 0.77),
+            rgba(82, 156, 156, 0.77),
+            rgba(243, 252, 252, 0.77));
+    padding: 1vh;
+}
+
+.postBox {
+    background: linear-gradient(4deg,
+            rgb(108, 107, 100),
+            rgb(166, 205, 255),
+            rgb(28, 138, 140));
+    cursor: pointer;
+    padding: 1vh;
+    border: double 0.4vh rgba(234, 229, 240, 0.8);
+    border-radius: 0.4vh;
+    box-shadow: 1px 1px 14px 2px rgba(241, 248, 255, 0.8),
+        1px 1px 4px 2px rgba(241, 228, 255, 0.7) inset;
+}
+
+.innerPostBox {
+    padding: 1vh;
+    border: double 0.2vh rgba(113, 157, 245, 0.8);
+    background: radial-gradient(rgba(213, 218, 218, 0.62), rgb(178, 212, 246));
+    box-shadow: 1px 1px 4px 1px rgba(193, 236, 1, 0.8),
+        1px 1px 4px 2px rgba(206, 166, 245, 0.7) inset;
+}
+
+.title {
+    background: radial-gradient(rgba(14, 106, 106, 0.62), rgb(0, 35, 35));
+    color: aliceblue;
+    text-align: center;
+    padding: 1vh;
+    border: double 0.6vh rgb(178, 212, 246);
+    border-radius: 1vh;
+}
+
+.title:hover {
+    transform: scale(1.05);
+}
+
+.image {
+    width: 100%;
+    height: 40vh;
+    padding: 0.2vh;
+    object-fit:contain;
+    border-radius: 0.7vh;
+    border: dashed 0.4vh rgba(8, 133, 155, 0.8);
+    box-shadow: 1px 1px 4px 1px rgba(37, 163, 216, 0.8),
+        1px 1px 7px 11px rgba(166, 214, 250, 0.651) inset;
+}
+
+.image:hover {
+    transform: scale(1.05);
+}
+
+.priceBasketBox {
+    padding: 0.7vh;
+    border: ridge 0.2vh rgba(121, 1, 241, 0.8);
+    background: radial-gradient(rgba(73, 243, 243, 0.62), rgb(246, 248, 251));
+}
+
+.innerPriceBasketBox {
+    padding: 0.4vh 0.7vh;
+    border-radius: 0.5vh;
+    border: ridge 0.4vh rgba(6, 46, 138, 0.8);
+    background: radial-gradient(rgba(8, 143, 143, 0.62), rgb(1, 25, 49));
+    box-shadow: 1px 1px 7px 1px rgba(9, 153, 214, 0.8),
+        1px 1px 7px 4px rgba(139, 231, 243, 0.651) inset;
+    display: flex;
+    text-align: center;
+}
+
+.priceBasket {
+    display: flex;
+    align-items: center;
+    background: radial-gradient(rgba(1, 93, 241, 0.8), rgba(137, 221, 203, 0.8));
+    border: ridge 0.4vh rgba(199, 245, 243, 0.8);
+    padding: 0vh 0vh 0vh 0vh;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 3vh;
+}
+
+.price {
+    padding: 1vh;
+    border-radius: 2vh;
+    background: radial-gradient(rgba(1, 93, 241, 0.8), rgba(137, 221, 203, 0.8));
+    border: dashed 0.3vh rgba(82, 156, 156, 0.77);
+    margin: 0.1vh 0.2vh;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: double 0.5vh rgba(123, 177, 235, 0.8);
+    background: radial-gradient(rgba(1, 114, 236, 0.8), rgba(22, 19, 113, 0.9));
+    padding: 1vh;
+    border-radius: 55vh;
+}
+
+.icon:hover {
+    animation: iconHover;
+}
+
+/* Styling for the container */
+.addPriceBasketBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #ff7f00, #f94e03);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.productDetails {
+    width: 100%;
+    border: double rgba(44, 66, 99, 0.9) 0.4vh;
+    box-shadow: 1px 1px 4px 1px rgba(28, 94, 122, 0.9),
+        1px 1px 1px 1px rgba(11, 97, 227, 0.9) inset;
+    border-radius: 1vh;
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 50%;
+    align-items: center;
+    border-radius: 13vh;
+}
+
+.priceBox {
+    background: linear-gradient(44deg, rgb(21, 83, 124), rgb(0, 33, 47));
+    color: #ffebd7;
+    border: 0.5vh double rgb(250, 254, 255);
+    border-radius: 2vh;
+    margin-bottom: -0.1vh;
+    text-align: center;
+    width: 90%;
+}
+
+.controlBox {
+    border: double 0.5vh rgba(12, 66, 103, 0.6);
+    background: radial-gradient(rgb(164, 236, 220), rgb(121, 211, 202));
+    border-radius: 4vh;
+    width: 111%;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quantity {
+    width: 100%;
+    text-align: center;
+    border-radius: 4vh;
+    color: rgba(255, 255, 255, 1);
+    background: linear-gradient(90deg,
+            rgb(188, 244, 248),
+            rgb(20, 135, 250),
+            rgb(188, 244, 248));
+}
+
+.inceriment,
+.deceriment {
+    border-radius: 2vh;
+    width: 20%;
+    display: block;
+    text-align: center;
+    height: 100%;
+    color: rgb(255, 255, 255);
+}
+
+.inceriment {
+    background: linear-gradient(44deg, rgb(10, 44, 78), rgb(12, 81, 88));
+    transition: transform 0.5s;
+}
+
+.deceriment {
+    background: linear-gradient(44deg, rgb(252, 85, 34), rgb(222, 145, 77));
+    transition: transform 0.7s;
+}
+
+.deceriment:hover,
+.inceriment:hover {
+    transform: rotate(139deg);
+}
+
+@media (max-width: 777px) {
+    .postsContainer {
+        height: 24vh;
+    }
+}
+
+/* Animation for the initial display */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

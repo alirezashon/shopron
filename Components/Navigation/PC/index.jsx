@@ -5,6 +5,10 @@ import styles from './inedx.module.css'
 import { useState, useEffect } from 'react'
 
 const Menu = () => {
+	const [isChecked, setIsChecked] = useState(false)
+	const [showDiv, setShowDiv] = useState(true)
+	const [isOpen, setIsOpen] = useState(false)
+
 	const items = [
 		{ label: 'محصولات', link: '/products' },
 		{ label: 'سفارشی سازی', link: '/Customization' },
@@ -19,41 +23,17 @@ const Menu = () => {
 		{ label: 'انگشتر', link: '/bracelets' },
 		{ label: 'پابند', link: '/watches' },
 	]
-	 const [isChecked, setIsChecked] = useState(false)
-
-		const handleSwitch = () => {
-			setIsChecked(!isChecked)
-		}
-	const [isOpen, setIsOpen] = useState(false)
-
-	const handleToggle = () => {
-		setIsOpen(!isOpen)
-	}
-
-	const handleMouseLeave = () => {
-		setIsOpen(false)
-	}
-
-	const [showDiv, setShowDiv] = useState(true)
-	const [prevScrollPos, setPrevScrollPos] = useState(0)
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const currentScrollPos = window.pageYOffset
-
-			if (prevScrollPos > currentScrollPos-10) {
-				setShowDiv(true)
-			} else {
-				setShowDiv(false)
-			}
-
-			setPrevScrollPos(currentScrollPos)
+			const currentScrollPos = window.scrollY
+			currentScrollPos < 70 ? setShowDiv(true) : setShowDiv(false)
 		}
 
 		window.addEventListener('scroll', handleScroll)
 
 		return () => window.removeEventListener('scroll', handleScroll)
-	}, [prevScrollPos])
+	}, [])
 
 	return (
 		<>
@@ -72,15 +52,17 @@ const Menu = () => {
 
 				<div className=''>
 					<div className={styles.container}>
-						<button
+						<div
 							className={styles.toggleButton}
-							onMouseEnter={handleToggle}>
+							onMouseEnter={() => setIsOpen(true)}
+							onMouseLeave={() => setIsOpen(false)}>
 							نوع محصول
-						</button>
+						</div>
 						{isOpen && (
 							<div
-								className={styles.dropdown}
-								onMouseLeave={handleMouseLeave}>
+								onMouseEnter={() => setIsOpen(true)}
+								onMouseLeave={() => setIsOpen(false)}
+								className={styles.dropdown}>
 								{dropdownItems.map((dropdownItems, index) => (
 									<Link
 										key={dropdownItems.link}
@@ -94,15 +76,15 @@ const Menu = () => {
 					</div>
 				</div>
 				<div className={styles.switchWrapper}>
-					<label className={styles.label}>نقره</label>
+					<label className={styles.label}>ازاینا</label>
 
 					<input
 						type='checkbox'
 						className={styles.switch}
 						checked={isChecked}
-						onChange={handleSwitch}
+						onChange={() => setIsChecked(!isChecked)}
 					/>
-					<label className={styles.label}>طلا</label>
+					<label className={styles.label}>ازونا</label>
 				</div>
 			</div>
 		</>
