@@ -35,15 +35,14 @@ interface Post {
 	inBasket?: number
 }
 interface BasketStore {
-	id: string
+	id: string 
 	quantity: number
 }
 const index: NextPage<HomeProps> = ({ posts }) => {
 	const [postStates, setPostStates] = useState<Post[]>(
 		posts?.filter((post: Post) => ({
 			post,
-			isAddToBasket: false,
-			quantity: 0,
+			inBasket:0
 		})) || []
 	)
 	const [basketStore, setBasketStore] = useState<string[]>([])

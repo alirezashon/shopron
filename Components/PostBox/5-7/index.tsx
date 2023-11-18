@@ -45,41 +45,38 @@ interface BasketStore {
 const posts = [
 	{
 		_id: '44ads',
-		title: 'EBiramoza',
+		title: 'شاملکه',
 		src: '/images/alireza.jpg',
 		price: 7777777,
 		category: 'P&O*S^T$I%T#E^M$',
 		quantity: 22,
 		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
+			'خدایا بینهایت مرتبه شکرت که مارو هر لحظه به هم نزدیک تر میکنی',
 	},
 	{
 		_id: '7sdfgt',
-		title: 'EBiramoza',
+		title: 'شاملکه',
 		src: '/images/alireza.jpg',
 		price: 7777777,
 		category: 'P&O*S^T$I%T#E^M$',
 		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
+		description: 'خدایا بینهایت مرتبه شکرت که هر لحظه ملکه ملیکامو حفظ میکنی',
 	},
 	{
 		_id: '44adsgalobdibordada',
-		title: 'EBiramoza',
+		title: 'شاملکه',
 		src: '/images/alireza.jpg',
 		price: 7777777,
 		category: 'P&O*S^T$I%T#E^M$',
 		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
+		description: 'خدایا بینهایت مرتبه شکرت که هر لحظه ما بیشتر عاشق هم میشیم',
 	},
 ]
 const PostBox = () => {
 	const [postStates, setPostStates] = useState<Post[]>(
 		posts?.filter((post: Post) => ({
 			post,
-			isAddToBasket: false,
-			quantity: 0,
+			inBasket: 0,
 		})) || []
 	)
 	const [basketStore, setBasketStore] = useState<string[]>([])
@@ -126,7 +123,7 @@ const PostBox = () => {
 
 	return (
 		<div className={styles.container}>
-			{posts.map((obj) => (
+			{postStates.map((obj) => (
 				<div
 					key={obj._id}
 					className={styles.card}>
@@ -139,68 +136,38 @@ const PostBox = () => {
 						height={1111}
 						priority
 					/>
-					<div className={styles.price}>{`${obj.price}`}</div>
-					<div className={styles.content}>
-						<div className={styles.basketContainer}>
-							<div
-								className={styles.basketButton}
-								onClick={() => inceriment(obj._id)}>
-								{obj.inBasket && obj.inBasket > 0 ? (
-									<div className={styles.productDetails}>
-										<div className={styles.details}>
-											<div className={styles.priceBox}>
-												<p>{obj.price}</p>
-											</div>
-											<div className={styles.controlBox}>
-												<MdAddCircle
-													className={styles.inceriment}
-													size={'3vh'}
-													onClick={() => inceriment(obj._id)}
-												/>
-												<p className={styles.quantity}>{obj.inBasket}</p>
-												<FaMinus
-													className={styles.deceriment}
-													size={'3vh'}
-													onClick={() => deceroment(obj._id)}
-												/>
-											</div>
-										</div>
-									</div>
-								) : (
-									 
-												<AiOutlineShoppingCart 
-													size={'3vh'}
-													color={'rgb(255,255,255)'}
-												/>
-												 
-								)}
-								{/* {obj.inBasket && obj.inBasket > 0 ? (
-									<div className={styles.productDetails}>
-										<div className={styles.details}>
-											<div className={styles.priceBox}>
-												<p>{obj.price}</p>
-											</div>
-											<div className={styles.controlBox}>
-												<MdAddCircle
-													className={styles.inceriment}
-													size={'3vh'}
-													onClick={() => inceriment(obj._id)}
-												/>
-												<p className={styles.quantity}>{obj.inBasket}</p>
-												<FaMinus
-													className={styles.deceriment}
-													size={'3vh'}
-													onClick={() => deceroment(obj._id)}
-												/>
-											</div>
-										</div>
-									</div>
-								) : (
-									<AiOutlineShoppingCart />
-								)} */}
+
+					{obj.inBasket && obj.inBasket > 0 ? (
+						<div className={styles.productDetails}>
+							<div className={styles.details}>
+								<div className={styles.priceBox}>
+									<p>{obj.price}</p>
+								</div>
+								<div className={styles.controlBox}>
+									<MdAddCircle
+										className={styles.inceriment}
+										size={'3vh'}
+										onClick={() => inceriment(obj._id)}
+									/>
+									<p className={styles.quantity}>{obj.inBasket}</p>
+									<FaMinus
+										className={styles.deceriment}
+										size={'3vh'}
+										onClick={() => deceroment(obj._id)}
+									/>
+								</div>
 							</div>
 						</div>
-					</div>
+					) : (
+						<>
+							<p className={styles.price}>{`${obj.price}`}</p>
+							<AiOutlineShoppingCart
+								size={'6vh'}
+								color={'rgb(255,255,255)'}
+								className={styles.basketBall}
+							/>
+						</>
+					)}
 				</div>
 			))}
 		</div>
