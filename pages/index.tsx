@@ -1,5 +1,4 @@
-/** @format */
-
+ 
 import React, { useEffect, useState } from 'react'
 import Login from '../Components/Login'
 import Handler from '../Handler'
@@ -22,8 +21,7 @@ interface Props {
 		}
 	]
 }
-
-const RootPage: NextPage<Props> = ({ posts }) => {
+ const RootPage: NextPage<Props> = ({ posts }) => {
 	const [token, setToken] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
 
@@ -66,10 +64,10 @@ const RootPage: NextPage<Props> = ({ posts }) => {
 				/>
 			) : token ? (
 				<>
+					<Handler />
 					<Story data={posts} />
 					<Posts posts={posts} />
 					<PostsDisplay posts={posts} />
-					<Handler />
 				</>
 			) : (
 				<Login setToken={setToken} />

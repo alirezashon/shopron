@@ -10,12 +10,12 @@ const Basket = () => {
 	const [position, setPosition] = useState<number>(40)
 	const [isBasketOpen, setIsBasketOpen] = useState<boolean>(false)
 	const [isBasketFullScreen, setIsBasketFull] = useState<boolean>(false)
-	const drawrHandler = (e:DragEvent) => {
+	const drawrHandler = (e: DragEvent) => {
 		const newPosition = (e.clientX / window.innerWidth) * 100
 		isDragging ? setPosition(newPosition) : ''
 	}
-  
-  const handleMouseMove = (e:MouseEvent) => {
+
+	const handleMouseMove = (e: MouseEvent) => {
 		if (isDragging) {
 			const newPosition = (e.clientX / window.innerWidth) * 100
 			setPosition(newPosition)
@@ -25,29 +25,49 @@ const Basket = () => {
 	useEffect(() => {
 		if (isDragging) {
 			window.addEventListener('mousemove', handleMouseMove)
-			window.addEventListener('mouseup',()=>setIsDragging(false))
+			window.addEventListener('mouseup', () => setIsDragging(false))
 		}
 
 		return () => {
 			window.removeEventListener('mousemove', handleMouseMove)
-			window.removeEventListener('mouseup', ()=> setIsDragging)
+			window.removeEventListener('mouseup', () => setIsDragging)
 		}
 	}, [isDragging])
+
+	const calculatePrice = async () => {
+		const client = localStorage.getItem('user')
+		const products = JSON.parse(
+			localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
+		)
+		const response = await fetch('/api/data/Shop', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				products,
+				client: 'ak',
+				authType: 'S&H!O*P^I$N#G$T^I@M*E',
+			}),
+		})
+		console.log(products)
+		const data = await response.json()
+		console.log(data)
+	}
 	return (
 		<>
 			{isBasketOpen ? (
 				<div
 					className={styles.basketDrawer}
 					onMouseDown={() => setIsDragging(true)}>
-						<div className={styles.basketHeader}>
-							<p>total price</p>
-							<GiCrossMark
-								className={styles.cross}
-								size={'4vh'}
-								onClick={() => setIsBasketOpen(false)}
-							/>
-						</div>
+					<div className={styles.basketHeader}>
+						<p>total price</p>
+						<GiCrossMark
+							className={styles.cross}
+							size={'4vh'}
+							onClick={() => setIsBasketOpen(false)}
+						/>
+					</div>
 					<div className={styles.basketBase}>
+						<button onClick={() => calculatePrice()}>میخوامشون</button>
 						<Product />
 					</div>
 				</div>
