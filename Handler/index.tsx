@@ -11,8 +11,8 @@ const Handler = () => {
 			<Layout>
 				<Basket/>
 				<Story />
-				<PostBox />
-				<PostBox_Three_Four_Section />
+				{/* <PostBox />
+				<PostBox_Three_Four_Section /> */}
 			</Layout>
 		</>)
 }

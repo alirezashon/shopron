@@ -1,3 +1,5 @@
+/** @format */
+
 // // pages/zabbix-api-example.js
 
 // import { useEffect } from 'react';
@@ -90,67 +92,113 @@
 
 // export default ZabbixApiExample;
 
-
-
-
-
 // /** @format */
 
- 
-import { useEffect } from 'react'
+// pages/index.tsx
+import { GetServerSideProps, NextPage } from 'next'
+import Link from 'next/link'
+import PostsDisplay from '../Components/PostBox/4-3'
 
-const test = () => {
-	const data = [
-	{
- 		title: 'EBiramoza',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-	{
- 		title: 'AmoAliReza',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-	{
- 		title: 'Kalim',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-]
-	useEffect(() => {
-    ; (async () => {
-      data.map(async(post) => {
-        
-        const callPostManager = await fetch('api/data/Post/Admin', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            authType: '!I@N$e$r%T&O*',
-            data:post,
-            user: 'al.akbarPoor',
-          }),
-        })
-        // const res = await callPostManager.json()
-        console.log(res)
-      })
-		})()
-	}, [])
+interface HomeProps {
+	posts: [
+		{
+			_id: string
+			title: string
+			src: string
+			price: number
+			category: string
+			quantity: number
+			description: string
+			inBasket?: number
+		}
+	]
+}
 
+const IndexPage: NextPage<HomeProps> = ({ posts }) => {
 	return (
-		<> 
-		</>
+		<div>
+			<h1>Your Page Title</h1>
+			<PostsDisplay posts={posts} />
+		</div>
 	)
 }
-export default test
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+	// Replace this with your logic to fetch posts from an external API
+	const res = await fetch('http://localhost:3000/api/data/Post/Client', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			category: '@L$L%O%F#D%M^',
+			authType: 'G&E!T*P^R$O#D$U^C@T*S',
+		}),
+	})
+	const callPosts = await res.json()
+	const posts = callPosts.products
+
+	return {
+		props: {
+			posts,
+		},
+	}
+}
+
+export default IndexPage
+
+// import { useEffect } from 'react'
+
+// const test = () => {
+// 	const data = [
+// 	{
+//  		title: 'EBiramoza',
+// 		src: '/images/alireza.jpg',
+// 		price: 7777777,
+// 		category: 'P&O*S^T$I%T#E^M$',
+// 		quantity: 22,
+// 		description:
+// 			'this post just created for happy freedome to al.akbarporJojegan',
+// 	},
+// 	{
+//  		title: 'AmoAliReza',
+// 		src: '/images/alireza.jpg',
+// 		price: 7777777,
+// 		category: 'P&O*S^T$I%T#E^M$',
+// 		quantity: 22,
+// 		description:
+// 			'this post just created for happy freedome to al.akbarporJojegan',
+// 	},
+// 	{
+//  		title: 'Kalim',
+// 		src: '/images/alireza.jpg',
+// 		price: 7777777,
+// 		category: 'P&O*S^T$I%T#E^M$',
+// 		quantity: 22,
+// 		description:
+// 			'this post just created for happy freedome to al.akbarporJojegan',
+// 	},
+// ]
+// 	useEffect(() => {
+//     ; (async () => {
+//       data.map(async(post) => {
+
+//         const callPostManager = await fetch('api/data/Post/Admin', {
+//           method: 'POST',
+//           headers: { 'Content-Type': 'application/json' },
+//           body: JSON.stringify({
+//             authType: '!I@N$e$r%T&O*',
+//             data:post,
+//             user: 'al.akbarPoor',
+//           }),
+//         })
+//         // const res = await callPostManager.json()
+//         console.log(res)
+//       })
+// 		})()
+// 	}, [])
+
+// 	return (
+// 		<>
+// 		</>
+// 	)
+// }
+// export default test

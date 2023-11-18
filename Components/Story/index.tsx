@@ -14,69 +14,10 @@ interface Story {
 	description: string
 	seen?: boolean
 }
-const data = [
-	{
-		_id: '44ads',
-		title: 'EBiramoza',
-		src: '/images/ali.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-	{
-		_id: '7sdfgt',
-		title: 'EBiramoza',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-	{
-		_id: '44adsgalobdibordada',
-		title: 'EBiramoza',
-		src: '/images/Akbar.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-	{
-		_id: '44ads',
-		title: 'EBiramoza',
-		src: '/images/ali.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-	{
-		_id: '7sdfgt',
-		title: 'EBiramoza',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-	{
-		_id: '44adsgalobdibordada',
-		title: 'EBiramoza',
-		src: '/images/Akbar.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'this post just created for happy freedome to al.akbarporJojegan',
-	},
-]
-const StoryComponent = () => {
+interface Props {
+	data : Story[]
+}
+const StoryComponent: React.FC<Props> = ({data}) => {
 	const [openStory, setOpenStory] = useState<string>()
 	const [showStoryBox, setShowStoryBox] = useState(false)
 	const [stories, setStories] = useState<Story[]>(

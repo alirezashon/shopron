@@ -6,6 +6,7 @@ import { FaMinus } from 'react-icons/fa'
 import React, { useState, useEffect } from 'react'
 import styles from './index.module.css'
 import { Add, Remove } from '../../Basket/Actions'
+import { useRouter } from 'next/router'
 
 interface Post {
 	_id: string
@@ -21,58 +22,10 @@ interface BasketStore {
 	id: string
 	quantity: number
 }
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-// 	console.log('context')
-// 	const res = await fetch('/api/data/Post/Client', {
-// 		method: 'POST',
-// 		headers: { 'Content-Type': 'application/json' },
-// 		body: JSON.stringify({
-// 			category: '@L$L%O%F#D%M^',
-// 			authType: 'G&E!T*P^R$O#D$U^C@T*S',
-// 		}),
-// 	})
-// 	const callPosts = await res.json()
-// 	const posts = callPosts.products
-// 	console.log(posts)
-// 	return { props: { posts } }
-// }
-/***                 Main Component                     ***/
-
-// const PostBox = ({
-// 	posts,
-// }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-const posts = [
-	{
-		_id: '44ads',
-		title: 'شاملکه',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description:
-			'خدایا بینهایت مرتبه شکرت که مارو هر لحظه به هم نزدیک تر میکنی',
-	},
-	{
-		_id: '7sdfgt',
-		title: 'شاملکه',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description: 'خدایا بینهایت مرتبه شکرت که هر لحظه ملکه ملیکامو حفظ میکنی',
-	},
-	{
-		_id: '44adsgalobdibordada',
-		title: 'شاملکه',
-		src: '/images/alireza.jpg',
-		price: 7777777,
-		category: 'P&O*S^T$I%T#E^M$',
-		quantity: 22,
-		description: 'خدایا بینهایت مرتبه شکرت که هر لحظه ما بیشتر عاشق هم میشیم',
-	},
-]
-const PostBox = () => {
+interface PostDisplayProps {
+	posts: Post[]
+}
+const PostBox: React.FC<PostDisplayProps> = ({ posts }) => {
 	const [postStates, setPostStates] = useState<Post[]>(
 		posts?.filter((post: Post) => ({
 			post,
@@ -80,6 +33,7 @@ const PostBox = () => {
 		})) || []
 	)
 	const [basketStore, setBasketStore] = useState<string[]>([])
+	const router = useRouter()
 
 	const updateBasketState = (posts: Post[], basketItems: BasketStore[]) => {
 		const updatedPosts = posts.map((post) => {
@@ -134,6 +88,11 @@ const PostBox = () => {
 						alt={obj.title}
 						width={11111}
 						height={1111}
+						onClick={() =>
+							router.push(
+								`http://localhost:3000/Post/${encodeURIComponent(obj.title)}`
+							)
+						}
 						priority
 					/>
 

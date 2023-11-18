@@ -1,29 +1,12 @@
-/** @format */
-
-// pages/index.tsx
-import { GetServerSideProps, NextPage } from 'next'
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
+ 
+ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { MdAddCircle } from 'react-icons/md'
 import { FaMinus } from 'react-icons/fa'
 import { Add, Remove } from '@/Components/Basket/Actions'
 import styles from './index.module.css'
-interface HomeProps {
-	posts: [
-		{
-			_id: string
-			title: string
-			src: string
-			price: number
-			category: string
-			quantity: number
-			description: string
-			inBasket?: number
-		}
-	]
-}
+ 
 interface Post {
 	_id: string
 	title: string
@@ -38,11 +21,14 @@ interface BasketStore {
 	id: string 
 	quantity: number
 }
-const index: NextPage<HomeProps> = ({ posts }) => {
+interface PostsDisplayProps {
+	posts: Post[]
+}
+const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 	const [postStates, setPostStates] = useState<Post[]>(
 		posts?.filter((post: Post) => ({
 			post,
-			inBasket:0
+			inBasket: 0,
 		})) || []
 	)
 	const [basketStore, setBasketStore] = useState<string[]>([])
@@ -150,26 +136,6 @@ const index: NextPage<HomeProps> = ({ posts }) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-	// Replace this with your logic to fetch posts from an external API
-	const res = await fetch('http://localhost:3000/api/data/Post/Client', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			category: '@L$L%O%F#D%M^',
-			authType: 'G&E!T*P^R$O#D$U^C@T*S',
-		}),
-	})
-	const callPosts = await res.json()
-	const posts = callPosts.products
-	console.log('posts')
-	// const posts: HomeProps['posts'] = await response.json()
-
-	return {
-		props: {
-			posts,
-		},
-	}
-}
+ 
 
 export default index
