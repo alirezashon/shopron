@@ -1,12 +1,13 @@
- 
- import { useState, useEffect } from 'react'
+/** @format */
+
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { MdAddCircle } from 'react-icons/md'
 import { FaMinus } from 'react-icons/fa'
 import { Add, Remove } from '@/Components/Basket/Actions'
 import styles from './index.module.css'
- 
+import { useRouter } from 'next/router'
 interface Post {
 	_id: string
 	title: string
@@ -18,7 +19,7 @@ interface Post {
 	inBasket?: number
 }
 interface BasketStore {
-	id: string 
+	id: string
 	quantity: number
 }
 interface PostsDisplayProps {
@@ -32,7 +33,7 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 		})) || []
 	)
 	const [basketStore, setBasketStore] = useState<string[]>([])
-
+	const router = useRouter()
 	const updateBasketState = (posts: Post[], basketItems: BasketStore[]) => {
 		const updatedPosts = posts?.map((post) => {
 			const matchingItem = basketItems.find((item) => item.id === post._id)
@@ -88,6 +89,9 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 								width={1111}
 								height={1111}
 								className={styles.image}
+								onClick={() =>
+									router.push(`http://localhost:3000/Post/${obj.title}`)
+								}
 								priority
 							/>
 							{obj.inBasket && obj.inBasket > 0 ? (
@@ -135,7 +139,5 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 		</div>
 	)
 }
-
- 
 
 export default index

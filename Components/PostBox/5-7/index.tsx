@@ -90,7 +90,7 @@ const PostBox: React.FC<PostDisplayProps> = ({ posts }) => {
 						height={1111}
 						onClick={() =>
 							router.push(
-								`http://localhost:3000/Post/${encodeURIComponent(obj.title)}`
+								`http://localhost:3000/Post/${obj.title}`
 							)
 						}
 						priority

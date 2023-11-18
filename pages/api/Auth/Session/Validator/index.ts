@@ -1,5 +1,3 @@
-/** @format */
-
 import { NextApiRequest, NextApiResponse } from 'next'
 import { decryptText } from '../../../../../Components/CryptoUtils'
 import ClientSession from '../../../../../models/Client/Session'
@@ -11,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			const { authType, token } = req.body
 			if (authType === 'ClIeNt_ValidaTe*%') {
 				if (token) {
-					await db.connect()
+ 					await db.connect()
 					const kalim = token.split('#')[1].replace(/"$/, '')
 
 					const session = await ClientSession.findOne({

@@ -10,7 +10,7 @@ const Handler = () => {
     return(<>
 			<Layout>
 				<Basket/>
-				<Story />
+				{/* <Story /> */}
 				{/* <PostBox />
 				<PostBox_Three_Four_Section /> */}
 			</Layout>

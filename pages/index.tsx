@@ -24,18 +24,18 @@ interface Props {
 }
 
 const RootPage: NextPage<Props> = ({ posts }) => {
-	const [token, setToken] = useState<boolean>(true)
+	const [token, setToken] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
 
 	const validator = async (token: string) => {
 		try {
-			const response = await fetch('/api/Auth/Admin/Session/Validator', {
+			const response = await fetch('/api/Auth/Session/Validator', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					authType: 'Admin_ValidaTe*%',
+					authType: 'ClIeNt_ValidaTe*%',
 					token: token,
 				}),
 			})

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import {Add} from'../Basket/Actions'
 import styles from './index.module.css'
+import { useRouter } from 'next/router'
 interface Story {
 	_id: string
 	title: string
@@ -26,7 +27,7 @@ const StoryComponent: React.FC<Props> = ({data}) => {
 			seen: false,
 		})) || []
 	)
-
+	const router = useRouter()
 	useEffect(() => {
 		const storyHistory: string[] = JSON.parse(
 			sessionStorage.getItem('^S&T#o@r%i($*i&N0') || '[]'
@@ -130,6 +131,7 @@ const StoryComponent: React.FC<Props> = ({data}) => {
 										src={story.src}
 										alt={story.title || story.description}
 										className={styles.storyShowImage}
+										onClick={()=> router.push(`http://localhost:3000/Post/${story.title}`)}
 									/>
 									<h6>{story.description}</h6>
 								</div>
