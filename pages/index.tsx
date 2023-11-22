@@ -66,8 +66,8 @@ interface Props {
 				<>
 					<Handler />
 					<Story data={posts} />
-					<Posts posts={posts} />
 					<PostsDisplay posts={posts} />
+					<Posts posts={posts} />
 				</>
 			) : (
 				<Login setToken={setToken} />

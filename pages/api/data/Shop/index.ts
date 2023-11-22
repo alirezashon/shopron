@@ -1,5 +1,3 @@
-/** @format */
-
 import { NextApiRequest, NextApiResponse } from 'next'
 import Sale from '../../../../models/Sale'
 import Data from '../../../../models/Data'
