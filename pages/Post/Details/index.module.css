@@ -24,28 +24,26 @@
 	grid-column: span 5;
 }
 .detailsBox {
-	background: linear-gradient(44deg, rgb(58, 201, 248), lightblue);
-	grid-row: span 3;
+ 	grid-row: span 3;
 	grid-column: span 2;
 	direction: rtl;
 }
 .text{
      margin: 1vh;
      padding: .1vh .7vh;
-     border: .6vh double #22d1c5;
+	 border-radius: 1vh;
+     border-bottom: .6vh double #22d1c5;
     color: #ffffff;
-    background:linear-gradient(270deg,rgb(1, 56, 74),rgb(22, 93, 116),rgb(44, 164, 204));
+    background:linear-gradient(270deg,rgba(1, 56, 74, 0.87),rgba(22, 93, 116, 0.817),rgba(44, 164, 204, 0.764));
 }
 .postBox {
     border: ridge .7vh #b0fbfb;
     box-shadow: 1px 1px 1px #008fc8, 1px 1px 11px 2px #f8ffff inset;
-	background-color: #1f6dff;
-	grid-row: span 3;
+ 	grid-row: span 3;
 	grid-column: span 2;
 }
 .bottomBox {
-    background-color: yellow;
-	grid-row: span 1;
+ 	grid-row: span 1;
 	grid-column: span 5;
 }
 .screenBox {
@@ -101,7 +99,8 @@
 
 .issueScreenLogo {
 	opacity: 0.33;
-	border-radius: 5vh 0vh;
+	border-radius: 5vh ;
+	width: 100%;
 	transform: rotateX(54deg);
 	transform-origin: 10% 10% 118%;
 	border: transparent 9px #a5df08;
@@ -123,5 +122,4 @@
 	border-radius: 2vh;
 	color: rgb(204, 255, 254);
 }
-.detailsRow span {
-}
+ 

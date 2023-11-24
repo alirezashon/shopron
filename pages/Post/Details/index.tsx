@@ -3,7 +3,7 @@
 import { GetServerSideProps } from 'next'
 import styles from './index.module.css'
 import Carouselali from '@/Components/Carouselali'
-import PostBox from '@/Components/PostBox/5-7'
+import PostBox from '../PostBox'
 import SelectList from '@/Components/Form/SelectList'
 import CheckBox from '@/Components/Form/CheckBox'
 import Radio from '@/Components/Form/Radio'
@@ -51,7 +51,9 @@ const Details = (post: PostProps, children: any) => {
 							<div className={styles.postBox}>
 								<PostBox posts={[post.post]} />
 							</div>
+							<Radio />
 							<SelectList />
+							<Switch />
 							<Chips />
 						</div>
 
@@ -64,8 +66,7 @@ const Details = (post: PostProps, children: any) => {
 									<span>{value}</span>
 								</div>
 							))}
-							 <CheckBox /> <Radio /> <TextArea />
-							<Switch />
+							<CheckBox /> <TextArea />
 						</div>
 					</div>
 				</div>

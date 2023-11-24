@@ -1,6 +1,7 @@
 /** @format */
 
 .chipBox {
+	width: 100vw;
 	background-color: #ffffff;
 	border: dotted 1vh rgba(134, 190, 163, 0.9);
 	box-shadow: 1px 1px .4vh .1vh #d2fffb;
