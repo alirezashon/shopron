@@ -73,51 +73,53 @@ const Carouselali = () => {
   }
  
 
-  return (
-    <>
-      <h1>{contoraliX}</h1>
-      <GrFormPreviousLink
-        className={styles.directionsIcon}
-        size={'7vh'}
-        onClick={previousImage}
-        color={'green'}
-      />
-      <GrFormNextLink
-        className={styles.directionsIcon}
-        size={'7vh'}
-        onClick={nextImage}
-      />
-      <div className={styles.container}>
-        <div className={styles.carouselali}>
-          <Image
-            className={`${styles.image} ${styles.imageTransition}`}
-            src={`${images[currentIndex].src}`}
-            width={4444}
-            height={4444}
-            alt={'carousell'}
-          />
-          <div className={styles.circaliBox}>
-            {images.map((image, index) => (
-              <span
-                className={`${styles.circali} ${index === currentIndex ? styles.circalActive : ''
-                  }`}
-                onClick={() => setCurrentIndex(index)}
-                key={index}></span>
-            ))}
-          </div>
-          <div
-            className={styles.containerali}
-            onClick={(e) => containeralick(e)}>
-            <div
-              className={styles.contorali}
-              style={{
-                width: `${100 / images.length}% `,
-                marginLeft: `${(100 / images.length) * currentIndex}% `,
-              }}></div>
-          </div>
-        </div>
-      </div>
-    </>
-  )
+     return (
+		<>
+			<div className={styles.container}>
+				<GrFormPreviousLink
+					className={styles.directionsIcon}
+					size={`${13 * 0.7}vh`}
+					onClick={previousImage}
+				/>
+
+				<div className={styles.carouselaliContainer}>
+					<div className={styles.carouselali}>
+						<div className={styles.circaliBox}>
+							{images.map((image, index) => (
+								<span
+									className={`${styles.circali} ${
+										index === currentIndex ? styles.circalActive : ''
+									}`}
+									onClick={() => setCurrentIndex(index)}
+									key={index}></span>
+							))}
+						</div>
+						<Image
+							className={`${styles.image} ${styles.imageTransition}`}
+							src={`${images[currentIndex].src}`}
+							width={4444}
+							height={4444}
+							alt={'carousell'}
+						/>
+						<div
+							className={styles.containerali}
+							onClick={(e) => containeralick(e)}>
+							<div
+								className={styles.contorali}
+								style={{
+									width: `${100 / images.length}% `,
+									marginLeft: `${(100 / images.length) * currentIndex}% `,
+								}}></div>
+						</div>
+					</div>
+				</div>
+				<GrFormNextLink
+					className={styles.directionsIcon}
+					size={`${13 * 0.7}vh`}
+					onClick={nextImage}
+				/>
+			</div>
+		</>
+	)
 }
 export default Carouselali

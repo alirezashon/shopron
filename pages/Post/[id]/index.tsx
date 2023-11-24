@@ -9,8 +9,9 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { MdAddCircle } from 'react-icons/md'
 import { FaMinus } from 'react-icons/fa'
 import { Add, Remove } from '@/Components/Basket/Actions'
+import Carouselali from '../../../Components/Carouselali'
 import styles from './index.module.css'
-
+import Details from '../Details'
 interface PostProps {
 	post: {
 		_id: string
@@ -38,67 +39,73 @@ const Post: NextPage<PostProps> = ({ post }) => {
 	}
 
 	return (
-		<div
-			className={styles.postBox}
-			key={post?._id}>
-			{post?.title}
-			<div className={styles.innerPostBox}>
-				<h6 className={styles.title}>{post?.title}</h6>
-				<Image
-					src={post?.src}
-					alt={post?.description}
-					width={1111}
-					height={1111}
-					className={styles.image}
-				/>
-				{inBasket && inBasket > 0 ? (
-					<div className={styles.productDetails}>
-						<div className={styles.details}>
-							<div className={styles.priceBox}>
-								<p>{post.price}</p>
-							</div>
-							<div className={styles.controlBox}>
-								<MdAddCircle
-									className={styles.inceriment}
-									size={'3vh'}
-									onClick={() => inceriment(post?._id)}
-								/>
-								<p className={styles.quantity}>{inBasket}</p>
-								<FaMinus
-									className={styles.deceriment}
-									size={'3vh'}
-									onClick={() => deceroment(post?._id)}
-								/>
-							</div>
-						</div>
-					</div>
-				) : (
-					<div className={styles.priceBasketBox}>
-						<div className={styles.innerPriceBasketBox}>
-							<div className={styles.priceBasket}>
-								<div
-									className={styles.icon}
-									onClick={() => inceriment(post?._id)}>
-									<AiOutlineShoppingCart
-										size={'3vh'}
-										color={'rgb(255,255,255)'}
-									/>
+		<>
+			{/* <div className={styles.container}>
+				<Carouselali />
+				<div
+					className={styles.postBox}
+					key={post?._id}>
+					{post?.title}
+					<div className={styles.innerPostBox}>
+						<h6 className={styles.title}>{post?.title}</h6>
+						<Image
+							src={post?.src}
+							alt={post?.description}
+							width={1111}
+							height={1111}
+							className={styles.image}
+						/>
+						{inBasket && inBasket > 0 ? (
+							<div className={styles.productDetails}>
+								<div className={styles.details}>
+									<div className={styles.priceBox}>
+										<p>{post.price}</p>
+									</div>
+									<div className={styles.controlBox}>
+										<MdAddCircle
+											className={styles.inceriment}
+											size={'3vh'}
+											onClick={() => inceriment(post?._id)}
+										/>
+										<p className={styles.quantity}>{inBasket}</p>
+										<FaMinus
+											className={styles.deceriment}
+											size={'3vh'}
+											onClick={() => deceroment(post?._id)}
+										/>
+									</div>
 								</div>
-								<p className={styles.price}>{post?.price}</p>
 							</div>
-						</div>
+						) : (
+							<div className={styles.priceBasketBox}>
+								<div className={styles.innerPriceBasketBox}>
+									<div className={styles.priceBasket}>
+										<div
+											className={styles.icon}
+											onClick={() => inceriment(post?._id)}>
+											<AiOutlineShoppingCart
+												size={'3vh'}
+												color={'rgb(255,255,255)'}
+											/>
+										</div>
+										<p className={styles.price}>{post?.price}</p>
+									</div>
+								</div>
+							</div>
+						)}
 					</div>
-				)}
-			</div>
-		</div>
+				</div>
+			</div> */}
+			<Details post={ post}   />
+		</>
 	)
 }
 
 export const getServerSideProps: GetServerSideProps<PostProps> = async ({
 	params,
 }) => {
-  const title = params?.id as string
-  console.log(params)
+	const title = params?.id as string
+	console.log(params)
 	const res = await fetch(`http://localhost:3000/api/data/Post/Client/page`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },

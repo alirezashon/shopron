@@ -1,0 +1,38 @@
+/** @format */
+
+.chipBox {
+	background-color: #ffffff;
+	border: dotted 1vh rgba(134, 190, 163, 0.9);
+	box-shadow: 1px 1px .4vh .1vh #d2fffb;
+	padding: 0.2vh;
+	border-radius: 1vh;
+	width: fit-content;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1vh;
+}
+.chip {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border: 0.4vh ridge #b8f9f9f4;
+	border-radius: 1vh;
+	padding: .2vh;
+ 	background:linear-gradient(	13deg, rgb(22, 117, 148),lightblue,rgb(32, 157, 199));
+}
+
+.removeIcon {
+	cursor: pointer;
+	margin-left: 4px;
+	color: #ff6411;
+	background-color: #ffffff;
+	border-radius: 13vh;
+	border: .2vh dashed rgb(22, 117, 148);
+}
+
+.input {
+ width: 100%	;
+	border: 0px;
+	border-radius: 4px;
+	padding: 4px 8px;
+}

@@ -34,9 +34,13 @@
         transform: scale(1.1) rotate(190deg);
     }
 }
+.container{
+    width: 100vw;
+    display: flex;
 
+}
 .postsBox {
-    width: 99vw;
+    width: 99%;
     animation: postBox infinite 11s;
     margin: 1vh;
     padding: 1vh;

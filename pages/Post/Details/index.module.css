@@ -1,0 +1,127 @@
+/** @format */
+
+@keyframes screen-box {
+	from {
+		opacity: 0;
+		margin-left: -100vh;
+	}
+
+	to {
+		opacity: 1;
+		margin-left: 4vh;
+	}
+}
+.container { 
+	width: 100%;
+	height: 300vh;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+    font-size: 2vh;
+ }
+.carouselaliBox {
+ 	grid-row: span 2;
+	grid-column: span 5;
+}
+.detailsBox {
+	background: linear-gradient(44deg, rgb(58, 201, 248), lightblue);
+	grid-row: span 3;
+	grid-column: span 2;
+	direction: rtl;
+}
+.text{
+     margin: 1vh;
+     padding: .1vh .7vh;
+     border: .6vh double #22d1c5;
+    color: #ffffff;
+    background:linear-gradient(270deg,rgb(1, 56, 74),rgb(22, 93, 116),rgb(44, 164, 204));
+}
+.postBox {
+    border: ridge .7vh #b0fbfb;
+    box-shadow: 1px 1px 1px #008fc8, 1px 1px 11px 2px #f8ffff inset;
+	background-color: #1f6dff;
+	grid-row: span 3;
+	grid-column: span 2;
+}
+.bottomBox {
+    background-color: yellow;
+	grid-row: span 1;
+	grid-column: span 5;
+}
+.screenBox {
+	animation: screen-box 0.7s ease-in-out;
+	background: radial-gradient(rgb(113, 174, 194), rgb(170, 255, 218));
+	border: solid 11px;
+	border-left-color: #bcdaf2;
+	border-right-color: #bcd5f2;
+	border-top-color: #bfe5f5;
+	border-bottom-color: #a9e2d0;
+	border-bottom-width: 4vh;
+	border-radius: 1vh 11vh;
+	box-shadow: 1px 1px 11px 1px #bade9a, 1px 1px 11px 7px #338fc8 inset;
+	padding: 4vh 3vh;
+	width: 96%;
+	margin: 3vh 2%;
+	position: absolute;
+}
+
+.screenBody {
+	width: 98%;
+	margin-left: 2vh;
+	border: ridge 2vh;
+	border-left-color: #73c7c3;
+	border-right-color: #74e6e4;
+	border-top-color: #99dddc;
+	border-bottom-color: #69a0cd;
+	border-inline-width: 3vh;
+	border-radius: 11vh 1vh;
+	background-color: #def5c1;
+	padding: 1vh 1vh;
+	display: inline-block;
+	box-shadow: 1px 1px 11px 3px #2b3f19 inset, 1px 1px 4px 2px #e4fdcc;
+}
+
+.issueScreenLogoBox {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.screenIssueLogoBox {
+	width: 44vh;
+	perspective: 80vh;
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -45%);
+	margin: 0 auto;
+	z-index: 2;
+}
+
+.issueScreenLogo {
+	opacity: 0.33;
+	border-radius: 5vh 0vh;
+	transform: rotateX(54deg);
+	transform-origin: 10% 10% 118%;
+	border: transparent 9px #a5df08;
+	border-bottom-color: #baeb09;
+	border-right-color: #baeb09;
+	box-shadow: 1px 1px 7px 1px #510101;
+}
+.detailsRow {
+	width: fit-content;
+	background: linear-gradient(
+		45deg,
+		rgb(2, 38, 50),
+		rgb(97, 188, 218),
+		rgb(19, 87, 110)
+	);
+	margin: 1vh;
+	padding: 1vh 2vh;
+	border: double 0.4vh rgb(0, 65, 85);
+	border-radius: 2vh;
+	color: rgb(204, 255, 254);
+}
+.detailsRow span {
+}

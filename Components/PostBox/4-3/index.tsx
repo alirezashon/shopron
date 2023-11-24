@@ -20,7 +20,7 @@ interface Post {
 }
 interface BasketStore {
 	id: string
-	quantity: number
+	count: number
 }
 interface PostsDisplayProps {
 	posts: Post[]
@@ -33,7 +33,6 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 		})) || []
 	)
 	const [basketStore, setBasketStore] = useState<string[]>([])
-	const [lazyLoadingCount, setLazyLoadingCount] = useState<number>(0)
 	const router = useRouter()
 	const updateBasketState = (posts: Post[], basketItems: BasketStore[]) => {
 		const updatedPosts = posts?.map((post) => {
@@ -41,7 +40,7 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 
 			return {
 				...post,
-				inBasket: matchingItem ? matchingItem.quantity : 0,
+				inBasket: matchingItem ? matchingItem.count : 0,
 			}
 		})
 
@@ -67,16 +66,11 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 		if (basketPost.length > 0) {
 			basketPost.forEach((post) => {
 				const [postId, quantityStr] = post.split('*2%2&7(7)5%5!1@2')
-				const quantity = parseInt(quantityStr)
-				basketSide.push({ id: postId, quantity })
+				const count = parseInt(quantityStr)
+				basketSide.push({ id: postId, count })
 			})
 		}
 		updateBasketState(posts, basketSide)
-
-		const currentHeight = window.scrollY
-		window.addEventListener('scroll', () =>
-			console.log(window.scrollY / window.innerHeight)
-		)
 	}, [basketStore, posts])
 
 	return (
@@ -96,9 +90,7 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 									height={200}
 									className={styles.image}
 									onClick={() =>
-										window.open(
-											`http://localhost:3000/Post/${obj.title}`,
- 										)
+										window.open(`http://localhost:3000/Post/${obj.title}`)
 									}
 									// onClick={() =>
 									// 	router.push(`http://localhost:3000/Post/${obj.title}`)
@@ -115,9 +107,18 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 										<div className={styles.controlBox}>
 											<MdAddCircle
 												className={styles.inceriment}
-												style={{opacity:obj.inBasket && obj.inBasket === obj.quantity ?0.1 : 1}}
+												style={{
+													opacity:
+														obj.inBasket && obj.inBasket === obj.quantity
+															? 0.1
+															: 1,
+												}}
 												size={'3vh'}
-												onClick={() =>obj.inBasket && obj.inBasket < obj.quantity ? inceriment(obj._id):''}
+												onClick={() =>
+													obj.inBasket && obj.inBasket < obj.quantity
+														? inceriment(obj._id)
+														: ''
+												}
 											/>
 											<p className={styles.count}>{obj.inBasket}</p>
 											<FaMinus
@@ -138,7 +139,6 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 												size={'5vh'}
 												color={'rgb(255,255,255)'}
 												className={styles.icon}
-												onClick={() => inceriment(obj._id)}
 											/>
 											<p className={styles.quantity}>{obj.quantity}</p>
 										</div>

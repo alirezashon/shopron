@@ -1,0 +1,20 @@
+.selectList{
+background: linear-gradient(55deg, #0858a2,#031635,rgb(13, 38, 135));
+color: #ffffff;
+text-align: center;
+cursor: pointer;
+border: double .5vh #d1fffd;
+border-radius: .5vh;
+}
+.selectList:hover{
+    border: dashed .2vh #d1fffd;
+ background: linear-gradient(95deg,  #063f3b, #189a94);
+transform: scale(1.01);
+}
+.selectList option {
+    background-color: #095f5a;
+ }
+ .selectList option:nth-child(odd){
+    background-color: #0858a2;
+ border-end-end-radius: 22vh; }
+ 

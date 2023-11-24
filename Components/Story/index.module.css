@@ -1,5 +1,7 @@
 /** @format */
-
+@keyframes rotato {
+	100%{transform: rotate(360deg);}
+}
 @keyframes fade-in {
 	from {
 		opacity: 0;
@@ -69,8 +71,9 @@
 .openStory {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	width: 40vh;
-	background-color: yellow;
+	background-color: rgb(11, 103, 95);
 	height: 50vh;
 	z-index: 2;
 }
@@ -82,9 +85,10 @@
 	padding: 0.3vh 0.5vh;
 }
 .openStory h6 {
-	background: linear-gradient(50deg, rgb(0, 255, 208),rgba(255, 225, 0, 0.488),rgb(208, 244, 208));
+	background: linear-gradient(50deg, rgb(0, 255, 208),rgba(198, 177, 19, 0.488),rgb(39, 193, 213));
 	background-color: #34bc9a;
 	direction: rtl;
+	position: absolute	
  }
 .basketBall {
 	background: radial-gradient(
@@ -99,17 +103,21 @@
 .close {
 	background: radial-gradient(
 		rgb(241, 66, 17),
-		rgb(159, 83, 29),
-		rgb(171, 124, 48)
+		rgb(186, 93, 26),
+		rgb(240, 135, 38)
 	);
 	border-radius: 13vh;
  	border: 0.2vh dashed #ffffff;
+}
+.close:hover,.basketBall:hover{
+	animation: rotato 1s infinite backwards
 }
 .storyShowImage {
 	object-fit: cover;
 	height: 98%;
 	width: 98%;
-	border-radius: 10px;
-	border: double 1vh #eee57b;
+	border-radius: .6vh;
+	border: double 1vh #7bbaee;
 	box-shadow: 1px 1px 7px 1px #454133, 1px 1px 27px 11px #f8f7f5 inset;
 }
+ 

@@ -1,4 +1,5 @@
- 
+/** @format */
+
 import React, { useEffect, useState } from 'react'
 import Login from '../Components/Login'
 import Handler from '../Handler'
@@ -7,6 +8,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import PostsDisplay from '../Components/PostBox/4-3'
 import Posts from '../Components/PostBox/5-7'
 import Story from '../Components/Story'
+import Carouselali from '../Components/Carouselali'
 interface Props {
 	posts: [
 		{
@@ -21,7 +23,7 @@ interface Props {
 		}
 	]
 }
- const RootPage: NextPage<Props> = ({ posts }) => {
+const RootPage: NextPage<Props> = ({ posts }) => {
 	const [token, setToken] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
 
@@ -66,6 +68,7 @@ interface Props {
 				<>
 					<Handler />
 					<Story data={posts} />
+					<Carouselali />
 					<PostsDisplay posts={posts} />
 					<Posts posts={posts} />
 				</>
