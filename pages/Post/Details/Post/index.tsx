@@ -151,70 +151,7 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 			</div>
 		</div>
 	)
-	// return (
-	// 	<div className={styles.postsBox}>
-	// 		<div className={styles.innerPostsBox}>
-	// 			{postStates?.map((obj: Post, index: number) => (
-	// 				<div
-	// 					className={styles.postBox}
-	// 					key={obj._id}>
-	// 					<div className={styles.innerPostBox}>
-	// 						<h6 className={styles.title}>{obj.title}</h6>
-	// 						<Image
-	// 							src={obj.src}
-	// 							alt={obj.description}
-	// 							width={1111}
-	// 							height={1111}
-	// 							className={styles.image}
-	// 							onClick={() =>
-	// 								router.push(`http://localhost:3000/Post/${obj.title}`)
-	// 							}
-	// 							priority
-	// 						/>
-	// {obj.inBasket && obj.inBasket > 0 ? (
-	// 	<div className={styles.productDetails}>
-	// 		<div className={styles.details}>
-	// 			<div className={styles.priceBox}>
-	// 				<p>{obj.price}</p>
-	// 			</div>
-	// 			<div className={styles.controlBox}>
-	// 				<MdAddCircle
-	// 					className={styles.inceriment}
-	// 					size={'3vh'}
-	// 					onClick={() => inceriment(obj._id)}
-	// 				/>
-	// 				<p className={styles.quantity}>{obj.inBasket}</p>
-	// 				<FaMinus
-	// 					className={styles.deceriment}
-	// 					size={'3vh'}
-	// 					onClick={() => deceroment(obj._id)}
-	// 				/>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// ) : (
-	// 	<div className={styles.priceBasketBox}>
-	// 		<div className={styles.innerPriceBasketBox}>
-	// 			<div className={styles.priceBasket}>
-	// 				<div
-	// 					className={styles.icon}
-	// 					onClick={() => inceriment(obj._id)}>
-	// 					<AiOutlineShoppingCart
-	// 						size={'3vh'}
-	// 						color={'rgb(255,255,255)'}
-	// 					/>
-	// 				</div>
-	// 				<p className={styles.price}>{obj.price}</p>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// )}
-	// 					</div>
-	// 				</div>
-	// 			))}
-	// 		</div>
-	// 	</div>
-	// )
+ 
 }
 
 export default index

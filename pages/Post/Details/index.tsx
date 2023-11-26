@@ -2,7 +2,7 @@
 
 import { GetServerSideProps } from 'next'
 import styles from './index.module.css'
-import Carouselali from '@/Components/Carouselali'
+import Carouselali from './Carouselali'
 import PostBox from '../PostBox'
 import SelectList from '@/Components/Form/SelectList'
 import CheckBox from '@/Components/Form/CheckBox'

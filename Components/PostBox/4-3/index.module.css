@@ -1,5 +1,4 @@
-/** @format */
-@keyframes postBox {
+ @keyframes postBox {
 	25% {
 		border-radius: 10vh 0vh 0vh 0vh;
 	}
