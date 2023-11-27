@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useEffect, useState } from 'react'
 import Login from '../Components/Login'
 import Handler from '../Handler'
