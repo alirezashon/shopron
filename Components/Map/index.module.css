@@ -1,0 +1,61 @@
+/** @format */
+
+.container {
+	background-color: aliceblue;
+	width: 100vw;
+	height: 100vh;
+}
+.searchBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: .4vh rgb(189, 236, 251) ridge;
+	background: linear-gradient(
+		222deg,
+		rgba(75, 155, 186, 0.9),
+		rgba(137, 193, 215, 0.9),
+		rgba(91, 189, 194, 0.9)
+	);
+	width: 50%;
+	direction: rtl;
+}
+.searchBox input {
+	width: 98%;
+	padding: 1vh;
+	background: linear-gradient(
+		45deg,
+		rgb(189, 236, 251),
+		rgb(253, 253, 208),
+		rgb(173, 235, 255)
+	);
+	border: 0.5vh rgb(22, 149, 207) double;
+	margin: 1vh;
+}
+ 
+.searchBox button {
+    width: 100%;
+    height: 100%;
+	background: linear-gradient(
+		44deg,
+		rgb(173, 208, 230),
+		rgb(173, 215, 230),
+		rgb(22, 149, 207)
+	);
+	border: double 0.4vh rgb(226, 246, 255);
+	box-shadow: 1px 1px 4px 1px rgb(68, 111, 212) inset,
+		1px 1px 1px 2px rrgb(176, 224, 246);
+}
+.map {
+	width: 50%;
+	height: 50%;
+ 	border: ridge 1vh rgb(123, 194, 220);
+ 	border-radius: 0 0 1vh 1vh;
+}
+
+@media (max-width: 777px) {
+	.map,
+	.searchBox,
+	.searchBox input {
+		width: 100%;
+	}
+}
