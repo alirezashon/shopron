@@ -11,7 +11,8 @@
 }
 .AkbaraforBase {
 	width: 50vw;
-	height: 97vh;
+	height: 130vh;
+	margin-left: 25vw;
 	background: radial-gradient(rgba(23, 203, 235, 0.844), rgba(12, 47, 40, 0.7));
 	border: double 0.7vh rgba(229, 242, 252, 0.9);
 	border-radius: 1vh;
@@ -134,8 +135,7 @@
 		rgba(212, 231, 71, 0.937),
 		rgba(34, 198, 187, 1)
 	);
-	height: 7vh;
-	border: ridge 0.4vh rgba(14, 194, 59, 0.9);
+ 		border: ridge 0.4vh rgba(14, 194, 59, 0.9);
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -156,8 +156,10 @@
    
 }
 
-@media (max-width: 768px) {
+@media (max-width: 777px) {
 	.AkbaraforBase {
 		width: 100%;
+		margin: 0;
+
 	}
 }

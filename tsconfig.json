@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "Components/Story/index.tsx", "Components/Templates/ImageS/index.jsx", "pages/ToPicalonso/index.tsx", "pages/testo.tsx", "Components/Map/index.jsx", "pages/Map.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "Components/Story/index.tsx", "Components/Templates/ImageS/index.jsx", "pages/ToPicalonso/index.tsx", "pages/testo.tsx", "Components/Map/index.jsx", "pages/Map.jsx", "pages/Test_Project_Models/Formassion/index.tsx"],
   "exclude": ["node_modules"]
 }

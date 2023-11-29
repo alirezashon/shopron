@@ -1,5 +1,4 @@
-/** @format */
-
+import Map from '@/Components/Map'
 import { useState } from 'react'
 import styles from './index.module.css'
 const Akbaraformassion = () => {
@@ -48,6 +47,7 @@ const Akbaraformassion = () => {
 							<div className={styles.header}>
 								<p className={styles.title}>title</p>
 							</div>
+										{/* <Map/> */}
 							<div className={styles.Akbaraformassion}>
 								<form onSubmit={Register}>
 									<div className={styles.formRow}>
@@ -57,7 +57,7 @@ const Akbaraformassion = () => {
 											type='email'
 											onChange={(e) => setEmail(e.target.value)}
 											className={styles.email}
-										/>
+											/>
 										<label className={styles.label}>ایمیل</label>
 									</div>
 									<div className={styles.formRow}>
@@ -116,18 +116,18 @@ const Akbaraformassion = () => {
 										<label className={styles.label}>کد پستی</label>
 									</div>
 									<div className={styles.formRow}>
-										<textarea
+											{/* <textarea
 											value={address}
 											onChange={(e) => setAddres(e.target.value)}
 											dir='rtl'
 											placeholder='آدرس...'
 											required></textarea>
-										<label className={styles.label}>آدرس</label>
+										<label className={styles.label}>آدرس</label> */}
 									</div>
 									<input
 										value='Register'
 										type='submit'
-									/>
+										/>
 								</form>
 							</div>
 						</div>

@@ -1,9 +1,8 @@
-/** @format */
 
 .container {
 	background-color: aliceblue;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 }
 .searchBox {
     display: flex;
@@ -17,7 +16,7 @@
 		rgba(91, 189, 194, 0.9)
 	);
 	width: 50%;
-	direction: rtl;
+ 	direction: rtl;
 }
 .searchBox input {
 	width: 98%;
@@ -34,8 +33,7 @@
  
 .searchBox button {
     width: 100%;
-    height: 100%;
-	background: linear-gradient(
+ 	background: linear-gradient(
 		44deg,
 		rgb(173, 208, 230),
 		rgb(173, 215, 230),
@@ -47,7 +45,7 @@
 }
 .map {
 	width: 50%;
-	height: 50%;
+	height: 80%;
  	border: ridge 1vh rgb(123, 194, 220);
  	border-radius: 0 0 1vh 1vh;
 }
