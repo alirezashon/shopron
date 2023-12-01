@@ -79,7 +79,13 @@
 .option {
 	background-color: lightblue;
 }
-
+.cross{
+	background: radial-gradient(rgba(255, 255, 0, 0.37),rgb(197, 251, 255));
+	color: rgb(188, 0, 0);
+	padding: 1vh;
+	border-radius: 4vh;
+	border: .3vh ridge rgb(117, 181, 233);
+}
 
 
 

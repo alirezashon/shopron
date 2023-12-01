@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import styles from './index.module.css'
 import Basket from '../../Basket'
+import { GiCrossMark } from 'react-icons/gi'
 
 const menuItems = [
 	{
@@ -44,6 +45,11 @@ const RightSidebar = () => {
 					</button>
 				) : (
 					<div className={styles.container}>
+							<GiCrossMark
+								onClick={()=> toggleSidebar()}
+							className={styles.cross}
+							size={'6vh'}
+						/>
 						{menuItems.map((menuItem, index) => (
 							<div
 								key={index}
