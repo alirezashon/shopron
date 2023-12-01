@@ -125,9 +125,9 @@
 }
 
 .formRow input {
-	width:fit-content;
+	width: fit-content;
 	width: 55%;
- 	padding: 1vh;
+	padding: 1vh;
 	direction: rtl;
 	text-align: center;
 	animation: borderanimate infinite 13s;
@@ -214,9 +214,17 @@
 	}
 
 	.formRow {
-		width: 80%;
+		width: 100%;
 	}
 	.formRow input {
+		width: 64%;
 		font-size: 2vh;
+	}
+	.logo {
+		width: 97%;
+		border: none;
+	}
+	.buttonBox{
+		margin-top: 2vh;
 	}
 }
