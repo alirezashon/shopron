@@ -58,27 +58,31 @@ const RightSidebar = () => {
 											<div
 												key={optionIndex}
 												className={styles.option}>
-													{typeof option === 'string' ? (
-														option
-													) : (
-														<>
-															{option.name}
-															<span className={styles.icon}>▼</span>
-															{/* {option.option && option.option.length > 0 && (
-																<div className={styles.subOptions}>
-																	{option.option.map(
-																		(subOption, subOptionIndex) => (
-																			<div
-																				key={subOptionIndex}
-																				className={styles.subOption}>
-																				{subOption}
-																			</div>
-																		)
-																	)}
-																</div>
-															)} */}
-														</>
-													)}
+												{typeof option === 'string' ? (
+													option
+												) : (
+													<>
+														{option.name}
+														<span className={styles.icon}>▼</span>
+														{option.option && option.option.length > 0 && (
+															<div className={styles.subOptions}>
+																{Array.isArray(option.option) === true
+																	? option.option.map(
+																			(subOption, subOptionIndex) => (
+																				<div
+																					key={subOptionIndex}
+																					className={styles.subOption}>
+																					{typeof subOption === 'object'
+																						? subOption.name
+																						: subOption}
+																				</div>
+																			)
+																	  )
+																	: ''}
+															</div>
+														)}
+													</>
+												)}
 											</div>
 										))}
 									</div>

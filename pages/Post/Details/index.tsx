@@ -5,11 +5,7 @@ import styles from './index.module.css'
 import Carouselali from './Carouselali'
 import PostBox from '../PostBox'
 import SelectList from '@/Components/Form/SelectList'
-import CheckBox from '@/Components/Form/CheckBox'
-import Radio from '@/Components/Form/Radio'
-import Chips from '../../../Components/Form/Chips'
-import TextArea from '@/Components/Form/TextArea'
-import Switch from '@/Components/Form/Switch'
+
 interface PostProps {
 	post: {
 		_id: string
@@ -54,10 +50,8 @@ const Details = (post: PostProps, children: any) => {
 							<div className={styles.postBox}>
 								<PostBox posts={[post.post]} />
 							</div>
-							<Radio />
-							<SelectList />
-							<Switch />
-							<Chips />
+ 							<SelectList />
+						 
 						</div>
 
 						<div className={styles.bottomBox}>
@@ -69,8 +63,7 @@ const Details = (post: PostProps, children: any) => {
 									<span>{value}</span>
 								</div>
 							))}
-							<CheckBox /> <TextArea />
-						</div>
+ 						</div>
 					</div>
 				</div>
 			</div>

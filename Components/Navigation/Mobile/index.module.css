@@ -1,13 +1,13 @@
-/** @format */
+	/** @format */
 @keyframes rotate {
 	0% {
 		transform: rotate(360deg);
 	}
 }
 .navbarConatainer {
-    position: fixed;
-    z-index: 4;
-    top:0;
+	position: fixed;
+	z-index: 4;
+	top: 0;
 	width: 100%;
 	height: 7vh;
 	background: linear-gradient(
@@ -19,7 +19,7 @@
 	);
 }
 .openIcon {
-    position: fixed;
+	position: fixed;
 	animation: rotate 22s;
 	right: 1px;
 	width: 7vh;
@@ -41,12 +41,12 @@
 	border-radius: 7vh;
 	cursor: pointer;
 	padding: 2vh;
-	border: double .7vh rgba(246, 255, 125, 0.4);
-    transition: all 4s;
+	border: double 0.7vh rgba(246, 255, 125, 0.4);
+	transition: all 4s;
 }
-.openIcon:hover{
-    animation : rotate infinite 2s;
-    border: .4vh dashed rgb(225, 242, 255);
+.openIcon:hover {
+	animation: rotate infinite 2s;
+	border: 0.4vh dashed rgb(225, 242, 255);
 }
 .closeIcon {
 	z-index: 4;
@@ -58,26 +58,75 @@
 .container {
 	z-index: 3;
 	position: fixed;
- 	right: 0;
- 	width: 60vw;
-    height: 100%;
- 	background: linear-gradient(45deg, lightblue, lightblue);
+	right: 0;
+	width: 60vw;
+	height: 100%;
+	background: linear-gradient(45deg, lightblue, lightblue);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease-in-out;
-    overflow-y: auto;
+	overflow-y: auto;
 }
 
-.dropdown{
-width: 100%;
-background-color: yellow;
-border:1vh ridge white;
- direction: rtl;
+.dropdown {
+	width: 100%;
+	background-color: yellow;
+	border: 1vh ridge white;
+	direction: rtl;
 }
-.name{
-background-color: aquamarine;
+.name {
+	background-color: aquamarine;
 }
-.option{
-background-color: lightblue;
+.option {
+	background-color: lightblue;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

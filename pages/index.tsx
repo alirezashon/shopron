@@ -68,7 +68,7 @@ const RootPage: NextPage<Props> = ({ posts }) => {
 					<Story data={posts} />
 					<Carouselali />
 					<PostsDisplay posts={posts} />
-					<Posts posts={posts} />
+					{/* <Posts posts={posts} /> */}
 				</>
 			) : (
 				<Login setToken={setToken} />

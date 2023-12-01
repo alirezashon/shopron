@@ -98,7 +98,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
 import PostsDisplay from '../Components/PostBox/4-3'
-
 interface HomeProps {
 	posts: [
 		{

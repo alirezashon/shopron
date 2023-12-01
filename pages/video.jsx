@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-
+import SelectList from '../Components/Form/SelectList'
 const VideoPlayer = () => {
   const videoRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
@@ -24,6 +24,7 @@ const VideoPlayer = () => {
 
   return (
     <div>
+      <SelectList/>
       <video
         ref={videoRef}
         controls
