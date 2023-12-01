@@ -7,20 +7,25 @@
 	}
 }
 @keyframes Akbaraformalo {
-    0%{transform: rotate(360deg);}
+	0% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
 }
 .AkbaraforBase {
-	width: 50vw;
-	height: 130vh;
-	margin-left: 25vw;
+	width: 100vw;
+	height: 100vh;
 	background: radial-gradient(rgba(23, 203, 235, 0.844), rgba(12, 47, 40, 0.7));
-	border: double 0.7vh rgba(229, 242, 252, 0.9);
-	border-radius: 1vh;
+	border: double 1vh rgba(229, 242, 252, 0.9);
 	padding: 1vh;
 	box-shadow: 1px 1px 1px 1px rgba(0, 55, 99, 0.9),
 		1px 1px 7px 2px rgba(0, 39, 81, 0.9) inset;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 }
 
@@ -34,7 +39,6 @@
 		rgba(0, 55, 99, 0.9)
 	);
 	position: absolute;
-	/* margin: 0vh 40vw; */
 	border-radius: 100vh 1vh;
 	padding-top: 23vh;
 	display: flex;
@@ -42,7 +46,6 @@
 }
 
 .AkbaraforinerEyes {
-	/* animation: eyelid 2s infinite; */
 	width: 44%;
 	height: 23%;
 	background: repeating-linear-gradient(
@@ -74,35 +77,50 @@
 }
 
 /* form styles */
+.animatedElement:first-child {
+	animation: Akbaraformalo 2s infinite;
+	background: linear-gradient(
+		44deg,
+		rgba(143, 218, 255, 0.894),
+		rgba(255, 232, 185, 0.976),
+		rgba(218, 255, 251, 0.8)
+	);
+	border: dashed 0.9vh rgba(8, 1, 72, 0.9);
+	border-radius: 100vh 0;
+}
+.animatedElement {
+	z-index: -1;
+	position: absolute;
+	animation: rotate 2s infinite;
+	width: 50vw;
+	height: 20vh;
+	background: linear-gradient(
+		44deg,
+		rgba(10, 147, 216, 0.894),
+		rgba(239, 177, 53, 0.976),
+		rgba(10, 216, 195, 0.8)
+	);
+	border: groove 0.9vh rgba(73, 252, 237, 0.9);
+	border-radius: 0 100vh;
+}
+.mapBox {
+	width: 44%;
+	height: 100%;
+}
 .Akbaraformalo {
-	width: 98%;
+	width: 55%;
 	height: 98%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: linear-gradient(
-		44deg,
-		rgba(10, 147, 216, 0.894),
-         rgba(239, 177, 53, 0.976),
-		rgba(10, 216, 195, 0.8)
-	);
-    border: groove .9vh rgba(73, 252, 237, 0.9);
-    border-radius: 100% 0vh;
-}
-.Kalim {
-    z-index: -1;
-    position: absolute;
-    animation: Akbaraformalo 2s infinite;
-    width: 20vw;
-    height: 98vh;
-    background: linear-gradient(44deg,
-            rgba(10, 147, 216, 0.894),
-            rgba(239, 177, 53, 0.976),
-            rgba(10, 216, 195, 0.8));
-    border: groove .9vh rgba(73, 252, 237, 0.9);
-    border-radius: 0% 100vh;
+	border: groove 0.1vh rgba(73, 252, 237, 0.9);
+	border-radius: 100% 100%;
 }
 .Akbaraformassion {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-wrap: nowrap;
 	background: radial-gradient(
 		rgba(33, 140, 150, 0.8),
 		rgba(222, 175, 99, 0.8),
@@ -113,14 +131,13 @@
 	padding: 1%;
 	border: double 1vh rgba(216, 235, 255, 0.9);
 	border-radius: 1vh 22vh;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(44vh, 1fr));
 }
 
 .header {
+	position: absolute;
 	background: radial-gradient(rgba(111, 222, 222, 0.9), rgba(2, 26, 137, 0.8));
 	width: fit-content;
-	padding: 1vh;
+	padding: 1vh 7vh;
 	border: dashed 0.3vh rgba(111, 222, 222, 0.9);
 	border-radius: 1vh;
 	box-shadow: 1px 1px 4px 1px rgba(12, 252, 236, 0.4) inset,
@@ -130,36 +147,61 @@
 .formRow {
 	font-size: 2vh;
 	background: linear-gradient(
-		55deg,
+		5deg,
 		rgba(105, 217, 221, 0.9),
-		rgba(212, 231, 71, 0.937),
-		rgba(34, 198, 187, 1)
+		rgba(216, 255, 248, 0.937),
+		rgb(101, 209, 201)
 	);
- 		border: ridge 0.4vh rgba(14, 194, 59, 0.9);
+	border: dashed 0.2vh rgba(5, 108, 126, 0.9);
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	border-radius: 1vh;
-	width: 75%;
+	width: 30vw;
+	padding: 1vh 2vh;
+	margin: 2vh;
+}
+.formRow label {
 }
 .formRow input {
-    direction:rtl;
+	direction: rtl;
 	width: 60%;
-	border: double 0.7vh rgba(36, 125, 127, 0.7);
-	border-radius: 1vh;
+	border: double 0.4vh rgba(36, 125, 127, 0.7);
+	border-radius: 0.7vh;
+	padding: 1vh;
 }
 .formRow input:focus {
 	border-radius: 4vh;
 	padding: 0.4vh 1vh;
+	background: radial-gradient(rgb(98, 177, 203), rgb(101, 185, 212));
+	color: white;
 }
-.formRow input[type=number]{
-   
+.formRow input[type='number'] {
+}
+.Akbaraformassion form input[type='submit'] {
+	background: linear-gradient(44deg, rgb(107, 243, 238), rgb(229, 249, 255));
+	color: rgba(0, 13, 26, 0.9);
+	border: dashed .4vh rgb(0, 193, 237);
+	padding: .4vh 1vh;
+	border-radius: 3vh;
+}
+.Akbaraformassion form input[type='submit']:hover {
+	background: linear-gradient(44deg, rgb(2, 132, 212), rgb(161, 223, 242));
+	color: rgba(0, 13, 26, 0.9);
+	border: dashed 1vh rgb(196, 236, 250);
 }
 
 @media (max-width: 777px) {
 	.AkbaraforBase {
 		width: 100%;
 		margin: 0;
-
+		height: 120vh;
+		flex-direction: column-reverse;
+	}
+	.Akbaraformalo {
+		width: 100%;
+	}
+	.formRow {
+		width: 70vw;
 	}
 }

@@ -1,6 +1,8 @@
 /** @format */
 @keyframes rotato {
-	100%{transform: rotate(360deg);}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 @keyframes fade-in {
 	from {
@@ -43,24 +45,24 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background-color: rgba(0, 4, 11, 0.7);
-	z-index: 2;
+	z-index: 3;
+	background-color: rgba(0, 4, 11, 0.2);
 	position: absolute;
 	top: 13vh;
 }
 .openStoryInnerSide {
-	overflow-x:auto;
+	overflow-x: auto;
 	height: 80%;
 	display: flex;
 	align-items: center;
 	background-color: rgba(0, 111, 121, 0.3);
 }
 .openStoryBox {
-	border: double .7vh rgba(25, 90, 255, 0.7);
-	background: radial-gradient(
-		rgb(115, 233, 224),
+	border: double 0.7vh rgba(12, 0, 63, 0.7);
+	background: linear-gradient(4deg,
+		rgb(131, 236, 228),
 		rgb(158, 196, 222),
-		rgb(122, 195, 220)
+		rgb(218, 246, 255)
 	);
 	margin: 0.1vh 2vh;
 	height: 80%;
@@ -73,9 +75,8 @@
 	flex-direction: column;
 	align-items: center;
 	width: 40vh;
-	background-color: rgb(11, 103, 95);
+	background:linear-gradient(44deg, rgb(11, 103, 95),rgb(177, 252, 246));
 	height: 50vh;
-	z-index: 2;
 }
 
 .openStoryHeader {
@@ -85,11 +86,16 @@
 	padding: 0.3vh 0.5vh;
 }
 .openStory h6 {
-	background: linear-gradient(50deg, rgb(0, 255, 208),rgba(198, 177, 19, 0.488),rgb(39, 193, 213));
+	background: linear-gradient(
+		50deg,
+		rgb(0, 255, 208),
+		rgba(198, 177, 19, 0.488),
+		rgb(39, 193, 213)
+	);
 	background-color: #34bc9a;
 	direction: rtl;
-	position: absolute	
- }
+	position: absolute;
+}
 .basketBall {
 	background: radial-gradient(
 		rgb(12, 176, 162),
@@ -107,17 +113,17 @@
 		rgb(240, 135, 38)
 	);
 	border-radius: 13vh;
- 	border: 0.2vh dashed #ffffff;
+	border: 0.2vh dashed #ffffff;
 }
-.close:hover,.basketBall:hover{
-	animation: rotato 1s infinite backwards
+.close:hover,
+.basketBall:hover {
+	animation: rotato 1s infinite backwards;
 }
 .storyShowImage {
 	object-fit: cover;
 	height: 98%;
 	width: 98%;
-	border-radius: .6vh;
+	border-radius: 0.6vh;
 	border: double 1vh #7bbaee;
 	box-shadow: 1px 1px 7px 1px #454133, 1px 1px 27px 11px #f8f7f5 inset;
 }
- 

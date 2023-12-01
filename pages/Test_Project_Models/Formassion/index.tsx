@@ -1,3 +1,5 @@
+/** @format */
+
 import Map from '@/Components/Map'
 import { useState } from 'react'
 import styles from './index.module.css'
@@ -12,7 +14,7 @@ const Akbaraformassion = () => {
 	const [address, setAddres] = useState<string>('')
 
 	const Register = async () => {
- 		const response = await fetch('/api/Auth/Register', {
+		const response = await fetch('/api/Auth/Register', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -42,12 +44,15 @@ const Akbaraformassion = () => {
 					</div>
 				) : (
 					<>
-						<div className={styles.Kalim}></div>
+						<div className={styles.animatedElement}></div>
+						<div className={styles.animatedElement}></div>
+						<div className={styles.mapBox}>
+							<Map />
+						</div>
 						<div className={styles.Akbaraformalo}>
 							<div className={styles.header}>
-								<p className={styles.title}>title</p>
+								<p className={styles.title}>ثبت نام</p>
 							</div>
-										{/* <Map/> */}
 							<div className={styles.Akbaraformassion}>
 								<form onSubmit={Register}>
 									<div className={styles.formRow}>
@@ -57,7 +62,7 @@ const Akbaraformassion = () => {
 											type='email'
 											onChange={(e) => setEmail(e.target.value)}
 											className={styles.email}
-											/>
+										/>
 										<label className={styles.label}>ایمیل</label>
 									</div>
 									<div className={styles.formRow}>
@@ -116,7 +121,7 @@ const Akbaraformassion = () => {
 										<label className={styles.label}>کد پستی</label>
 									</div>
 									<div className={styles.formRow}>
-											{/* <textarea
+										{/* <textarea
 											value={address}
 											onChange={(e) => setAddres(e.target.value)}
 											dir='rtl'
@@ -125,9 +130,9 @@ const Akbaraformassion = () => {
 										<label className={styles.label}>آدرس</label> */}
 									</div>
 									<input
-										value='Register'
+										value='ثبت نام'
 										type='submit'
-										/>
+									/>
 								</form>
 							</div>
 						</div>

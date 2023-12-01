@@ -80,10 +80,12 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 					<div
 						className={styles.postBox}
 						key={obj._id}>
-						<h6 className={styles.title}>{obj.title}
-								{ obj.inBasket && obj.inBasket > 0 && <p className={styles.count}>{obj.inBasket}</p>
-						}
-						</h6>
+						<div className={styles.postHeaderBox}>
+							{obj.inBasket && obj.inBasket > 0 ? (
+								<div className={styles.count}>{obj.inBasket}</div>
+							) : null}
+							<h6 className={styles.title}>{obj.title}</h6>
+						</div>
 						<div className={styles.innerPostBox}>
 							<div className={styles.imageBox}>
 								<Image
@@ -112,7 +114,7 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 														obj.inBasket && obj.inBasket === obj.quantity
 															? 0.1
 															: 1,
-														}}
+												}}
 												size={'3vh'}
 												onClick={() =>
 													obj.inBasket && obj.inBasket < obj.quantity
@@ -120,9 +122,9 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 														: ''
 												}
 											/>
-														<div className={styles.priceBox}>
-															<p>مجموع {obj.price * obj.inBasket}</p>
-														</div>
+											<div className={styles.priceBox}>
+												<p>مجموع {obj.price - 7777 * obj.inBasket}</p>
+											</div>
 											<FaMinus
 												className={styles.deceriment}
 												size={'3vh'}

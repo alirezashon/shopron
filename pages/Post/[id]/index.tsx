@@ -4,14 +4,9 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
-import { MdAddCircle } from 'react-icons/md'
-import { FaMinus } from 'react-icons/fa'
 import { Add, Remove } from '@/Components/Basket/Actions'
-import Carouselali from '../../../Components/Carouselali'
-import styles from './index.module.css'
 import Details from '../Details'
+import Head from 'next/head'
 interface PostProps {
 	post: {
 		_id: string
@@ -40,6 +35,21 @@ const Post: NextPage<PostProps> = ({ post }) => {
 
 	return (
 		<>
+			<Head>
+				<title>Shopronii</title>
+				<meta
+					name='description'
+					content='top shop store'
+				/>
+				<meta
+					name='viewport'
+					content='width=device-width, initial-scale=1'
+				/>
+				<link
+					rel='icon'
+					href='../../images/icon.png'
+				/>
+			</Head>
 			{/* <div className={styles.container}>
 				<Carouselali />
 				<div
@@ -96,7 +106,7 @@ const Post: NextPage<PostProps> = ({ post }) => {
 					</div>
 				</div>
 			</div> */}
-			<Details post={ post}   />
+			<Details post={post} />
 		</>
 	)
 }

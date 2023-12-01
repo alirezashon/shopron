@@ -64,7 +64,7 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
 							<>
 								<Image
 									className={styles.logo}
-									src={'/images/logo.jpg'}
+									src={'/images/icon.png'}
 									width={1111}
 									height={1111}
 									alt='Kalimogo'

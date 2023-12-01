@@ -43,9 +43,12 @@ const Details = (post: PostProps, children: any) => {
 								<p className={styles.text}>
 									لورم ایپسوم کخب نه به مخلبرتر از عبدلی
 								</p>
-								<p className={styles.text}>لورم ایپسوم نبخ اسخ چجح ذر استنا</p>
 								<p className={styles.text}>
-									لورم ایپسوم نه به خانه مدرسه عممامه نماده همسایه خودرو دارید
+									جورم ایجسوم چخب تهسه مخبربداضازلدی
+								</p>
+								<p className={styles.text}>
+									کورم ایکسوم فخس سرخسه سخبریس همضادزلی
+									{/* لورم ایپسوم نه به خانه مدرسه عممامه نماده همسایه خودرو دارید */}
 								</p>
 							</div>
 							<div className={styles.postBox}>

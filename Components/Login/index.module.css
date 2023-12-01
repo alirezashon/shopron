@@ -100,10 +100,8 @@
 
 .logo {
 	position: absolute;
-	width: 27%;
-	height: 27%;
-	top: 37%;
-	left: 37%;
+	width: 55%;
+	height: 66%;
 	/* margin:	10% 7%; */
 	border-radius: 7vw;
 	border: 0.5vh rgb(255, 200, 0) dashed;
