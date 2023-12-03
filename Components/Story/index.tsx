@@ -29,6 +29,7 @@ const StoryComponent: React.FC<Props> = ({ data }) => {
 			seen: false,
 		})) || []
 	)
+	const [isLiked, setIsLiked] = useState<boolean>(false)
 	const router = useRouter()
 	useEffect(() => {
 		const storyHistory: string[] = JSON.parse(
@@ -141,8 +142,9 @@ const StoryComponent: React.FC<Props> = ({ data }) => {
 								</div>
 								<PiHandHeartThin
 									size={'4vh'}
-									color={'white'}
+									color={isLiked ? 'red':'white'}
 									className={styles.like}
+									oncliclk={()=>setIsLiked(!isLiked)}
 								/>
 							</div>
 						))}

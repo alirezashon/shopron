@@ -146,9 +146,7 @@
 		rgb(159, 237, 248)
 	);
 	background-color: #34bc9a;
-	direction: rtl;
-	position: absolute;
-}
+	direction: rtl;}
 .basketBall {
 	background: radial-gradient(
 		rgb(12, 176, 162),
@@ -176,9 +174,7 @@
 }
 .storyShowImage {
 	object-fit: cover;
-	height: 98%;
-	width: 98%;
+	height: 99%;
+	width: 99%;
 	border-radius: 0.6vh;
-	border: double 1vh #7bbaee;
-	box-shadow: 1px 1px 7px 1px #454133, 1px 1px 27px 11px #f8f7f5 inset;
 }
