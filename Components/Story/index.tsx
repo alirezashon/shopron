@@ -2,7 +2,7 @@
 import { AiFillCloseCircle, AiOutlineShoppingCart } from 'react-icons/ai'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import {Add} from'../Basket/Actions'
+import { Add } from '../Basket/Actions'
 import styles from './index.module.css'
 import { useRouter } from 'next/router'
 import { PiHandHeartThin } from 'react-icons/pi'
@@ -18,9 +18,9 @@ interface Story {
 	seen?: boolean
 }
 interface Props {
-	data : Story[]
+	data: Story[]
 }
-const StoryComponent: React.FC<Props> = ({data}) => {
+const StoryComponent: React.FC<Props> = ({ data }) => {
 	const [openStory, setOpenStory] = useState<string>()
 	const [showStoryBox, setShowStoryBox] = useState(false)
 	const [stories, setStories] = useState<Story[]>(
@@ -72,7 +72,7 @@ const StoryComponent: React.FC<Props> = ({data}) => {
 		setTimeout(() => {
 			setShowStoryBox(false)
 			setOpenStory((prevIndex) => prevIndex && prevIndex + 1)
-		}, 70000)
+		}, 700713700)
 	}
 	const closeStory = () => {
 		setShowStoryBox(false)
@@ -84,16 +84,10 @@ const StoryComponent: React.FC<Props> = ({data}) => {
 				{stories.map((story, index) => (
 					<div key={story._id}>
 						<div
-							className={styles.story}
-							style={{
-								border: `2px solid ${
-									openStory === story._id
-										? '#dfd688'
-										: story.seen
-										? 'silver'
-										: 'gold'
-								}`,
-							}}
+							className={`${styles.story} ${
+								openStory === story._id && styles.storySeen
+							}
+							`}
 							onClick={() => showStory(story._id)}>
 							<Image
 								width={1111}
@@ -108,6 +102,12 @@ const StoryComponent: React.FC<Props> = ({data}) => {
 			</div>
 			{showStoryBox && (
 				<div className={styles.openStoryContainer}>
+					<AiFillCloseCircle
+						className={styles.closeStoryContainer}
+						onClick={closeStory}
+ 						size={'5vh'}
+					/>
+					<div className={styles.openStoryTitle}>استوریاشونم که خب ماچری</div>
 					<div className={styles.openStoryInnerSide}>
 						{stories.map((story) => (
 							<div className={styles.openStoryBox}>
@@ -116,7 +116,7 @@ const StoryComponent: React.FC<Props> = ({data}) => {
 										className={styles.close}
 										onClick={closeStory}
 										color={'white'}
-			  							size={'5vh'}
+										size={'5vh'}
 									/>
 									<h3 className={styles.title}>{story.title}</h3>
 									<AiOutlineShoppingCart
@@ -133,11 +133,17 @@ const StoryComponent: React.FC<Props> = ({data}) => {
 										src={story.src}
 										alt={story.title || story.description}
 										className={styles.storyShowImage}
-										onClick={()=> router.push(`http://localhost:3000/Post/${story.title}`)}
+										onClick={() =>
+											router.push(`http://localhost:3000/Post/${story.title}`)
+										}
 									/>
 									<h6>{story.description}</h6>
 								</div>
-								<PiHandHeartThin size={'4vh'} color={'white'} className={styles.like} />
+								<PiHandHeartThin
+									size={'4vh'}
+									color={'white'}
+									className={styles.like}
+								/>
 							</div>
 						))}
 					</div>
