@@ -29,92 +29,128 @@ const menuItems = [
 
 const RightSidebar = () => {
 	const [isOpen, setIsOpen] = useState(false)
+	const [isOptionOpen, setIsOptionOpen] = useState([])
+	const [isSubOptionOpen, setIsSubOptionOpen] = useState([])
+	const closeNav = (event) => {
+		const windowWidth = window.innerWidth
+		const clickX = event.clientX
 
-	const toggleSidebar = () => {
-		setIsOpen(!isOpen)
+		if (isOpen && clickX < windowWidth * 0.4) {
+			setIsOpen(false)
+		}
 	}
 
-	useEffect(() => {}, [isOpen])
+	const toggleOption = (index) => {
+		setIsOptionOpen((prev) => ({
+			...prev,
+			[index]: !prev[index],
+		}))
+	}
+	const toggleSubOption = (index) => {
+		setIsSubOptionOpen((prev) => ({
+			...prev,
+			[index]: !prev[index],
+		}))
+	}
+	useEffect(() => {
+		window.addEventListener('click', closeNav)
+
+		return () => {
+			window.removeEventListener('click', closeNav)
+		}
+	}, [isOpen])
+
 	return (
 		<>
 			<div className={styles.navbarConatainer}>
-				{!isOpen ? (
+				{!isOpen && (
 					<button
 						className={styles.openIcon}
-						onClick={toggleSidebar}>
+						onClick={() => setIsOpen(!isOpen)}>
 						☰
 					</button>
-				) : (
-					<div className={styles.container}>
-						<div className={styles.header}>
-							<div className={styles.cross}>
-								<GiCrossMark
-									onClick={() => toggleSidebar()}
-									size={'6vh'}
-								/>
-							</div>
-							<div className={styles.searchBox}>
-								<Search />
-							</div>
+				)}
+				<div
+					className={styles.container}
+					style={{
+						transform: `${isOpen ? 'translateX(0vw)' : 'translateX(60vw)'}`,
+					}}>
+					<div className={styles.header}>
+						<div className={styles.cross}>
+							<GiCrossMark onClick={() => setIsOpen(!isOpen)} />
 						</div>
-						{menuItems.map((menuItem, index) => (
+						<div className={styles.searchBox}>
+							<Search />
+						</div>
+					</div>
+					{menuItems.map((menuItem, index) => (
+						<div
+							key={index}
+							className={styles.dropdown}>
 							<div
-								key={index}
-								className={styles.dropdown}>
-								<div className={styles.name}>
-									{menuItem.name}
-									<span className={styles.icon}>▼</span>
-								</div>
-								{menuItem.option && menuItem.option.length > 0 && (
+								className={styles.name}
+								onClick={() => toggleOption(index)}>
+								{menuItem.name}
+								<span className={styles.icon}>▼</span>
+							</div>
+							{menuItem.option &&
+								menuItem.option.length > 0 &&
+								isOptionOpen[index] && (
 									<div className={styles.option}>
 										{menuItem.option.map((option, optionIndex) => (
 											<div
 												key={optionIndex}
-												className={styles.option}>
+												className={styles.option}
+												onClick={() => toggleSubOption(optionIndex)}>
 												{typeof option === 'string' ? (
 													option
 												) : (
 													<>
 														{option.name}
 														<span className={styles.icon}>▼</span>
-														{option.option && option.option.length > 0 && (
-															<div className={styles.subOptions}>
-																{Array.isArray(option.option) === true
-																	? option.option.map(
-																			(subOption, subOptionIndex) => (
-																				<div
-																					key={subOptionIndex}
-																					className={styles.subOption}>
-																					{typeof subOption === 'object'
-																						? subOption.name
-																						: subOption}
-																				</div>
-																			)
-																	  )
-																	: ''}
-															</div>
-														)}
+														{option.option &&
+															option.option.length > 0 &&
+															isSubOptionOpen[optionIndex] && (
+																<div className={styles.subOptions}>
+																	{Array.isArray(option.option) === true
+																		? option.option.map(
+																				(subOption, subOptionIndex) => (
+																					<div
+																						key={subOptionIndex}
+																						className={styles.subOption}>
+																						{typeof subOption === 'object'
+																							? subOption.name
+																							: subOption}
+																					</div>
+																				)
+																		  )
+																		: ''}
+																</div>
+															)}
 													</>
 												)}
 											</div>
 										))}
 									</div>
 								)}
-							</div>
-						))}
-					</div>
-				)}
-				<div>
-					<marquee
-						behavior='scroll'
-						direction='left'>
-						<span>
-							This is a sample text inside the marquee. It will scroll from
-							right to left.
-						</span>
-					</marquee>
+						</div>
+					))}
 				</div>
-				<Search />
+				<div>
+					<div className={styles.centerSection}>
+						<marquee
+							behavior='scroll'
+							direction='left'>
+							<span>
+								This is a sample text inside the marquee. It will scroll from
+								right to left.
+							</span>
+						</marquee>
+						<div className={styles.searchBox}>
+							<Search />
+						</div>
+					</div>
+				</div>
 				<Basket />
 			</div>
 		</>
