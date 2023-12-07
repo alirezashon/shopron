@@ -64,7 +64,7 @@ const RootPage: NextPage<Props> = ({ posts }) => {
 				/>
 			) : token ? (
 				<>
-					{/* <Handler /> */}
+					<Handler />
 					<Story data={posts} />
 					<Carouselali />
 					<PostsDisplay posts={posts} />

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import styles from './index.module.css'
 import Basket from '../../Basket'
 import { GiCrossMark } from 'react-icons/gi'
+import Search from '../../Form/Search'
 
 const menuItems = [
 	{
@@ -45,11 +46,17 @@ const RightSidebar = () => {
 					</button>
 				) : (
 					<div className={styles.container}>
-							<GiCrossMark
-								onClick={()=> toggleSidebar()}
-							className={styles.cross}
-							size={'6vh'}
-						/>
+						<div className={styles.header}>
+							<div className={styles.cross}>
+								<GiCrossMark
+									onClick={() => toggleSidebar()}
+									size={'6vh'}
+								/>
+							</div>
+							<div className={styles.searchBox}>
+								<Search />
+							</div>
+						</div>
 						{menuItems.map((menuItem, index) => (
 							<div
 								key={index}
@@ -97,6 +104,17 @@ const RightSidebar = () => {
 						))}
 					</div>
 				)}
+				<div>
+					<marquee
+						behavior='scroll'
+						direction='left'>
+						<span>
+							This is a sample text inside the marquee. It will scroll from
+							right to left.
+						</span>
+					</marquee>
+				</div>
+				<Search />
 				<Basket />
 			</div>
 		</>

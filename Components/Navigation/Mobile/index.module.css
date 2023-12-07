@@ -1,4 +1,4 @@
-	/** @format */
+/** @format */
 @keyframes rotate {
 	0% {
 		transform: rotate(360deg);
@@ -9,7 +9,10 @@
 	z-index: 4;
 	top: 0;
 	width: 100%;
-	height: 7vh;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+	height: 8vh;
 	background: linear-gradient(
 		99deg,
 		rgb(87, 186, 219),
@@ -17,6 +20,7 @@
 		rgba(246, 255, 125, 0.9) 50%,
 		rgb(65, 162, 194)
 	);
+	font-size: 2vh;
 }
 .openIcon {
 	position: fixed;
@@ -33,7 +37,7 @@
 	z-index: 1;
 	background: linear-gradient(
 		5deg,
-		rgb(11, 90, 116),
+		rgb(166, 232, 254),
 		rgb(117, 181, 233),
 		rgb(33, 142, 181)
 	);
@@ -48,91 +52,46 @@
 	animation: rotate infinite 2s;
 	border: 0.4vh dashed rgb(225, 242, 255);
 }
-.closeIcon {
-	z-index: 4;
-	font-size: 4vh;
-	color: red;
-	position: absolute;
-	direction: rtl;
-}
 .container {
 	z-index: 3;
 	position: fixed;
 	right: 0;
 	width: 60vw;
 	height: 100%;
-	background: linear-gradient(45deg, lightblue, lightblue);
+	background: linear-gradient(45deg, rgb(38, 178, 225), rgb(0, 158, 210));
+	border-left: 2vh ridge rgba(25, 134, 188, 0.934);
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease-in-out;
 	overflow-y: auto;
 }
 
+.header {
+	display: flex;
+	width: 100%;
+}
+.searchBox {
+	width: 60%;
+}
+.cross {
+	display: flex;
+	width: 30%;
+	padding: 0.3vh 3vh;
+	text-align: center;
+	background: radial-gradient(rgba(232, 247, 255, 0.934), rgb(255, 236, 197));
+	color: rgb(188, 0, 0);
+	border-radius: 4vh;
+	border: 0.3vh ridge rgb(255, 218, 83);
+}
 .dropdown {
 	width: 100%;
 	background-color: yellow;
-	border: 1vh ridge white;
 	direction: rtl;
+	border-bottom: 0.5vh ridge rgb(252, 143, 0);
 }
 .name {
+	border: 0.5vh ridge rgb(251, 239, 239);
 	background-color: aquamarine;
 }
 .option {
-	background-color: lightblue;
+	background: linear-gradient(45deg, rgb(38, 178, 225), rgb(0, 158, 210));
 }
-.cross{
-	background: radial-gradient(rgba(255, 255, 0, 0.37),rgb(197, 251, 255));
-	color: rgb(188, 0, 0);
-	padding: 1vh;
-	border-radius: 4vh;
-	border: .3vh ridge rgb(117, 181, 233);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 

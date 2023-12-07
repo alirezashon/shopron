@@ -1,4 +1,3 @@
-/** @format */
 import { AiFillCloseCircle, AiOutlineShoppingCart } from 'react-icons/ai'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
