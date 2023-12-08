@@ -1,8 +1,8 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react'
+import React, { CSSProperties, useEffect, useState } from 'react'
 import { Get } from '../../Basket/Actions'
-import Product from '../../Basket/Products'
+import Product from './Post'
 interface Post {
 	_id: string
 	title: string
@@ -12,7 +12,9 @@ interface Post {
 	quantity: number
 	description: string
 }
-
+interface Styles {
+	ProductBox: CSSProperties
+}
 const Details: React.FC = () => {
 	const [postData, setPostData] = useState<Post[]>([])
 	const data: string[] = Get()
@@ -35,11 +37,18 @@ const Details: React.FC = () => {
 	}, [])
 	return (
 		<>
-			{postData.length}
-			{data.length > 0 && data.map((d) => <p key={d}>{d}</p>)}
 			<h1>Details</h1>
+			<div style={styles.ProductBox}>
+				<Product posts={postData} />
+			</div>
 		</>
 	)
 }
 
 export default Details
+
+const styles: Styles = {
+	ProductBox: {
+		width:'30%'
+	},
+}

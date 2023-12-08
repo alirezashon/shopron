@@ -8,8 +8,22 @@ import Payment from './Payment'
 import TimeHandling from './TimeHandling'
 const FlowChart: React.FC = () => {
 	const [state, setState] = useState<number>(0)
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const flowDomain = [Custom, Details, Location, Payment, TimeHandling]
 	const Renderero = flowDomain[state]
+
+	const handleFlowChange = async (index: number) => {
+		try {
+			setIsLoading(true)
+
+			// Simulate asynchronous operations (e.g., fetching data) before changing the state
+			setState(index)
+			await new Promise((resolve) => setTimeout(resolve, 1000))
+		} finally {
+			setIsLoading(false)
+		}
+	}
+
 	return (
 		<>
 			<div style={Container}>
@@ -18,13 +32,15 @@ const FlowChart: React.FC = () => {
 						{flowDomain.map((domain, index) => (
 							<div
 								style={FlowDomain}
-								onClick={() => setState(index)}>
+								onClick={() => handleFlowChange(index)}>
 								{index}
 							</div>
 						))}
 					</div>
 				</div>
-				<div style={Chart}>{Renderero && <Renderero />}</div>
+				<div style={Chart}>
+					{isLoading ? <p>Loading...</p> : Renderero && <Renderero />}
+				</div>
 			</div>
 		</>
 	)
@@ -39,7 +55,7 @@ const Container: React.CSSProperties = {
 	flexDirection: 'column',
 	justifyContent: 'center',
 	alignItems: 'center',
-	textAlign:'center'
+	textAlign: 'center',
 }
 const Flow: React.CSSProperties = {
 	width: '90%',
@@ -66,15 +82,15 @@ const FlowDomain: React.CSSProperties = {
 	width: '7vh',
 	height: '7vh',
 	background:
-	'radial-gradient(rgba(247,247,247,.7),rgba(22,122,122.9),rgba(247,247,247,.7))',
-	color:'rgba(0,0,22,.9)',
+		'radial-gradient(rgba(247,247,247,.7),rgba(22,122,122.9),rgba(247,247,247,.7))',
+	color: 'rgba(0,0,22,.9)',
 	borderRadius: '7vh',
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	cursor:'pointer'
+	cursor: 'pointer',
 }
 const Chart: React.CSSProperties = {
 	width: '100%',
 	height: '77%',
- }
+}
