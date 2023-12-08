@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from 'react'
 import Login from '../Components/Login'
 import Handler from '../Handler'
@@ -7,6 +9,7 @@ import PostsDisplay from '../Components/PostBox/4-3'
 import Posts from '../Components/PostBox/5-7'
 import Story from '../Components/Story'
 import Carouselali from '../Components/Carouselali'
+import FlowChart from '@/Components/FlowChart'
 interface Props {
 	posts: [
 		{
@@ -66,6 +69,7 @@ const RootPage: NextPage<Props> = ({ posts }) => {
 				<>
 					<Handler />
 					<Story data={posts} />
+					<FlowChart />
 					<Carouselali />
 					<PostsDisplay posts={posts} />
 					{/* <Posts posts={posts} /> */}
@@ -98,5 +102,3 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 }
 
 export default RootPage
-
-

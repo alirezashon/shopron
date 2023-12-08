@@ -21,7 +21,6 @@ export const Add = async (id: string) => {
 	localStorage.setItem('#B!@%$&K&E^T*O(s&', JSON.stringify(basket))
 }
 
-
 export const Remove = async (id: string) => {
 	const basket: string[] = JSON.parse(
 		localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
@@ -32,7 +31,7 @@ export const Remove = async (id: string) => {
 	)
 
 	if (existIndex !== -1) {
-        const count = parseInt(basket[existIndex]?.split('*2%2&7(7)5%5!1@2')[1])
+		const count = parseInt(basket[existIndex]?.split('*2%2&7(7)5%5!1@2')[1])
 		count === 1
 			? basket.splice(existIndex, 1)
 			: (basket[existIndex] = id + '*2%2&7(7)5%5!1@2' + `${count - 1}`)
@@ -40,4 +39,12 @@ export const Remove = async (id: string) => {
 	basket.length === 0
 		? localStorage.removeItem('#B!@%$&K&E^T*O(s&')
 		: localStorage.setItem('#B!@%$&K&E^T*O(s&', JSON.stringify(basket))
+}
+
+export const Get = (): string[] => {
+	const basket: string[] = JSON.parse(
+		localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
+	)
+	const productsID = basket.map((post) => post.split('*2%2&7(7)5%5!1@2')[0])
+ 	return productsID
 }
