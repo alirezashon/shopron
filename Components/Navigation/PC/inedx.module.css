@@ -5,6 +5,10 @@
 .hide {
 	transform: translateX(-100%);
 }
+.navDrager{
+	border-bottom: 16vh ridge #08d9fe;
+	border-radius: 0vh 0vh 40% 40%;
+}
 .scrollingDiv {
  	direction: rtl;
 	width: 100%;
@@ -137,3 +141,5 @@
  	color: #fffefd;
 	text-shadow: 1px 1px 11px #08d9fe, 1px 1px 1px #050502;
  }
+
+ 
