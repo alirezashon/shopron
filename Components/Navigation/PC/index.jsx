@@ -8,20 +8,62 @@ const Menu = () => {
 	const [isChecked, setIsChecked] = useState(false)
 	const [showDiv, setShowDiv] = useState(true)
 	const [isOpen, setIsOpen] = useState(false)
+	const [isOptionOpen, setIsOptionOpen] = useState([])
+	const [isSubOptionOpen, setIsSubOptionOpen] = useState([])
+
+	const closeNav = (event) => {
+		const windowWidth = window.innerWidth
+		const clickX = event.clientX
+
+		if (isOpen && clickX < windowWidth * 0.4) {
+			setIsOpen(false)
+		}
+	}
+
+	const toggleOption = (index) => {
+		setIsOptionOpen((prev) => ({
+			...prev,
+			[index]: !prev[index],
+		}))
+	}
+	const toggleSubOption = (index) => {
+		setIsSubOptionOpen((prev) => ({
+			...prev,
+			[index]: !prev[index],
+		}))
+	}
+
+	useEffect(() => {
+		window.addEventListener('click', closeNav)
+
+		return () => {
+			window.removeEventListener('click', closeNav)
+		}
+	}, [isOpen])
 
 	const items = [
 		{ label: 'محصولات', link: '/products' },
-		{ label: 'سفارشی سازی', link: '/Customization' },
-		{ label: 'هدیه', link: '/present' },
+		{ label: 'خدمات', link: '/Customization' },
+		{ label: 'تعرفه قیمت', link: '/present' },
+		{ label: 'لیست متخصصین', link: '/contact-us' },
 		{ label: 'تماس با ما', link: '/contact-us' },
 		{ label: 'درباره ما', link: '/about-us' },
 	]
 	const dropdownItems = [
-		{ label: 'گوشواره', link: '/rings' },
-		{ label: 'دستبند', link: '/earrings' },
-		{ label: 'گردنبند', link: '/necklaces' },
-		{ label: 'انگشتر', link: '/bracelets' },
-		{ label: 'پابند', link: '/watches' },
+		[
+			{ label: 'گوشواره', link: '/rings' },
+			{ label: 'دستبند', link: '/earrings' },
+			{ label: 'گردنبند', link: '/necklaces' },
+			{ label: 'انگشتر', link: '/bracelets' },
+			{ label: 'پابند', link: '/watches' },
+		],
+		[
+			{ label: 'گوشواره', link: '/rings' },
+			{ label: 'دستبند', link: '/earrings' },
+			{ label: 'گردنبند', link: '/necklaces' },
+			{ label: 'انگشتر', link: '/bracelets' },
+			{ label: 'پابند', link: '/watches' },
+		],
 	]
 
 	useEffect(() => {
@@ -46,7 +88,15 @@ const Menu = () => {
 						key={menuItem.link}
 						className={styles.link}
 						href={menuItem.link}>
-						<p className={styles.menuItem}>{menuItem.label}</p>
+						<p
+							className={styles.menuItem}
+							// onMouseEnter={() => setIsOpen(true)}
+							// onMouseLeave={() => setIsOpen(true)}
+						onMouseOver={()=> setIsOpen(!isOpen)}>
+							{menuItem.label}
+						</p>
+						{isOpen &&
+							dropdownItems.map((options) => <p>{options[0].label}</p>)}
 					</Link>
 				))}
 
@@ -63,7 +113,7 @@ const Menu = () => {
 								onMouseEnter={() => setIsOpen(true)}
 								onMouseLeave={() => setIsOpen(false)}
 								className={styles.dropdown}>
-								{dropdownItems.map((dropdownItems, index) => (
+								{dropdownItems[0].map((dropdownItems, index) => (
 									<Link
 										key={dropdownItems.link}
 										className={styles.link}
