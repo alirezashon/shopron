@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import ChatModel from '../../../../models/Chat'
+import ChatModel from '../../../../../models/Chat'
+
 export default async (req:NextApiRequest,res:NextApiResponse) => {
     try {
         if (req.method === 'POST') {

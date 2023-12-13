@@ -1,5 +1,5 @@
 
-import Chatroom from "../../Components/Chat/Admin/Chatroom"
+import Chatroom from "../../Components/Chat/Admin"
 const Chat: React.FC = () => {
     
     return (
