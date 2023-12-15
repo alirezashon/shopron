@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import Sale from '../../../../models/Sale'
+import Orders from '../../../../models/Orders'
 import Data from '../../../../models/Data'
 import Log from '../../../../models/Log'
 import db from '../../../../utils'
+import mongoose from 'mongoose'
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	interface Post {
 		_id: string
@@ -35,6 +36,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                         const postPrice = post.price || 0
 						return sum + postPrice
 					}, 0)
+					const order = {
+						client,
+						products,
+						price:totalPrice,
+						time:new Date()
+					}
+					const newOrder = new Orders(order)
+					await newOrder.save() 
+					console.log('kalimorderoooo => ')
 					res.status(200).json({ success: true, data, totalPrice })
 				} else {
 					res.status(406).json({ success: false, message: 'Basket is Empty' })

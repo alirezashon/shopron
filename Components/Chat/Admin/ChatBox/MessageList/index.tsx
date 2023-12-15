@@ -27,7 +27,7 @@ const styles = {
     height:'88vh',
     background:'linear-gradient(7deg,rgba(44,77,121,.9),rgba(22,44,66,.9))'
   },
-  message: {
-    
+	message: {
+	  background:'red'
   }
 }

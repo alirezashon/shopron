@@ -11,7 +11,6 @@ const messageSchema = new mongoose.Schema({
 	message: { type: String, required: true },
 	time: { type: Date, default: Date.now },
 })
-
-const Message = mongoose.model('Message', messageSchema)
+const Message = mongoose.models.Message || mongoose.model('Message', messageSchema)
 
 export default Message

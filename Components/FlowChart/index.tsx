@@ -15,9 +15,7 @@ const FlowChart: React.FC = () => {
 	const handleFlowChange = async (index: number) => {
 		try {
 			setIsLoading(true)
-
-			// Simulate asynchronous operations (e.g., fetching data) before changing the state
-			setState(index)
+ 			setState(index)
 			await new Promise((resolve) => setTimeout(resolve, 1000))
 		} finally {
 			setIsLoading(false)
@@ -31,6 +29,7 @@ const FlowChart: React.FC = () => {
 					<div style={FlowBase}>
 						{flowDomain.map((domain, index) => (
 							<div
+								key={index}
 								style={FlowDomain}
 								onClick={() => handleFlowChange(index)}>
 								{index}

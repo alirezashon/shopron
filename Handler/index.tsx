@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 const Handler = () => {
     return(<>
 			<Layout>
-				{/* <Basket/> */}
+				<Basket/>
 				{/* <Story /> */}
 				{/* <PostBox />
 				<PostBox_Three_Four_Section /> */}

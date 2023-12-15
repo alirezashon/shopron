@@ -1,15 +1,25 @@
-/** @format */
-
 import { useEffect, useState } from 'react'
 import styles from './index.module.css'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { GiCrossMark } from 'react-icons/gi'
-import Product from './Products'
+import Products from './Products'
+import { Get } from './Actions'
+interface Post {
+	_id: string
+	title: string
+	src: string
+	price: number
+	category: string
+	quantity: number
+	description: string
+}
+
 const Basket = () => {
 	const [isDragging, setIsDragging] = useState<boolean>(false)
 	const [position, setPosition] = useState<number>(40)
 	const [isBasketOpen, setIsBasketOpen] = useState<boolean>(false)
 	const [isBasketFullScreen, setIsBasketFull] = useState<boolean>(false)
+
 	const drawrHandler = (e: DragEvent) => {
 		const newPosition = (e.clientX / window.innerWidth) * 100
 		isDragging ? setPosition(newPosition) : ''
@@ -44,17 +54,15 @@ const Basket = () => {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				products,
-				client: 'ak',
+				client: client,
 				authType: 'S&H!O*P^I$N#G$T^I@M*E',
 			}),
 		})
-		console.log(products)
-		const data = await response.json()
-		console.log(data)
-	}
+ 		const data = await response.json()
+ 	}
 	return (
 		<>
-			{isBasketOpen ? (
+ 			{isBasketOpen ? (
 				<div
 					className={styles.basketDrawer}
 					onMouseDown={() => setIsDragging(true)}>
@@ -68,7 +76,7 @@ const Basket = () => {
 					</div>
 					<div className={styles.basketBase}>
 						<button onClick={() => calculatePrice()}>میخوامشون</button>
-						<Product />
+						<Products/>
 					</div>
 				</div>
 			) : (

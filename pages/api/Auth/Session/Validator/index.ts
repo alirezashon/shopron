@@ -11,7 +11,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				if (token) {
  					await db.connect()
 					const kalim = token.split('#')[1].replace(/"$/, '')
-
 					const session = await ClientSession.findOne({
 						key: kalim,
 					})

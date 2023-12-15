@@ -1,6 +1,6 @@
+/** @format */
+
 // with new changes need to check it
-
-
 
 // import { useState, useEffect } from 'react'
 // import Image from 'next/image'
@@ -143,12 +143,12 @@
 // 	)
 // }
 // export default Product
-
 import Image from 'next/image'
 import styles from './index.module.css'
 import { FaMinus } from 'react-icons/fa'
 import { MdAddCircle } from 'react-icons/md'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Add, Remove } from '../Actions'
 interface Post {
 	_id: string
 	title: string
@@ -157,112 +157,64 @@ interface Post {
 	category: string
 	quantity: number
 	description: string
+	inBasket?: number
 }
-interface PostProps{
-	posts:Post[]
+interface BasketStore {
+	id: string
+	count: number
 }
-// const posts: Post[] = [
-// 	{
-// 		_id: '6',
-// 		title: 'Post 1',
-// 		description: 'Description of Post 1',
-// 		price: 10,
-// 		src: '/images/ali.jpg',
-// 		count: 3,
-// 	},
-// 	{
-// 		_id: '5',
-// 		title: 'Post 2',
-// 		description: 'Description of Post 2',
-// 		price: 20,
-// 		src: '/images/ali.jpg',
-// 		count: 2,
-// 	},
-// 	{
-// 		_id: '4',
-// 		title: 'Post 3',
-// 		description: 'Description of Post 3',
-// 		price: 30,
-// 		src: '/images/ali.jpg',
-// 		count: 4,
-// 	},
-// 	{
-// 		_id: '3',
-// 		title: 'Post 4',
-// 		description: 'Description of Post 4',
-// 		price: 40,
-// 		src: '/images/ali.jpg',
-// 		count: 1,
-// 	},
-// 	{
-// 		_id: '6',
-// 		title: 'Post 1',
-// 		description: 'Description of Post 1',
-// 		price: 10,
-// 		src: '/images/ali.jpg',
-// 		count: 5,
-// 	},
-// 	{
-// 		_id: '5',
-// 		title: 'Post 2',
-// 		description: 'Description of Post 2',
-// 		price: 20,
-// 		src: '/images/ali.jpg',
-// 		count: 6,
-// 	},
-// 	{
-// 		_id: '4',
-// 		title: 'Post 3',
-// 		description: 'Description of Post 3',
-// 		price: 30,
-// 		src: '/images/ali.jpg',
-// 		count: 7,
-// 	},
-// 	{
-// 		_id: '3',
-// 		title: 'Post 4',
-// 		description: 'Description of Post 4',
-// 		price: 40,
-// 		src: '/images/ali.jpg',
-// 		count: 13,
-// 	},
-// 	{
-// 		_id: '6',
-// 		title: 'Post 1',
-// 		description: 'Description of Post 1',
-// 		price: 10,
-// 		src: '/images/ali.jpg',
-// 		count: 9,
-// 	},
-// 	{
-// 		_id: '5',
-// 		title: 'Post 2',
-// 		description: 'Description of Post 2',
-// 		price: 20,
-// 		src: '/images/ali.jpg',
-// 		count: 8,
-// 	},
-// 	{
-// 		_id: '4',
-// 		title: 'Post 3',
-// 		description: 'Description of Post 3',
-// 		price: 30,
-// 		src: '/images/ali.jpg',
-// 		count: 18,
-// 	},
-// 	{
-// 		_id: '3',
-// 		title: 'Post 4',
-// 		description: 'Description of Post 4',
-// 		price: 40,
-// 		src: '/images/ali.jpg',
-// 		count: 22,
-// 	},
-// ]
-const Product:React.FC<PostProps> = ({posts}) => {
+const Products: React.FC = () => {
+	const [posts, setPosts] = useState<Post[]>([])
+	const [postStates, setPostStates] = useState<Post[]>(posts)
+
+	const updateBasketState = (posts: Post[], basketItems: BasketStore[]) => {
+		const updatedPosts = posts?.map((post) => {
+			const matchingItem = basketItems.find((item) => item.id === post._id)
+
+			return {
+				...post,
+				inBasket: matchingItem ? matchingItem.count : 0,
+			}
+		})
+
+		setPostStates(updatedPosts)
+	}
+
+	const getData = async (data: string[]) => {
+		const response = await fetch('/api/data/Post/Client/bulk', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				bulkID: data,
+				authType: 'G&E!T*P^R$O#D$U^C@T*B^u$l*K$',
+			}),
+		})
+		const posts = await response.json()
+		setPosts(posts.products)
+	}
+	useEffect(() => {
+		const basketPost: string[] = JSON.parse(
+			localStorage.getItem('#B!@%$&K&E^T*O(s&') || '[]'
+		)
+		const productsID = basketPost.map(
+			(post) => post.split('*2%2&7(7)5%5!1@2')[0]
+		)
+		getData(productsID)
+		const basketSide: BasketStore[] = []
+
+		if (basketPost.length > 0) {
+			basketPost.forEach((post) => {
+				const [postId, quantityStr] = post.split('*2%2&7(7)5%5!1@2')
+				const count = parseInt(quantityStr)
+				basketSide.push({ id: postId, count })
+			})
+			updateBasketState(posts, basketSide)
+		}
+	}, [posts])
+
 	return (
 		<>
-			{posts.map((obj) => (
+			{postStates.map((obj) => (
 				<div className={styles.postsContainer}>
 					<div className={styles.productBox}>
 						<Image
@@ -284,11 +236,13 @@ const Product:React.FC<PostProps> = ({posts}) => {
 									<MdAddCircle
 										className={styles.inceriment}
 										size={'3vh'}
+										onClick={() => Add(obj._id)}
 									/>
-									<p className={styles.quantity}>{obj.quantity}</p>
+									<p className={styles.quantity}>{obj.inBasket}</p>
 									<FaMinus
 										className={styles.deceriment}
 										size={'3vh'}
+										onClick={() => Remove(obj._id)}
 									/>
 								</div>
 							</div>
@@ -299,4 +253,4 @@ const Product:React.FC<PostProps> = ({posts}) => {
 		</>
 	)
 }
-export default Product
+export default Products

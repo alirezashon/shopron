@@ -1,45 +1,77 @@
 /** @format */
 
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
-
 interface Chat {
 	name: string
 	messages: string
 	hashTag: string
 }
-const ChatList: React.FC = () => {
-	const [chatList, setChatList] = useState<Chat[]>([
-		{
-			name: 'testosto',
-			messages: 'testosto',
-			hashTag: 'testosto',
-		},
-	])
-	const getChats = async () => {
-		const response = await fetch('/api/chat/Admin/GET', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ authType: '!C#o$N%e^C&t*O$C#h$t%' }),
-		})
-		const data = await response.json()
-		console.log(data)
-		response.status === 200
-			? setChatList([
-					{ name: 'testosto', messages: 'testosto', hashTag: 'testosto' },
-			  ])
-			: ''
-	}
-	useEffect(() => {
-		getChats()
-	}, [])
+
+interface ChatListProps {
+	sender: Chat
+}
+
+const ChatList: React.FC<ChatListProps> = ({ sender }) => {
 	return (
 		<>
-			{chatList.map((chat) => (
-				<div>
-					
+			<div
+				key={sender.name}
+				style={styles.senderBox}>
+				<div style={styles.imageContainer}>
+					<Image
+						alt={sender.name}
+						src={`https://picsum.photos/80/80?random=${Math.random()}`} // Using Picsum API for random images
+						width={700}
+						height={700}
+						layout='responsive'
+						style={styles.image}
+					/>
 				</div>
-			))}
+				<div style={styles.senderInfo}>
+					<div style={styles.senderName}>{sender.name}</div>
+ 					<div style={styles.lastMessage}>
+						{sender.messages[sender.messages.length - 1]}
+					</div>
+				</div>
+			</div>
 		</>
 	)
 }
+
 export default ChatList
+const styles: { [key: string]: React.CSSProperties } = {
+	senderBox: {
+		width: '95%',
+		height: '10vh',
+		display: 'flex',
+		alignItems: 'center',
+		padding: '1vh',
+		border: '.4vh ridge #ffffff',
+		margin: '1vh',
+	},
+	imageContainer: {
+		height: '7vh',
+		width: '7vh',
+		marginRight: '1vh',
+	},
+	image: {
+		width: '100%',
+		height:'100%',
+		borderRadius: '7vh',
+	},
+	senderInfo: {
+		flex: 1,
+		display: 'flex',
+		flexDirection: 'column',
+		fontSize:'2vh',
+	},
+	senderName: {
+		fontWeight: 'bold',
+		fontSize: '16px',
+	},
+	lastMessage: {
+		textAlign: 'center',
+		marginTop: '5px',
+	},
+}
