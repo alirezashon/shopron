@@ -6,10 +6,4 @@ const createConnection = async (user: string) => {
 		})
 		const data = await response.json()
 		console.log(data)
-	}
-
-	useEffect(() => {
-		const user = JSON.parse(localStorage.getItem('user') || '')
-		createConnection(user)
-	}, [])
-w
+	} 

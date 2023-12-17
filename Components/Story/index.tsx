@@ -45,7 +45,7 @@ const StoryComponent: React.FC<Props> = ({ data }) => {
 			})
 		}) || []
 		setStories(setSeen)
-	}, [])
+	}, [stories])
 	const showStory = (_id: string) => {
 		const storyHistory: string[] = JSON.parse(
 			sessionStorage.getItem('^S&T#o@r%i($*i&N0') || '[]'
@@ -110,7 +110,7 @@ const StoryComponent: React.FC<Props> = ({ data }) => {
 					<div className={styles.openStoryTitle}>استوریاشونم که خب ماچری</div>
 					<div className={styles.openStoryInnerSide}>
 						{stories.map((story) => (
-							<div className={styles.openStoryBox}>
+							<div key={story._id} className={styles.openStoryBox}>
 								<div className={styles.openStoryHeader}>
 									<AiFillCloseCircle
 										className={styles.close}

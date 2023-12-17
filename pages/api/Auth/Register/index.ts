@@ -9,7 +9,7 @@ import {
 	generateKeyAndIV,
 	encryptText,
 } from '../../../../Components/CryptoUtils'
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const Register =  async (req: NextApiRequest, res: NextApiResponse) => {
 	const IP = ip()
 	const MAC = mac((err, addr) => {
 		return addr
@@ -122,3 +122,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		res.status(500).json({ message: 'Server Error' })
 	}
 }
+
+export default Register

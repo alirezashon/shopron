@@ -12,7 +12,7 @@ import {
 	generateKeyAndIV,
 	encryptText,
 } from '../../../../../Components/CryptoUtils'
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const Generator = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		const webAgent = req.headers['user-agent']
 		const time = new Date().toLocaleString('en-US', {
@@ -108,3 +108,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 	}
 }
+export default Generator

@@ -25,14 +25,14 @@ const Basket = () => {
 		isDragging ? setPosition(newPosition) : ''
 	}
 
-	const handleMouseMove = (e: MouseEvent) => {
-		if (isDragging) {
-			const newPosition = (e.clientX / window.innerWidth) * 100
-			setPosition(newPosition)
-		}
-	}
-
+	
 	useEffect(() => {
+		const handleMouseMove = (e: MouseEvent) => {
+			if (isDragging) {
+				const newPosition = (e.clientX / window.innerWidth) * 100
+				setPosition(newPosition)
+			}
+		}
 		if (isDragging) {
 			window.addEventListener('mousemove', handleMouseMove)
 			window.addEventListener('mouseup', () => setIsDragging(false))

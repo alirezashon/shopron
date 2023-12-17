@@ -32,8 +32,8 @@ const MapPage = () => {
   }, [apiKey, apiUrl]);
 
   return (
+    // {mapImage && <img src={mapImage} alt="Neshan Map" />}
     <div>
-      {mapImage && <img src={mapImage} alt="Neshan Map" />}
     </div>
   );
 };

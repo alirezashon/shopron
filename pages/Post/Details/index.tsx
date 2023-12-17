@@ -5,6 +5,7 @@ import styles from './index.module.css'
 import Carouselali from './Carouselali'
 import PostBox from '../PostBox'
 import SelectList from '@/Components/Form/SelectList'
+import Image from 'next/image'
 
 interface PostProps {
 	post: {
@@ -25,7 +26,10 @@ const Details = (post: PostProps, children: any) => {
 			<div className={styles.screenBox}>
 				<div className={styles.screenBody}>
 					<div className={styles.screenIssueLogoBox}>
-						<img
+						<Image
+							width={1111}
+							height={1111}
+							alt='post'
 							className={styles.issueScreenLogo}
 							src='/images/icon.png'
 						/>

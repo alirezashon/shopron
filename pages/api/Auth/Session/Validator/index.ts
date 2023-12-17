@@ -3,7 +3,7 @@ import { decryptText } from '../../../../../Components/CryptoUtils'
 import ClientSession from '../../../../../models/Client/Session'
 import Client from '../../../../../models/Client'
 import db from '../../../../../utils'
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const Validator = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		if (req.method === 'POST') {
 			const { authType, token } = req.body
@@ -54,3 +54,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		res.status(500).json({ success: false, message: `Server Error => ${err}` })
 	}
 }
+export default Validator

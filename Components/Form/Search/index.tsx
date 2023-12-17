@@ -4,7 +4,7 @@ import React, { useState, ChangeEvent, MouseEvent } from 'react'
 import { FaSearchengin } from 'react-icons/fa'
 const SearchBarComponent: React.FC = () => {
 	const [searchText, setSearchText] = useState<string>('')
-
+	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const searchBarStyles: React.CSSProperties = {
 		display: 'flex',
 		alignItems: 'center',
@@ -40,27 +40,22 @@ const SearchBarComponent: React.FC = () => {
 		transform: 'rotate(90deg)',
 	}
 
-	const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-		setSearchText(e.currentTarget.value)
-	}
 
 	const handleSearch = (e: MouseEvent<HTMLInputElement>) => {
-		// Prevent the default form submission behavior
+		setIsOpen(true)
 		e.preventDefault()
-
-		// Perform search logic with searchText
-		console.log('Searching for:', searchText)
 	}
 
 	return (
 		<div style={searchBarStyles}>
-			<input
-				style={textBoxStyles}
-				value={searchText}
-				onChange={handleInput}
-				placeholder='جستجو ...'
-			/>
-
+			{isOpen && (
+				<input
+					style={textBoxStyles}
+					value={searchText}
+					onChange={(e)=>setSearchText(e.currentTarget.value)}
+					placeholder='جستجو ...'
+				/>
+			)}
 			<div
 				style={submitButtonStyles}
 				onClick={handleSearch}>

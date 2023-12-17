@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Data from '../../../../../models/Data'
 import db from '../../../../../utils'
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const FindCategory = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		if (req.method === 'POST') {
 			const { category, authType } = req.body
@@ -26,3 +26,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		res.status(500).json({ success: false, message: `Server Error => ${err}` })
 	}
 }
+export default FindCategory

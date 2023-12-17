@@ -25,7 +25,7 @@ interface BasketStore {
 interface PostsDisplayProps {
 	posts: Post[]
 }
-const index: React.FC<PostsDisplayProps> = ({ posts }) => {
+const Index: React.FC<PostsDisplayProps> = ({ posts }) => {
 	const [postStates, setPostStates] = useState<Post[]>(
 		posts?.filter((post: Post) => ({
 			post,
@@ -222,4 +222,4 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 	// )
 }
 
-export default index
+export default Index

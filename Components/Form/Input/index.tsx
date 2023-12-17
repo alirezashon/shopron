@@ -105,7 +105,7 @@ const Input = () => {
 		<>
 			<div className={styles.container}>
 				{inputCreator.map((obj) => (
-					<div>
+					<div key={obj.label}>
 						{/* {obj.req} */}
 						<input
 							type={obj.type}

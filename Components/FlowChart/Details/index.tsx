@@ -34,7 +34,7 @@ const Details: React.FC = () => {
 			console.log(posts)
 			setPostData(posts.products)
 		})()
-	}, [])
+	}, [data])
 	return (
 		<>
 			<h1>Details</h1>

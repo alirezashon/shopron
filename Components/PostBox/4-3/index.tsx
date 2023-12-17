@@ -25,7 +25,7 @@ interface BasketStore {
 interface PostsDisplayProps {
 	posts: Post[]
 }
-const index: React.FC<PostsDisplayProps> = ({ posts }) => {
+const Index: React.FC<PostsDisplayProps> = ({ posts }) => {
 	const [postStates, setPostStates] = useState<Post[]>(posts)
 	const [basketStore, setBasketStore] = useState<string[]>([])
 	const [isMobile, setIsMobile] = useState<boolean>(true)
@@ -226,4 +226,4 @@ const index: React.FC<PostsDisplayProps> = ({ posts }) => {
 	// )
 }
 
-export default index
+export default Index

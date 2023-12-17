@@ -215,7 +215,7 @@ const Products: React.FC = () => {
 	return (
 		<>
 			{postStates.map((obj) => (
-				<div className={styles.postsContainer}>
+				<div key={obj._id} className={styles.postsContainer}>
 					<div className={styles.productBox}>
 						<Image
 							src={obj.src}

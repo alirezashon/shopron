@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Client from '../../../../models/Client'
 import db from "../../../../utils";
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const Auth = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {
             const { user, password, authType } = req.body
@@ -22,3 +22,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(500).json({success:false, message:'Server Error' + err})
     }
 }
+export default Auth

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import styles from './index.module.css'
 
 interface CheckboxItem {
@@ -13,30 +13,33 @@ interface CheckboxItem {
 
 const CheckBox = () => {
 	const [checkedItems, setCheckedItems] = useState<string[]>([])
-	const checkBoxCreator: CheckboxItem[] = [
-		{
-			label: 'selectAll',
-			borderColor: 'red',
-			bgColor: 'pink',
-			selectedBorderColor: 'purple',
-			default: false,
-		},
-		{
-			label: 'checkBseeeeeeeeeeeeeeeeeseeeeeeeeeox-1',
-			borderColor: '#ffa20d',
-			bgColor: '#ffe8a2',
-			selectedBorderColor: 'blue',
-			default: true,
-		},
-		{
-			label: 'checkBox-2',
-			borderColor: '#ffa20d',
-			bgColor: '#ffe8a2',
-			selectedBorderColor: '#499b01',
-			default: false,
-		},
- 
-	]
+	const checkBoxCreator: CheckboxItem[] = useMemo(
+		() => [
+			{
+				label: 'selectAll',
+				borderColor: 'red',
+				bgColor: 'pink',
+				selectedBorderColor: 'purple',
+				default: false,
+			},
+			{
+				label: 'checkBseeeeeeeeeeeeeeeeeseeeeeeeeeox-1',
+				borderColor: '#ffa20d',
+				bgColor: '#ffe8a2',
+				selectedBorderColor: 'blue',
+				default: true,
+			},
+			{
+				label: 'checkBox-2',
+				borderColor: '#ffa20d',
+				bgColor: '#ffe8a2',
+				selectedBorderColor: '#499b01',
+				default: false,
+			},
+			// ... (add other items as needed)
+		],
+		[] // Empty dependency array since checkBoxCreator doesn't depend on props or state
+	)
 
 	useEffect(() => {
 		// Check items with default true after the component mounts
@@ -44,7 +47,7 @@ const CheckBox = () => {
 			.filter((item) => item.default)
 			.map((item) => item.label)
 		setCheckedItems(defaultCheckedItems)
-	}, [])
+	}, [checkBoxCreator])
 
 	const handleCheckboxChange = (label: string) => {
 		if (label === 'selectAll') {

@@ -31,15 +31,7 @@ const RightSidebar = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [isOptionOpen, setIsOptionOpen] = useState([])
 	const [isSubOptionOpen, setIsSubOptionOpen] = useState([])
-	const closeNav = (event) => {
-		const windowWidth = window.innerWidth
-		const clickX = event.clientX
-
-		if (isOpen && clickX < windowWidth * 0.4) {
-			setIsOpen(false)
-		}
-	}
-
+	
 	const toggleOption = (index) => {
 		setIsOptionOpen((prev) => ({
 			...prev,
@@ -53,8 +45,16 @@ const RightSidebar = () => {
 		}))
 	}
 	useEffect(() => {
+		const closeNav = (event) => {
+			const windowWidth = window.innerWidth
+			const clickX = event.clientX
+	
+			if (isOpen && clickX < windowWidth * 0.4) {
+				setIsOpen(false)
+			}
+		}
 		window.addEventListener('click', closeNav)
-
+		
 		return () => {
 			window.removeEventListener('click', closeNav)
 		}

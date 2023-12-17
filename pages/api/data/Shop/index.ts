@@ -3,8 +3,8 @@ import Orders from '../../../../models/Orders'
 import Data from '../../../../models/Data'
 import Log from '../../../../models/Log'
 import db from '../../../../utils'
-import mongoose from 'mongoose'
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+
+const Shop = async (req: NextApiRequest, res: NextApiResponse) => {
 	interface Post {
 		_id: string
 		title: string
@@ -59,3 +59,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		res.status(500).json({ success: false, message: `Server Error => ${err}` })
 	}
 }
+export default Shop

@@ -38,7 +38,7 @@ interface BasketStore {
 	id: string
 	quantity: number
 }
-const index: NextPage<HomeProps> = ({ posts }) => {
+const Index: NextPage<HomeProps> = ({ posts }) => {
 	const [postStates, setPostStates] = useState<Post[]>(
 		posts?.filter((post: Post) => ({
 			post,
@@ -173,4 +173,4 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
 	}
 }
 
-export default index
+export default Index
