@@ -13,8 +13,7 @@ interface MenuItem {
 }
 
 const Menu = () => {
-	const [showDiv, setShowDiv] = useState<boolean>(true)
-	const [isOpen, setIsOpen] = useState<boolean>(false)
+	const [showOptions, setShowOptions] = useState<boolean>(true)
 	const [selectedItem, setSelectedItem] = useState<number | null>(null)
 	const [isSubOptionOpen, setIsSubOptionOpen] = useState<{
 		[key: number]: boolean
@@ -53,35 +52,13 @@ const Menu = () => {
 	useEffect(() => {
 		const handleScroll = () => {
 			const currentScrollPos = window.scrollY
-			currentScrollPos < 799 ? setShowDiv(true) : setShowDiv(false)
+			currentScrollPos < 799 ? setShowOptions(true) : setShowOptions(false)
 		}
 
 		window.addEventListener('scroll', handleScroll)
 
 		return () => window.removeEventListener('scroll', handleScroll)
 	}, [])
-
-	const handleItemMouseOver = (index: number) => {
-		setIsOpen(true)
-		setSelectedItem(index)
-	}
-
-	const handleItemMouseLeave = () => {
-		setIsOpen(false)
-		setSelectedItem(null)
-	}
-
-	const handleSubOptionMouseEnter = (index: number) => {
-		setIsSubOptionOpen((prev) => ({ ...prev, [index]: true }))
-	}
-
-	const handleSubOptionMouseLeave = (index: number) => {
-		setIsSubOptionOpen((prev) => ({ ...prev, [index]: false }))
-	}
-
-	const handleSubOptionClick = (index: number) => {
-		setIsSubOptionOpen((prev) => ({ ...prev, [index]: true }))
-	}
 
 	return (
 		<>
@@ -92,40 +69,56 @@ const Menu = () => {
 					navHeight === 60 ? setNavHeight(13) : setNavHeight(60)
 				}
 				style={{ height: `${navHeight}vh` }}>
- 					<div
+				<div>
+					<div
 						onClick={() =>
 							navHeight === 67 ? setNavHeight(13) : setNavHeight(67)
-						}
-					
-					onMouseOver={()=>null}>
+						}>
 						{navHeight < 22 ? (
 							<PiArrowFatLinesDownThin />
 						) : (
 							<PiArrowFatLinesUpThin />
 						)}
 					</div>
- 			</div>
+				</div>
+			</div>
 			<div
 				style={{ height: `${navHeight - 4}vh` }}
 				className={`${styles.scrollingDiv} ${
-					showDiv ? styles.show : styles.hide
+					showOptions ? styles.show : styles.hide
 				}`}>
-				{items.map((menuItem, index) => (
-					<div
-						key={menuItem.link}
-						className={styles.link}
-						onMouseOver={() => handleItemMouseOver(index)}
-						onMouseLeave={handleItemMouseLeave}>
-						<p className={styles.menuItem}>{menuItem.label}</p>
-					</div>
-				))}
-
-				<div className={styles.componentBox}>
-					<div className={styles.basket}>
-						<Basket />
-					</div>
-					<div className={styles.search}>
-						<Search />
+				<div
+					className={`${styles.itemsBox} ${navHeight > 55 ? styles.openItemsBox : styles.closeItemsBox}`}>
+					{items.map((menuItem, index) => (
+						<div
+							key={menuItem.link}
+							className={styles.link}>
+							<p className={styles.menuItem}>{menuItem.label}</p>
+							<div
+								className={styles.subOptionBox}
+								style={{ display: `${navHeight < 55 ? 'none' : 'block'}` }}>
+								{navHeight > 55 &&
+									dropdownItems[index].map((option, subIndex) => (
+										<div
+											key={option.link}
+											className={`${styles.subOption} ${
+												isSubOptionOpen[index] ? styles.showSubOption : ''
+											}`}>
+											<Link href={option.link}>
+												<p className={styles.subOptionItem}>{option.label}</p>
+											</Link>
+										</div>
+									))}
+							</div>
+						</div>
+					))}
+					<div className={styles.componentBox}>
+						<div className={styles.basket}>
+							<Basket />
+						</div>
+						<div className={styles.search}>
+							<Search />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -134,11 +127,3 @@ const Menu = () => {
 }
 
 export default Menu
-
-export const MenuOptions = () => {
-	return (
-		<>
-			<div></div>
-		</>
-	)
-}
