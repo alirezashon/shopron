@@ -15,7 +15,7 @@
 .storyBox {
 	overflow-x: auto;
 	width: 100%;
-	margin: 1% 0;
+	margin: .3vh 0;
 	background-color: #ffffff;
 	border: #34bc9a 0.5vh dashed;
 	box-shadow: 1px 1px 7px 1px #e0f5ff, 1px 1px 11vh 1vh #8bddcd inset;

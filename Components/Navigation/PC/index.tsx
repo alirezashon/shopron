@@ -88,11 +88,13 @@ const Menu = () => {
 					showOptions ? styles.show : styles.hide
 				}`}>
 				<div
-					className={`${styles.itemsBox} ${navHeight > 55 ? styles.openItemsBox : styles.closeItemsBox}`}>
+					className={`${styles.itemsBox} ${
+						navHeight > 55 ? styles.openItemsBox : styles.closeItemsBox
+					}`}>
 					{items.map((menuItem, index) => (
 						<div
 							key={menuItem.link}
-							className={styles.link}>
+							className={`${navHeight < 55 && styles.link}`}>
 							<p className={styles.menuItem}>{menuItem.label}</p>
 							<div
 								className={styles.subOptionBox}

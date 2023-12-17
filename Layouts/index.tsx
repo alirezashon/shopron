@@ -32,5 +32,5 @@ const Layout = ({ children }: any) => {
 }
 export default Layout
 const navigation = {
-	marginBottom:'8.3vh'
+	backgroundColor:'white'
 }
