@@ -5,6 +5,7 @@ import styles from './index.module.css'
 import Basket from '../../Basket'
 import { GiCrossMark } from 'react-icons/gi'
 import Search from '../../Form/Search'
+import { PiUserCircleGearFill } from 'react-icons/pi'
 
 const menuItems = [
 	{
@@ -151,6 +152,7 @@ const RightSidebar = () => {
 						</div>
 					</div>
 				</div>
+					<PiUserCircleGearFill size={ '6vh'} />
 				<Basket />
 			</div>
 		</>

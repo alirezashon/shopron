@@ -1,65 +1,58 @@
 /** @format */
 
-import React, { useState, ChangeEvent, MouseEvent } from 'react'
+import React, { useState, MouseEvent } from 'react'
 import { FaSearchengin } from 'react-icons/fa'
+import styles from './index.module.css'
 const SearchBarComponent: React.FC = () => {
 	const [searchText, setSearchText] = useState<string>('')
-	const [isOpen, setIsOpen] = useState<boolean>(false)
-	const searchBarStyles: React.CSSProperties = {
-		display: 'flex',
-		alignItems: 'center',
-		width: '100%',
-		margin: '2vh',
-	}
+	const [inputWidth, setInputWidth] = useState<number>(0)
 
-	const textBoxStyles: React.CSSProperties = {
-		flex: 1,
-		width: '60%',
-		padding: '.4vh',
-		border: '.3vh ridge #c6c12c',
-		borderRadius: '1vh 0 0 1vh',
-		outline: 'none',
-		direction: 'rtl',
-	}
+	const changeTextBoxWidth = (position: string) => {
+		let interval: NodeJS.Timeout
 
-	const submitButtonStyles: React.CSSProperties = {
-		width: '18%',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		padding: '.1vh',
-		backgroundColor: '#007BFF',
-		color: '#fffff7',
-		border: '.4vh ridge #007BFF',
-		borderRadius: '0 .4vh .4vh 0',
-		cursor: 'pointer',
-		outline: 'none',
-	}
-	const searchIcon: React.CSSProperties = {
-		fontSize: '4vh',
-		transform: 'rotate(90deg)',
-	}
+		if (position === 'open') {
+			interval = setInterval(() => {
+				setInputWidth((prev) => Math.min(prev + 5, 100))
+			}, 3)
+		} else {
+			interval = setInterval(() => {
+				setInputWidth((prev) => Math.max(prev - 5, 0))
+			}, 3)
+		}
 
+		return () => {
+			clearInterval(interval)
+		}
+	}
 
 	const handleSearch = (e: MouseEvent<HTMLInputElement>) => {
-		setIsOpen(true)
+		changeTextBoxWidth('open')
 		e.preventDefault()
 	}
 
 	return (
-		<div style={searchBarStyles}>
-			{isOpen && (
-				<input
-					style={textBoxStyles}
-					value={searchText}
-					onChange={(e)=>setSearchText(e.currentTarget.value)}
-					placeholder='جستجو ...'
-				/>
-			)}
+		<div className={styles.searchBar}>
+			<input
+				style={{
+					width: `${inputWidth}%`,
+					display: `${inputWidth < 5 ? 'none' : 'block'}`,
+				}}
+				className={styles.textBox}
+				value={searchText}
+				onChange={(e) => setSearchText(e.currentTarget.value)}
+				placeholder='جستجو ...'
+			/>
+
 			<div
-				style={submitButtonStyles}
+				className={styles.submitButton}
+				style={{
+					borderRadius: `${inputWidth < 5 ? '5vh' : '0 0.4vh 0.4vh 0'}`,
+					width: `${inputWidth < 5 && '7vh'}`,
+					height: `${inputWidth < 5 ? '7vh' : '5vh'}`,
+					border:`${inputWidth > 5 && 'none'}`
+				}}
 				onClick={handleSearch}>
-				<FaSearchengin style={searchIcon} />
+				<FaSearchengin className={styles.searchIcon} />
 			</div>
 		</div>
 	)
