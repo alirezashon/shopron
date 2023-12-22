@@ -1,9 +1,9 @@
 /** @format */
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import Sender from '../../../../../models/Chat/Sender'
-import db from '../../../../../utils'
-const GET = async (req: NextApiRequest, res: NextApiResponse) => {
+import Sender from '../../../../models/Chat/Sender'
+import db from '../../../../utils'
+export default async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		if (req.method === 'POST') {
 			const { authType } = req.body
@@ -21,4 +21,3 @@ const GET = async (req: NextApiRequest, res: NextApiResponse) => {
 		res.status(500).json({ message: 'Server Error', error })
 	}
 }
-export default GET

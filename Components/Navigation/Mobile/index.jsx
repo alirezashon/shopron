@@ -28,11 +28,11 @@ const menuItems = [
 	{ name: 'درباره ی ما', option: ['همیشه خفناسا'] },
 ]
 
-const RightSidebar = () => {
+const Mobile = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [isOptionOpen, setIsOptionOpen] = useState([])
 	const [isSubOptionOpen, setIsSubOptionOpen] = useState([])
-	
+
 	const toggleOption = (index) => {
 		setIsOptionOpen((prev) => ({
 			...prev,
@@ -49,13 +49,13 @@ const RightSidebar = () => {
 		const closeNav = (event) => {
 			const windowWidth = window.innerWidth
 			const clickX = event.clientX
-	
+
 			if (isOpen && clickX < windowWidth * 0.4) {
 				setIsOpen(false)
 			}
 		}
 		window.addEventListener('click', closeNav)
-		
+
 		return () => {
 			window.removeEventListener('click', closeNav)
 		}
@@ -139,24 +139,18 @@ const RightSidebar = () => {
 				</div>
 				<div>
 					<div className={styles.centerSection}>
-						<marquee
-							behavior='scroll'
-							direction='left'>
-							<span>
-								This is a sample text inside the marquee. It will scroll from
-								right to left.
-							</span>
-						</marquee>
 						<div className={styles.searchBox}>
 							<Search />
 						</div>
 					</div>
 				</div>
-					<PiUserCircleGearFill size={ '6vh'} />
+				<div className={styles.profile}>
+					<PiUserCircleGearFill size={'6vh'} />
+				</div>
 				<Basket />
 			</div>
 		</>
 	)
 }
 
-export default RightSidebar
+export default Mobile

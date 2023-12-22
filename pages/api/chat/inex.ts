@@ -1,57 +1,47 @@
-// import { NextApiRequest, NextApiResponse } from 'next';
-// import { Server, WebSocket } from 'ws';
-// import { createServer, IncomingMessage } from 'http';
+/** @format */
 
-// // Create a WebSocket server
-// const wsServer = new Server({ noServer: true });
-
-// wsServer.on('connection', (socket: WebSocket, request: IncomingMessage) => {
-//   console.log('Client connected');
-
-//   // Listen to messages from the client
-//   socket.on('message', (message: string) => {
-//     console.log(`Received: ${message}`);
-//     // Save the chat data to a Mongoose model (assuming you have a Mongoose model named Chat)
-//     // const chat = new Chat({ message });
-//     // chat.save();
-//   });
-
-//   socket.send('Hello from server!');
-
-//   // Handle disconnection
-//   socket.on('close', () => {
-//     console.log('Client disconnected');
-//   });
-// });
-
-// export default async (req: NextApiRequest, res: NextApiResponse) => {
-//   if (!res.socket) {
-//     return res.status(500).end('Server error');
-//   }
-
-//   // Upgrade HTTP request to WebSocket
-//   wsServer.handleUpgrade(req, res.socket, Buffer.alloc(0), (socket) => {
-//     wsServer.emit('connection', socket, req);
-//   });
-
-//   res.status(200).end();
-// };
-
-// // Create an HTTP server
-// const httpServer = createServer((req, res) => {
-//   res.writeHead(404);
-//   res.end();
-// });
-
-// // Attach WebSocket server to the HTTP server
-// httpServer.on('upgrade', (request: IncomingMessage, socket, head) => {
-//   wsServer.handleUpgrade(request, socket, head, (socket) => {
-//     wsServer.emit('connection', socket, request);
-//   });
-// });
-
-// // Start the HTTP server on the specified port
-// const PORT = process.env.PORT || 3001;
-// httpServer.listen(PORT, () => {
-//   console.log(`WebSocket server listening on port ${PORT}`);
-// });
+import { NextApiRequest, NextApiResponse } from 'next'
+import Message from '../../../models/Chat/Message'
+import Sender from '../../../models/Chat/Sender'
+import db from '../../../utils'
+const chat = async (req: NextApiRequest, res: NextApiResponse) => {
+	try {
+		if (req.method === 'POST') {
+			const { authType, text, sender } = req.body
+			if (authType === '&M%e$A#g$e#I%n&Z*') {
+				if (sender === 'new-user') {
+					const newSender = new Sender({
+						name: `${'Unkown_User_' + Date.now().toString()}`,
+						hashTag: `${
+							Date.now().toString() +
+							'-' +
+							Math.random().toString(36).substr(2, 5)
+						}`,
+					})
+					await newSender.save()
+					const message = new Message({
+						sender: newSender._id,
+						message: text,
+					})
+					await message.save()
+					res.status(200).json({ success: true, chatID: newSender._id })
+				} else {
+					await db.connect()
+					const message = new Message({
+						sender,
+						message: text,
+					})
+					await message.save()
+					res.status(200).json({ success: true })
+				}
+			} else {
+				res.status(409).json({ success: false, message: 'bad method' })
+			}
+		} else {
+			res.status(409).json({ success: false, message: 'bad method' })
+		}
+	} catch (err) {
+		res.status(500).json({ message: `Server Error => ${err}` })
+	}
+}
+export default chat

@@ -23,24 +23,45 @@ const Chatroom: React.FC = () => {
 	const [messages, setMessages] = useState<string[]>([])
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 	const [chatList, setChatList] = useState<Chat[]>([])
+	const [sender, setSender] = useState<string>('')
 	const addMessage = (message: string) => {
 		setMessages([...messages, message])
+		const setMessage = async () => {
+			const response = await fetch('/api/chat', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					authType: '&M%e$A#g$e#I%n&Z*',
+					text: message,
+					sender: sender.length > 0 ? sender : 'new-user',
+				}),
+			})
+			const data = await response.json()
+			if (data.chatID && data.chatID.length > 0) {
+				localStorage.setItem('#C!@%T$I&d&E^T*O^', data.chatID)
+			}
+			console.log('data')
+			console.log(response)
+		}
+		setMessage()
 	}
 
 	const getChats = async () => {
-		const response = await fetch('/api/chat/Admin/GET', {
+		const response = await fetch('/api/chat/GET', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ authType: '!C#o$N%e^C&t*O$C#h$t%' }),
 		})
 		const data = await response.json()
-		console.log(data)
-		console.log(response)
 		response.status === 200 ? setChatList(data.senders) : ''
 	}
 	useEffect(() => {
+		const chatId: string = 
+			localStorage.getItem('#C!@%T$I&d&E^T*O^') || ''
+		
+		chatId.length > 0 && setSender(chatId)
 		getChats()
-	}, [])
+	}, [setSender])
 
 	return (
 		<div style={styles.container}>
@@ -84,8 +105,9 @@ export default Chatroom
 const styles: Styles = {
 	container: {
 		width: '100%',
-		height: '100vh',
-		backgroundColor: 'whitesmoke',
+		height: '100%',
+		background:
+			'linear-gradient(4deg,rgba(29,93,129.9),rgba(247,247,247,.9),rgba(90,123,230,.9))',
 		display: 'flex',
 	},
 	drawer: {
@@ -104,6 +126,8 @@ const styles: Styles = {
 		transition: 'width 0.3s ease-in-out', // Add transition for smooth animation
 		width: '67%',
 	},
-	privateChat: {},
+	privateChat: {
+		height: '85%',
+	},
 	messageBox: {},
 }

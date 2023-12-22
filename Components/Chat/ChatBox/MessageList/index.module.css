@@ -1,0 +1,19 @@
+/** @format */
+
+.message {
+	background: linear-gradient(
+		0deg,
+		rgba(222, 241, 191, 0.2),
+		rgba(252, 246, 255, 0.9)
+	);
+	border: 0.4vh dashed rgba(21, 99, 222, 0.9);
+	border-radius: 1vh;
+	width: fit-content;
+	padding: 0.2vh 1vh;
+	margin: 1vh;
+}
+.message:first-child{
+    display: inline;
+    background-color: red;
+
+}

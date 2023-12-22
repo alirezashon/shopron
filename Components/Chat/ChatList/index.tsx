@@ -1,6 +1,6 @@
 /** @format */
 
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useState, useEffect } from 'react'
 interface Chat {
 	name: string
@@ -22,10 +22,9 @@ const ChatList: React.FC<ChatListProps> = ({ sender }) => {
 					<Image
 						alt={sender.name}
 						src={`https://picsum.photos/80/80?random=${Math.random()}`} // Using Picsum API for random images
-						width={700}
-						height={700}
-						layout='responsive'
-						style={styles.image}
+						width={80}
+						height={80}
+						style={{borderRadius:'7vh'}}
 					/>
 				</div>
 				<div style={styles.senderInfo}>
@@ -55,11 +54,7 @@ const styles: { [key: string]: React.CSSProperties } = {
 		width: '7vh',
 		marginRight: '1vh',
 	},
-	image: {
-		width: '100%',
-		height:'100%',
-		borderRadius: '7vh',
-	},
+ 
 	senderInfo: {
 		flex: 1,
 		display: 'flex',

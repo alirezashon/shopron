@@ -10,6 +10,7 @@ import Posts from '../Components/PostBox/5-7'
 import Story from '../Components/Story'
 import Carouselali from '../Components/Carouselali'
 import FlowChart from '@/Components/FlowChart'
+import Chat from '../Components/Chat'
 interface Props {
 	posts: [
 		{
@@ -69,6 +70,7 @@ const RootPage: NextPage<Props> = ({ posts }) => {
 				<>
 					<Handler />
 					<Story data={posts} />
+					<Chat />
 					<FlowChart />
 					<Carouselali />
 					<PostsDisplay posts={posts} />
