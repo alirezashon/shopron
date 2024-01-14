@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, CSSProperties } from 'react'
 import MessageList from './ChatBox/MessageList'
 import MessageInput from './ChatBox/MessageInput'

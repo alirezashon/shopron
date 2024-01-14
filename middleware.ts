@@ -1,0 +1,48 @@
+/** @format */
+
+import { NextRequest, NextResponse } from 'next/server'
+
+export function middleware(request: NextRequest) {
+	if (request.nextUrl.pathname === '/about') {
+        console.log(request)
+        return NextResponse.redirect(new URL('/login', request.url))
+        
+	}
+	if (request.nextUrl.pathname === '/another') {
+		return NextResponse.rewrite(new URL('/rewrite', request.url))
+	}
+	return NextResponse.next()
+}
+
+export const config = {
+	matcher: ['/about/:path*', '/another/:path*'],
+}
+
+// matcher middleware
+
+// import { NextResponse } from 'next/server'
+// import type { NextRequest } from 'next/server'
+
+// const middleware = (req: NextRequest) => {
+// 	const path = req.nextUrl.pathname
+// 	const slug = path.slice(1)
+// 	// console.log('request is ===============================================> ')
+// 	// console.log(req)
+// 	console.log('path is ===============================================> ')
+// 	console.log(path)
+// 	const response = NextResponse.next()
+// 	response.cookies.set({
+// 		name: 'aliAkbar',
+// 		value: slug,
+// 		path,
+// 	})
+
+// 	return response
+// }
+// export default middleware
+// export const config = {
+// 	matcher: [
+// 		'/disclaimer', // match a single, specific page
+// 		'/((?!public|static).*)', // match all paths not starting with 'public' or 'static'
+// 	],
+// }
