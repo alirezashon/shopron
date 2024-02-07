@@ -1,3 +1,5 @@
+/** @format */
+
 import { AiFillCloseCircle, AiOutlineShoppingCart } from 'react-icons/ai'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -34,18 +36,14 @@ const StoryComponent: React.FC<Props> = ({ data }) => {
 		const storyHistory: string[] = JSON.parse(
 			sessionStorage.getItem('^S&T#o@r%i($*i&N0') || '[]'
 		)
-		const setSeen: Story[] = []
-		stories.map((story) => {
-			const seen = storyHistory.find((item) => story._id === item)
-				? true
-				: false
-			setSeen.push({
+		setStories((prevStories) =>
+			prevStories.map((story) => ({
 				...story,
-				seen,
-			})
-		}) || []
-		setStories(setSeen)
-	}, [stories])
+				seen: storyHistory.includes(story._id),
+			}))
+		)
+	}, [setStories])
+
 	const showStory = (_id: string) => {
 		const storyHistory: string[] = JSON.parse(
 			sessionStorage.getItem('^S&T#o@r%i($*i&N0') || '[]'
@@ -105,12 +103,14 @@ const StoryComponent: React.FC<Props> = ({ data }) => {
 					<AiFillCloseCircle
 						className={styles.closeStoryContainer}
 						onClick={closeStory}
- 						size={'5vh'}
+						size={'5vh'}
 					/>
 					<div className={styles.openStoryTitle}>استوریاشونم که خب ماچری</div>
 					<div className={styles.openStoryInnerSide}>
 						{stories.map((story) => (
-							<div key={story._id} className={styles.openStoryBox}>
+							<div
+								key={story._id}
+								className={styles.openStoryBox}>
 								<div className={styles.openStoryHeader}>
 									<AiFillCloseCircle
 										className={styles.close}
@@ -141,9 +141,9 @@ const StoryComponent: React.FC<Props> = ({ data }) => {
 								</div>
 								<PiHandHeartThin
 									size={'4vh'}
-									color={isLiked ? 'red':'white'}
+									color={isLiked ? 'red' : 'white'}
 									className={styles.like}
-									oncliclk={()=>setIsLiked(!isLiked)}
+									oncliclk={() => setIsLiked(!isLiked)}
 								/>
 							</div>
 						))}

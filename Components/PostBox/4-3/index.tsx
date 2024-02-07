@@ -76,7 +76,7 @@ const Index: React.FC<PostsDisplayProps> = ({ posts }) => {
 		if (window.innerWidth > 777) {
 			setIsMobile(false)
 		}
-	}, [basketStore, posts, setIsMobile])
+	}, [setIsMobile])
 
 	return (
 		<div className={styles.postsBox}>

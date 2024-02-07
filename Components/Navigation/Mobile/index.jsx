@@ -2,30 +2,37 @@
 
 import { useState, useEffect } from 'react'
 import styles from './index.module.css'
-import Basket from '../../Basket'
 import { GiCrossMark } from 'react-icons/gi'
-import Search from '../../Form/Search'
 import { PiUserCircleGearFill } from 'react-icons/pi'
 
 const menuItems = [
 	{
-		name: 'محصولات',
+		name: '(Java / Type) Script',
 		option: [
-			{ name: 'ازینا', option: ['خاورصرشون', 'تیپ یک یکشون'] },
 			{
-				name: 'ازونا',
+				name: 'back',
 				option: [
-					{ name: 'پرتقالوزادنن', option: 'دوشواریشکن' },
-					{ name: 'همهدارن', option: 'ایناندارن' },
+					'Nodejs',
+					'Express',
+					'Authenticate',
+					'Cryptography',
+					'Scrapping',
+					'Data Science',
+					'API Master',
 				],
+			},
+			{
+				name: 'front',
+				option: ['React', 'CSS', 'UX', 'UI Designer', 'Responsive'],
 			},
 		],
 	},
-	{ name: 'سفارشی سازی', option: ['سرتاتشو', 'فقط وسطاشو', 'بغلاشو'] },
-	{ name: 'پروفایل کاربری', option: ['تاریخچه خرید', 'مدیریت '] },
-	{ name: 'خدمات', option: ['ماساژ غضروف'] },
-	{ name: 'تماس با ما', option: ['0700600500137'] },
-	{ name: 'درباره ی ما', option: ['همیشه خفناسا'] },
+	{ name: 'Mobile', option: ['React Native'] },
+	{ name: 'Desktop', option: ['Electron'] },
+	{ name: 'Database', option: ['MongoDB', 'MySQL'] },
+	{ name: 'Python' },
+	{ name: 'Jira' },
+	{ name: 'Linux' }, 	
 ]
 
 const Mobile = () => {
@@ -80,9 +87,7 @@ const Mobile = () => {
 						<div className={styles.cross}>
 							<GiCrossMark onClick={() => setIsOpen(!isOpen)} />
 						</div>
-						<div className={styles.searchBox}>
-							<Search />
-						</div>
+						<h1>web skills</h1>
 					</div>
 					{menuItems.map((menuItem, index) => (
 						<div
@@ -92,7 +97,10 @@ const Mobile = () => {
 								className={styles.name}
 								onClick={() => toggleOption(index)}>
 								{menuItem.name}
-								<span className={styles.icon}>▼</span>
+								{menuItem.option &&
+								<span className={styles.icon}>
+									{isOptionOpen[index] ? '▲' : '▼'}{' '}
+								</span>}
 							</div>
 							{menuItem.option &&
 								menuItem.option.length > 0 &&
@@ -108,7 +116,9 @@ const Mobile = () => {
 												) : (
 													<>
 														{option.name}
-														<span className={styles.icon}>▼</span>
+														<span className={styles.icon}>
+															{isSubOptionOpen[optionIndex] ? '▲' : '▼'}
+														</span>
 														{option.option &&
 															option.option.length > 0 &&
 															isSubOptionOpen[optionIndex] && (
@@ -137,17 +147,10 @@ const Mobile = () => {
 						</div>
 					))}
 				</div>
-				<div>
-					<div className={styles.centerSection}>
-						<div className={styles.searchBox}>
-							<Search />
-						</div>
-					</div>
-				</div>
+				<div></div>
 				<div className={styles.profile}>
 					<PiUserCircleGearFill size={'6vh'} />
 				</div>
-				<Basket />
 			</div>
 		</>
 	)

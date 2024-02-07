@@ -54,7 +54,7 @@ const RootPage: NextPage<Props> = ({ posts }) => {
 	useEffect(() => {
 		const session = sessionStorage.getItem('token')
 		session ? validator(session) : setLoading(false)
-	}, [])
+	}, [setLoading])
 
 	return (
 		<>
