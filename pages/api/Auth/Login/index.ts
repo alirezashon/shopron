@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Client from '../../../../models/Client'
-import db from "../../../../utils";
+import db from "../../../../utils/index.js";
 const Auth = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         if (req.method === 'POST') {

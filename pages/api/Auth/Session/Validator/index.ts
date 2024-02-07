@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { decryptText } from '../../../../../Components/CryptoUtils'
 import ClientSession from '../../../../../models/Client/Session'
 import Client from '../../../../../models/Client'
-import db from '../../../../../utils'
+import db from '../../../../../utils/index.js'
 const Validator = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		if (req.method === 'POST') {

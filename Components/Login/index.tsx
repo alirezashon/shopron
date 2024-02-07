@@ -1,4 +1,3 @@
-/** @format */
 
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer, Zoom } from 'react-toastify'
@@ -19,8 +18,7 @@ const Login: React.FC<LoginProps> = ({ setToken }) => {
 		setIsLoading(true)
 
 		try {
-			// Send a request to your API to authenticate the user
-			const response = await fetch('/api/Auth/Session/Generator', {
+ 			const response = await fetch('/api/Auth/Session/Generator', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

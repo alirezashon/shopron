@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Orders from '../../../../models/Orders'
 import Data from '../../../../models/Data'
 import Log from '../../../../models/Log'
-import db from '../../../../utils'
+import db from '../../../../utils/index.js'
 
 const Shop = async (req: NextApiRequest, res: NextApiResponse) => {
 	interface Post {

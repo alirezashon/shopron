@@ -1,4 +1,4 @@
-import db from '../../../../../utils'
+import db from '../../../../../utils/index.js'
 import Data from '../../../../../models/Data'
 import { NextApiRequest, NextApiResponse } from 'next'
 const Post = async (req: NextApiRequest, res: NextApiResponse) => {

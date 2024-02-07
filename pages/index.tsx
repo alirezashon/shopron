@@ -70,8 +70,8 @@ const RootPage: NextPage<Props> = ({ posts }) => {
 				<>
 					<Handler />
 					<Story data={posts} />
-					<Chat />
-					<FlowChart />
+					{/* <Chat /> */}
+					{/* <FlowChart /> */}
 					<Carouselali />
 					<PostsDisplay posts={posts} />
 					{/* <Posts posts={posts} /> */}

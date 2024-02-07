@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import crypto from 'crypto'
 import { ip, mac } from 'address'
-import db from '../../../../../utils'
+import db from '../../../../../utils/index.js'
 import Client from '../../../../../models/Client'
 import ClientSession from '../../../../../models/Client/Session'
 import Log from '../../../../../models/Log'

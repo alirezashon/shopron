@@ -4,12 +4,12 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { ip, mac } from 'address'
 import Client from '../../../../models/Client'
 import Log from '../../../../models/Log'
-import db from '../../../../utils'
+import db from '../../../../utils/index.js'
 import {
 	generateKeyAndIV,
 	encryptText,
 } from '../../../../Components/CryptoUtils'
-const Register =  async (req: NextApiRequest, res: NextApiResponse) => {
+const Register = async (req: NextApiRequest, res: NextApiResponse) => {
 	const IP = ip()
 	const MAC = mac((err, addr) => {
 		return addr

@@ -1,22 +1,36 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "Components/Story/index.tsx", "Components/Templates/ImageS/index.jsx", "pages/ToPicalonso/index.tsx", "pages/testo.tsx", "Components/Map/index.jsx", "pages/Map.jsx", "pages/Test_Project_Models/Formassion/index.tsx", "Components/Navigation/Mobile/index.jsx", "Components/Marquee/index.jsx"],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"paths": {
+			"@/*": ["./*"]
+		}
+	},
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"Components/Story/index.tsx",
+		"Components/Templates/ImageS/index.jsx",
+		"pages/ToPicalonso/index.tsx",
+		"pages/testo.tsx",
+		"Components/Map/index.jsx",
+		"pages/Map.jsx",
+		"pages/Test_Project_Models/Formassion/index.tsx",
+		"Components/Navigation/Mobile/index.jsx",
+		"Components/Marquee/index.jsx",
+		"utils/index.js"
+	],
+	"exclude": ["node_modules"]
 }

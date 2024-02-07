@@ -2,7 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next'
 import Data from '../../../../../../models/Data'
-import db from '../../../../../../utils'
+import db from '../../../../../../utils/index.js'
 const Bulk = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		if (req.method === 'POST') {

@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Message from '../../../models/Chat/Message'
 import Sender from '../../../models/Chat/Sender'
-import db from '../../../utils'
+import db from '../../../utils/index.js'
 const chat = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
 		if (req.method === 'POST') {

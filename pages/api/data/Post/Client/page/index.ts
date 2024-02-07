@@ -2,16 +2,16 @@
 
 import { NextApiRequest, NextApiResponse } from 'next'
 import Data from '../../../../../../models/Data'
-import db from '../../../../../../utils'
+import db from '../../../../../../utils/index.js'
 const Page = async (req: NextApiRequest, res: NextApiResponse) => {
 	try {
- 		if (req.method === 'POST') {
-			const { category,title,authType } = req.body
+		if (req.method === 'POST') {
+			const { category, title, authType } = req.body
 			if (authType === 'G&E!T*P^R$O#D$U^C@T*S') {
 				await db.connect()
 				if (category === '@L$L%O%F#D%M^') {
-					const products = await Data.findOne({title})
- 					res.status(200).json({ success: true, products })
+					const products = await Data.findOne({ title })
+					res.status(200).json({ success: true, products })
 				} else {
 					res.status(406).json({ success: false, message: 'Invalid Category' })
 				}
